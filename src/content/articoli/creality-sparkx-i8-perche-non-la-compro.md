@@ -67,6 +67,6 @@ solo sono quattro occasioni di intasamento nello stesso punto.
 ---
 
 Il confronto con un'architettura opposta e' qui:
-[InfiMech MX Pro e il numero vero sullo spreco](/stampa-3d/infimech-mx-pro-spreco-filamento/). Il
+[InfiMech MX Pro e il numero vero sullo spreco](../../stampa-3d/infimech-mx-pro-spreco-filamento/). Il
 precedente storico e' il
 <a href="https://www.kickstarter.com/projects/wr3d/the-diamond-hotend-single-nozzle-multi-color-3d-pr" rel="nofollow">Diamond Hotend del 2015</a>.

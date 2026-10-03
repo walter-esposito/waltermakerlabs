@@ -1,13 +1,14 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { Image } from 'astro:assets';
+import { u } from '../lib/url';
 
 interface Props {
   articolo: CollectionEntry<'articoli'>;
 }
 const { articolo } = Astro.props;
 const d = articolo.data;
-const href = `/${d.categoria}/${articolo.id}/`;
+const href = u(`/${d.categoria}/${articolo.id}/`);
 ---
 
 <li class="scheda">

@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { CATEGORIE } from '../content.config';
+import { u, ANTEPRIMA } from '../lib/url';
 
 interface Props {
   title: string;
@@ -36,7 +37,7 @@ const ETICHETTE: Record<string, string> = {
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    {noindex && <meta name="robots" content="noindex, follow" />}
+    {(noindex || ANTEPRIMA) && <meta name="robots" content="noindex, nofollow" />}
 
     <meta property="og:type" content={tipoOg} />
     <meta property="og:title" content={title} />
@@ -47,9 +48,9 @@ const ETICHETTE: Record<string, string> = {
     <meta property="og:site_name" content="Walter Maker Labs" />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="sitemap" href="/sitemap-index.xml" />
-    <link rel="alternate" type="application/rss+xml" title="Walter Maker Labs" href="/rss.xml" />
+    <link rel="icon" href={u("/favicon.svg")} type="image/svg+xml" />
+    <link rel="sitemap" href={u("/sitemap-index.xml")} />
+    <link rel="alternate" type="application/rss+xml" title="Walter Maker Labs" href={u("/rss.xml")} />
 
     <meta name="generator" content={Astro.generator} />
     <slot name="head" />
@@ -60,17 +61,17 @@ const ETICHETTE: Record<string, string> = {
 
     <header class="sito-header">
       <div class="contenitore">
-        <a class="marchio" href="/">Walter <span>Maker Labs</span></a>
+        <a class="marchio" href={u("/")}>Walter <span>Maker Labs</span></a>
         <nav class="sito-nav" aria-label="Principale">
           {
             CATEGORIE.map((c) => (
-              <a href={`/${c}/`} aria-current={Astro.url.pathname.startsWith(`/${c}/`) ? 'page' : undefined}>
+              <a href={u(`/${c}/`)} aria-current={Astro.url.pathname.startsWith(`/${c}/`) ? 'page' : undefined}>
                 {ETICHETTE[c]}
               </a>
             ))
           }
-          <a href="/recensioni/">Recensioni</a>
-          <a href="/risoluzione-problemi/">Problemi</a>
+          <a href={u("/recensioni/")}>Recensioni</a>
+          <a href={u("/risoluzione-problemi/")}>Problemi</a>
           <a href="https://www.youtube.com/@waltermakerlabs" rel="me">YouTube</a>
         </nav>
       </div>

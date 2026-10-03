@@ -85,4 +85,4 @@ vedere arrivare in ritardo, o non arrivare.
 
 Il mio setup attuale: Snapmaker U1, Bambu Lab A1 Mini, Anycubic Kobra X. Il numero definitivo sullo
 spreco di filamento della MX e' nell'articolo successivo:
-[InfiMech MX Pro, il numero vero sullo spreco](/stampa-3d/infimech-mx-pro-spreco-filamento/).
+[InfiMech MX Pro, il numero vero sullo spreco](../../stampa-3d/infimech-mx-pro-spreco-filamento/).

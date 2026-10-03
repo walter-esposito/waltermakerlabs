@@ -7,6 +7,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SchedaArticolo from '../../components/SchedaArticolo.astro';
+import { u } from '../../lib/url';
 
 const recensioni = (
   await getCollection('articoli', ({ data }) => !data.draft && data.tipo === 'recensione')
@@ -19,7 +20,7 @@ const recensioni = (
 >
   <nav class="briciole" aria-label="Percorso">
     <ol>
-      <li><a href="/">Home</a></li>
+      <li><a href={u("/")}>Home</a></li>
       <li aria-current="page">Recensioni</li>
     </ol>
   </nav>

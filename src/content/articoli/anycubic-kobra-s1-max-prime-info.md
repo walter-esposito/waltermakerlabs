@@ -51,4 +51,4 @@ commissione e tu non paghi di piu'.
 ---
 
 Le specifiche ufficiali complete sono arrivate con la presentazione: le trovi nell'articolo sulla
-[Kobra S1 Max Combo](/stampa-3d/anycubic-kobra-s1-max-combo-preordine/).
+[Kobra S1 Max Combo](../../stampa-3d/anycubic-kobra-s1-max-combo-preordine/).

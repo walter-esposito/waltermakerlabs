@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import { CATEGORIE } from '../../content.config';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SchedaArticolo from '../../components/SchedaArticolo.astro';
+import { u } from '../../lib/url';
 
 export function getStaticPaths() {
   return CATEGORIE.map((categoria) => ({ params: { categoria } }));
@@ -52,7 +53,7 @@ const articoli = (
 <BaseLayout title={`${t.titolo} | Walter Maker Labs`} description={t.meta}>
   <nav class="briciole" aria-label="Percorso">
     <ol>
-      <li><a href="/">Home</a></li>
+      <li><a href={u("/")}>Home</a></li>
       <li aria-current="page">{t.titolo}</li>
     </ol>
   </nav>

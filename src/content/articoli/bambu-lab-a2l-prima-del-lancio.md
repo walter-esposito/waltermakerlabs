@@ -57,4 +57,4 @@ invece il limite che senti oggi e' **lo spazio di stampa**, qui il salto e' conc
 ---
 
 Il prezzo e' stato confermato al lancio:
-[Bambu Lab A2L, grande volume a 489 euro](/stampa-3d/bambu-lab-a2l-prezzo-volume/).
+[Bambu Lab A2L, grande volume a 489 euro](../../stampa-3d/bambu-lab-a2l-prezzo-volume/).

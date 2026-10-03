@@ -47,6 +47,29 @@ supera i 70 caratteri o la description esce dai limiti, la build fallisce.
   clic. Un iframe YouTube normale scarica ~1,5 MB e rovina i Core Web Vitals.
 - Permalink senza data: la data nell'URL fa sembrare vecchio l'articolo in SERP.
 
+## Anteprima e dominio
+
+Il sito e' costruito per stare alla radice di `waltermakerlabs.it`. Finche' il dominio
+non e' collegato viene pubblicato su
+`walter-esposito.github.io/waltermakerlabs/`, che e' un sottopercorso: senza
+accorgimenti ogni link e ogni immagine darebbe 404.
+
+La variabile `SITE_BASE` risolve la cosa:
+
+```bash
+npm run build                      # sito definitivo, base "/"
+SITE_BASE=waltermakerlabs npm run build   # anteprima su GitHub Pages
+```
+
+La build con `SITE_BASE` si marca anche `noindex`, per non far indicizzare
+l'anteprima e ritrovarsi contenuto duplicato quando il dominio sara' attivo.
+
+**Quando colleghi waltermakerlabs.it:** togli le righe `env: SITE_BASE` da
+`.github/workflows/deploy.yml` e aggiungi `public/CNAME` con dentro il dominio.
+
+I link interni dentro gli articoli vanno scritti **relativi**
+(`../../stampa-3d/slug/`), non assoluti: cosi' funzionano con qualsiasi base.
+
 ## Struttura
 
 ```

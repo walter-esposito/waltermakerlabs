@@ -1,14 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { u } from '../lib/url';
 ---
 
 <BaseLayout title="Pagina non trovata | Walter Maker Labs" description="La pagina cercata non esiste." noindex={true}>
   <section style="padding-block: 4rem; max-width: 40rem;">
     <h1>Questa pagina non c'e'</h1>
     <p style="color: var(--testo-tenue);">
-      Forse l'indirizzo e' cambiato. Puoi ripartire dalla <a href="/">home</a> o da una sezione:
-      <a href="/stampa-3d/">stampa 3D</a>, <a href="/cnc/">CNC</a>, <a href="/laser/">laser</a>,
-      <a href="/ai/">AI</a>.
+      Forse l'indirizzo e' cambiato. Puoi ripartire dalla <a href={u("/")}>home</a> o da una sezione:
+      <a href={u("/stampa-3d/")}>stampa 3D</a>, <a href={u("/cnc/")}>CNC</a>, <a href={u("/laser/")}>laser</a>,
+      <a href={u("/ai/")}>AI</a>.
     </p>
   </section>
 </BaseLayout>

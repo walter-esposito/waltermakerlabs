@@ -54,4 +54,4 @@ tira a indovinare sul lato ottimistico, molto meno.
 ---
 
 La macchina con cui sto entrando in questo mondo e' nell'articolo
-[Makera Z1, la mia prima CNC da banco](/cnc/makera-z1-prima-cnc/).
+[Makera Z1, la mia prima CNC da banco](../../cnc/makera-z1-prima-cnc/).
