@@ -1,6 +1,6 @@
 # waltermakerlabs.it
 
-Sito di [Walter Maker Labs](https://www.youtube.com/@makernoise) — stampa 3D, CNC, laser e AI applicata al making.
+Sito di [Walter Maker Labs](https://www.youtube.com/@waltermakerlabs) — stampa 3D, CNC, laser e AI applicata al making.
 
 Astro, pagine statiche, deploy su GitHub Pages.
 

@@ -2,10 +2,10 @@ import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
 /** I silos tematici del sito. L'URL di un articolo e' /{categoria}/{slug}/ */
-export const CATEGORIE = ['stampa-3d', 'cnc', 'laser', 'ai'] as const;
+export const CATEGORIE = ['stampa-3d', 'cnc', 'laser', 'ai', 'canale'] as const;
 
 /** Il tipo e' trasversale ai silos: genera pagine di elenco, non URL di articolo. */
-export const TIPI = ['recensione', 'guida', 'tutorial', 'progetto'] as const;
+export const TIPI = ['recensione', 'guida', 'tutorial', 'progetto', 'risoluzione-problemi'] as const;
 
 const articoli = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/articoli' }),

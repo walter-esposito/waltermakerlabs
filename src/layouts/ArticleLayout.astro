@@ -16,6 +16,7 @@ const ETICHETTE: Record<string, string> = {
   cnc: 'CNC',
   laser: 'Laser',
   ai: 'AI',
+  canale: 'Il canale',
 };
 const etichettaCat = ETICHETTE[d.categoria];
 const urlPagina = new URL(Astro.url.pathname, Astro.site).href;
@@ -31,7 +32,7 @@ const fmt = (x: Date) =>
 const autore = {
   '@type': 'Person',
   name: 'Walter Esposito',
-  url: 'https://www.youtube.com/@makernoise',
+  url: 'https://www.youtube.com/@waltermakerlabs',
 };
 
 const schemaArticolo = {

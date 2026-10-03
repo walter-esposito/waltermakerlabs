@@ -4,15 +4,15 @@ description: "Anycubic ha lanciato due macchine insieme e la scelta non è ovvia
 categoria: stampa-3d
 tipo: guida
 pubDate: 2026-05-18
-cover: ../../assets/kobra-4-combo.jpg
+cover: ../../assets/anycubic-kobra-4-combo.jpg
 coverAlt: "La Anycubic Kobra 4 Combo vista di tre quarti sul banco da lavoro"
-videoId: DA_COMPLETARE
+videoId: oalX5w2terM
 videoDurata: PT13M00S
 tags:
-  - anycubic
-  - kobra 4 combo
-  - kobra x combo
-  - multicolore
+  - "anycubic"
+  - "kobra 4 combo"
+  - "kobra x combo"
+  - "multicolore"
 draft: true
 ---
 

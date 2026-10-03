@@ -1,0 +1,45 @@
+---
+/**
+ * Elenco per tipo "risoluzione-problemi": gli articoli restano sotto la loro
+ * categoria tematica, qui c'e' solo la lista. Nessun contenuto duplicato.
+ */
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SchedaArticolo from '../../components/SchedaArticolo.astro';
+
+const articoli = (
+  await getCollection('articoli', ({ data }) => !data.draft && data.tipo === 'risoluzione-problemi')
+).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout
+  title="Problemi e soluzioni su stampa 3D e CNC | Walter Maker Labs"
+  description="Guasti, difetti di stampa, firmware e ritardi: cosa va storto davvero con stampanti 3D e CNC, e come se ne esce."
+>
+  <nav class="briciole" aria-label="Percorso">
+    <ol>
+      <li><a href="/">Home</a></li>
+      <li aria-current="page">Risoluzione problemi</li>
+    </ol>
+  </nav>
+
+  <section style="padding-block: 1.5rem 2rem; max-width: 46rem;">
+    <h1>Risoluzione problemi</h1>
+    <p style="color: var(--testo-tenue); font-size: 1.1rem;">
+      Quello che si rompe, si inceppa o non arriva. Problemi incontrati davvero in officina, con la
+      soluzione che ha funzionato &mdash; o la constatazione onesta che soluzione non ce n'e'.
+    </p>
+  </section>
+
+  {
+    articoli.length === 0 ? (
+      <p style="color: var(--testo-tenue);">Nessun articolo pubblicato, per ora.</p>
+    ) : (
+      <ul class="griglia">
+        {articoli.map((a) => (
+          <SchedaArticolo articolo={a} />
+        ))}
+      </ul>
+    )
+  }
+</BaseLayout>
