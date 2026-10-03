@@ -1,0 +1,156 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import BaseLayout from './BaseLayout.astro';
+import YouTubeEmbed from '../components/YouTubeEmbed.astro';
+
+interface Props {
+  articolo: CollectionEntry<'articoli'>;
+}
+
+const { articolo } = Astro.props;
+const d = articolo.data;
+
+const ETICHETTE: Record<string, string> = {
+  'stampa-3d': 'Stampa 3D',
+  cnc: 'CNC',
+  laser: 'Laser',
+  ai: 'AI',
+};
+const etichettaCat = ETICHETTE[d.categoria];
+const urlPagina = new URL(Astro.url.pathname, Astro.site).href;
+const urlCover = new URL(d.cover.src, Astro.site).href;
+
+const fmt = (x: Date) =>
+  new Intl.DateTimeFormat('it-IT', { day: 'numeric', month: 'long', year: 'numeric' }).format(x);
+
+/* ---- dati strutturati ---------------------------------------------------- */
+
+const autore = {
+  '@type': 'Person',
+  name: 'Walter Esposito',
+  url: 'https://www.youtube.com/@makernoise',
+};
+
+const schemaArticolo = {
+  '@type': d.tipo === 'recensione' ? 'Review' : 'BlogPosting',
+  '@id': `${urlPagina}#articolo`,
+  headline: d.title,
+  description: d.description,
+  image: urlCover,
+  datePublished: d.pubDate.toISOString(),
+  dateModified: (d.updatedDate ?? d.pubDate).toISOString(),
+  author: autore,
+  publisher: {
+    '@type': 'Organization',
+    name: 'Walter Maker Labs',
+    url: 'https://waltermakerlabs.it/',
+  },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': urlPagina },
+  inLanguage: 'it-IT',
+  ...(d.tipo === 'recensione' && d.prodotto
+    ? {
+        itemReviewed: {
+          '@type': 'Product',
+          name: d.prodotto.nome,
+          brand: { '@type': 'Brand', name: d.prodotto.marca },
+          ...(d.prodotto.prezzoIndicativo
+            ? {
+                offers: {
+                  '@type': 'Offer',
+                  price: d.prodotto.prezzoIndicativo,
+                  priceCurrency: 'EUR',
+                },
+              }
+            : {}),
+        },
+        reviewRating: {
+          '@type': 'Rating',
+          ratingValue: d.prodotto.voto,
+          bestRating: 5,
+          worstRating: 1,
+        },
+      }
+    : {}),
+};
+
+const schemaVideo = d.videoId
+  ? {
+      '@type': 'VideoObject',
+      '@id': `${urlPagina}#video`,
+      name: d.title,
+      description: d.description,
+      thumbnailUrl: `https://i.ytimg.com/vi/${d.videoId}/maxresdefault.jpg`,
+      uploadDate: d.pubDate.toISOString(),
+      ...(d.videoDurata ? { duration: d.videoDurata } : {}),
+      embedUrl: `https://www.youtube-nocookie.com/embed/${d.videoId}`,
+      contentUrl: `https://www.youtube.com/watch?v=${d.videoId}`,
+      publisher: { '@type': 'Organization', name: 'Walter Maker Labs' },
+    }
+  : null;
+
+const schemaBriciole = {
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://waltermakerlabs.it/' },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: etichettaCat,
+      item: `https://waltermakerlabs.it/${d.categoria}/`,
+    },
+    { '@type': 'ListItem', position: 3, name: d.title, item: urlPagina },
+  ],
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [schemaArticolo, schemaBriciole, ...(schemaVideo ? [schemaVideo] : [])],
+};
+
+const { Content } = await render(articolo);
+---
+
+<BaseLayout
+  title={`${d.title} | Walter Maker Labs`}
+  description={d.description}
+  ogImage={d.cover.src}
+  tipoOg="article"
+>
+  <script
+    slot="head"
+    type="application/ld+json"
+    is:inline
+    set:html={JSON.stringify(jsonLd)}
+  />
+
+  <nav class="briciole" aria-label="Percorso">
+    <ol>
+      <li><a href="/">Home</a></li>
+      <li><a href={`/${d.categoria}/`}>{etichettaCat}</a></li>
+      <li aria-current="page">{d.title}</li>
+    </ol>
+  </nav>
+
+  <article class="articolo">
+    <span class="etichetta">{d.tipo}</span>
+    <h1>{d.title}</h1>
+
+    <p class="articolo__meta">
+      <time datetime={d.pubDate.toISOString()}>{fmt(d.pubDate)}</time>
+      {d.updatedDate && <> · aggiornato il <time datetime={d.updatedDate.toISOString()}>{fmt(d.updatedDate)}</time></>}
+    </p>
+
+    <p class="articolo__sommario">{d.description}</p>
+
+    {
+      d.videoId ? (
+        <YouTubeEmbed id={d.videoId} titolo={d.title} lazy={false} />
+      ) : (
+        <Image src={d.cover} alt={d.coverAlt} widths={[480, 800, 1200]} loading="eager" />
+      )
+    }
+
+    <Content />
+  </article>
+</BaseLayout>

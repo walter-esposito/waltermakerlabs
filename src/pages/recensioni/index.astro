@@ -1,0 +1,46 @@
+---
+/**
+ * "Recensione" e' un TIPO, non un silo: gli articoli restano sotto la loro
+ * categoria tematica. Questa pagina e' solo un elenco, quindi non duplica
+ * nessun contenuto e puo' stare in indice.
+ */
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SchedaArticolo from '../../components/SchedaArticolo.astro';
+
+const recensioni = (
+  await getCollection('articoli', ({ data }) => !data.draft && data.tipo === 'recensione')
+).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout
+  title="Recensioni hardware maker | Walter Maker Labs"
+  description="Tutte le recensioni di stampanti 3D, CNC e incisori laser provati in officina: pregi, difetti e a chi conviene davvero."
+>
+  <nav class="briciole" aria-label="Percorso">
+    <ol>
+      <li><a href="/">Home</a></li>
+      <li aria-current="page">Recensioni</li>
+    </ol>
+  </nav>
+
+  <section style="padding-block: 1.5rem 2rem; max-width: 46rem;">
+    <h1>Recensioni</h1>
+    <p style="color: var(--testo-tenue); font-size: 1.1rem;">
+      Macchine comprate o ricevute in prova, usate per settimane prima di scriverne. Ogni recensione
+      dice anche a chi <em>non</em> conviene.
+    </p>
+  </section>
+
+  {
+    recensioni.length === 0 ? (
+      <p style="color: var(--testo-tenue);">Nessuna recensione pubblicata, per ora.</p>
+    ) : (
+      <ul class="griglia">
+        {recensioni.map((a) => (
+          <SchedaArticolo articolo={a} />
+        ))}
+      </ul>
+    )
+  }
+</BaseLayout>

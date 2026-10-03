@@ -1,0 +1,70 @@
+---
+import { getCollection } from 'astro:content';
+import { CATEGORIE } from '../../content.config';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SchedaArticolo from '../../components/SchedaArticolo.astro';
+
+export function getStaticPaths() {
+  return CATEGORIE.map((categoria) => ({ params: { categoria } }));
+}
+
+const { categoria } = Astro.params;
+
+const TESTI: Record<string, { titolo: string; intro: string; meta: string }> = {
+  'stampa-3d': {
+    titolo: 'Stampa 3D',
+    intro:
+      'Stampanti FDM e resina provate in officina: qualita di stampa reale, profili che funzionano, problemi che i comunicati stampa non raccontano.',
+    meta: 'Recensioni e guide sulla stampa 3D: stampanti FDM e resina provate sul campo, profili di stampa, materiali e confronti onesti.',
+  },
+  cnc: {
+    titolo: 'CNC',
+    intro:
+      'Fresatura CNC da banco: macchine, frese, parametri di taglio e lavorazioni su legno, alluminio e plastica.',
+    meta: 'CNC da banco: recensioni di macchine, parametri di taglio, frese e progetti reali su legno, alluminio e plastica.',
+  },
+  laser: {
+    titolo: 'Laser',
+    intro: 'Incisione e taglio laser: potenze, materiali, impostazioni e sicurezza.',
+    meta: 'Incisori e tagliatrici laser: prove, impostazioni per materiale, sicurezza e progetti.',
+  },
+  ai: {
+    titolo: 'AI per maker',
+    intro:
+      'Intelligenza artificiale applicata al making: generazione di modelli, automazione del flusso di lavoro, strumenti che fanno davvero risparmiare tempo.',
+    meta: 'AI applicata al making: strumenti per generare modelli 3D, automatizzare il flusso di lavoro e velocizzare la progettazione.',
+  },
+};
+
+const t = TESTI[categoria];
+
+const articoli = (
+  await getCollection('articoli', ({ data }) => !data.draft && data.categoria === categoria)
+).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout title={`${t.titolo} | Walter Maker Labs`} description={t.meta}>
+  <nav class="briciole" aria-label="Percorso">
+    <ol>
+      <li><a href="/">Home</a></li>
+      <li aria-current="page">{t.titolo}</li>
+    </ol>
+  </nav>
+
+  <section style="padding-block: 1.5rem 2rem; max-width: 46rem;">
+    <h1>{t.titolo}</h1>
+    <p style="color: var(--testo-tenue); font-size: 1.1rem;">{t.intro}</p>
+  </section>
+
+  {
+    articoli.length === 0 ? (
+      <p style="color: var(--testo-tenue);">Nessun articolo in questa sezione, per ora.</p>
+    ) : (
+      <ul class="griglia">
+        {articoli.map((a) => (
+          <SchedaArticolo articolo={a} />
+        ))}
+      </ul>
+    )
+  }
+</BaseLayout>

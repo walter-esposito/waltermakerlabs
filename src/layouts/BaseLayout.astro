@@ -1,0 +1,95 @@
+---
+import '../styles/global.css';
+import { CATEGORIE } from '../content.config';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Immagine per le anteprime social. Percorso assoluto dalla root del sito. */
+  ogImage?: string;
+  /** Mettilo a true sulle pagine di filtro che non devono entrare in indice. */
+  noindex?: boolean;
+  tipoOg?: 'website' | 'article';
+}
+
+const { title, description, ogImage = '/og-default.jpg', noindex = false, tipoOg = 'website' } =
+  Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogAssoluta = new URL(ogImage, Astro.site).href;
+
+const ETICHETTE: Record<string, string> = {
+  'stampa-3d': 'Stampa 3D',
+  cnc: 'CNC',
+  laser: 'Laser',
+  ai: 'AI',
+};
+---
+
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+
+    <meta property="og:type" content={tipoOg} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogAssoluta} />
+    <meta property="og:locale" content="it_IT" />
+    <meta property="og:site_name" content="Walter Maker Labs" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Walter Maker Labs" href="/rss.xml" />
+
+    <meta name="generator" content={Astro.generator} />
+    <slot name="head" />
+  </head>
+
+  <body>
+    <a class="salta-al-contenuto" href="#contenuto">Salta al contenuto</a>
+
+    <header class="sito-header">
+      <div class="contenitore">
+        <a class="marchio" href="/">Walter <span>Maker Labs</span></a>
+        <nav class="sito-nav" aria-label="Principale">
+          {
+            CATEGORIE.map((c) => (
+              <a href={`/${c}/`} aria-current={Astro.url.pathname.startsWith(`/${c}/`) ? 'page' : undefined}>
+                {ETICHETTE[c]}
+              </a>
+            ))
+          }
+          <a href="/recensioni/">Recensioni</a>
+          <a href="https://www.youtube.com/@makernoise" rel="me">YouTube</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="contenuto" class="contenitore">
+      <slot />
+    </main>
+
+    <footer class="sito-footer">
+      <div class="contenitore">
+        <p>
+          <strong>Walter Maker Labs</strong> — stampa 3D, CNC, laser e AI applicata al making.
+          I video sul canale <a href="https://www.youtube.com/@makernoise">@makernoise</a>.
+        </p>
+        <p>
+          Cerchi elettronica e Arduino? Sono su
+          <a href="https://arduinoproject.it/">ArduinoProject.it</a>.
+        </p>
+        <p>© {new Date().getFullYear()} Walter Esposito</p>
+      </div>
+    </footer>
+  </body>
+</html>

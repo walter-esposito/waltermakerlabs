@@ -1,0 +1,125 @@
+---
+/**
+ * Embed YouTube "facade": mostra una miniatura statica e carica il player
+ * solo al clic. Un iframe YouTube normale scarica ~1,5 MB al load e distrugge
+ * LCP e INP; questa versione non carica nulla finche' l'utente non decide.
+ * Nessuna dipendenza esterna, nessun JS se l'utente non clicca.
+ */
+interface Props {
+  id: string;
+  titolo: string;
+  /** La prima immagine della pagina non va lazy: passa false se e' above the fold. */
+  lazy?: boolean;
+}
+
+const { id, titolo, lazy = true } = Astro.props;
+const poster = `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`;
+const posterFallback = `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+---
+
+<lite-yt data-id={id} data-titolo={titolo}>
+  <button type="button" class="lite-yt__btn" aria-label={`Riproduci il video: ${titolo}`}>
+    <img
+      src={poster}
+      alt=""
+      width="1280"
+      height="720"
+      loading={lazy ? 'lazy' : 'eager'}
+      decoding="async"
+      onerror={`this.onerror=null;this.src='${posterFallback}'`}
+    />
+    <span class="lite-yt__play" aria-hidden="true">
+      <svg viewBox="0 0 68 48" width="68" height="48">
+        <path
+          d="M66.52 7.74a8.57 8.57 0 0 0-6-6C55.79.46 34 .46 34 .46s-21.79 0-26.52 1.28a8.57 8.57 0 0 0-6 6A89.4 89.4 0 0 0 .2 24a89.4 89.4 0 0 0 1.28 16.26 8.57 8.57 0 0 0 6 6C12.21 47.54 34 47.54 34 47.54s21.79 0 26.52-1.28a8.57 8.57 0 0 0 6-6A89.4 89.4 0 0 0 67.8 24a89.4 89.4 0 0 0-1.28-16.26Z"
+          fill="#f00"></path>
+        <path d="M27.2 34.27 45.3 24 27.2 13.73Z" fill="#fff"></path>
+      </svg>
+    </span>
+  </button>
+</lite-yt>
+
+<style>
+  lite-yt {
+    display: block;
+    position: relative;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border-radius: 10px;
+    overflow: hidden;
+    contain: content;
+  }
+  .lite-yt__btn {
+    all: unset;
+    display: block;
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+  }
+  .lite-yt__btn:focus-visible {
+    outline: 3px solid var(--accento, #f4d35e);
+    outline-offset: -3px;
+  }
+  lite-yt img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .lite-yt__play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.85;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+  .lite-yt__btn:hover .lite-yt__play,
+  .lite-yt__btn:focus-visible .lite-yt__play {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+  lite-yt iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .lite-yt__play { transition: none; }
+  }
+</style>
+
+<script>
+  class LiteYt extends HTMLElement {
+    connectedCallback() {
+      const btn = this.querySelector('button');
+      if (!btn) return;
+      // Preconnect al primo hover: il player parte prima quando poi clicca.
+      btn.addEventListener('pointerover', () => this.#warm(), { once: true });
+      btn.addEventListener('click', () => this.#carica(), { once: true });
+    }
+
+    #warm() {
+      for (const href of ['https://www.youtube-nocookie.com', 'https://i.ytimg.com']) {
+        const l = document.createElement('link');
+        l.rel = 'preconnect';
+        l.href = href;
+        document.head.append(l);
+      }
+    }
+
+    #carica() {
+      const id = this.dataset.id;
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
+      iframe.title = this.dataset.titolo ?? 'Video';
+      iframe.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture';
+      iframe.allowFullscreen = true;
+      this.replaceChildren(iframe);
+    }
+  }
+
+  if (!customElements.get('lite-yt')) customElements.define('lite-yt', LiteYt);
+</script>
