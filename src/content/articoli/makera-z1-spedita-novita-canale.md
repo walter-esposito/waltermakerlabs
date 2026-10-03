@@ -12,29 +12,45 @@ tags:
   - "makera"
   - "dietro le quinte"
   - "youtube"
-draft: true
----
-## Il punto della situazione
-
-> **[DA COMPLETARE]** Due o tre paragrafi di inquadramento: cos'e' la macchina, quanto costa, perche' interessa. Non riassumere il video, aggiungi il contesto che nel video non c'era.
-
-
-## Cosa cambia davvero
-
-> **[DA COMPLETARE]** La sostanza della questione, spiegata per chi arriva da Google senza aver visto il video.
-
-
-## I numeri
-
-> **[DA COMPLETARE]** Tabella o elenco con i dati verificabili: prezzi, volumi, tempi, percentuali.
-
-
-## Cosa farei io
-
-> **[DA COMPLETARE]** La tua posizione esplicita. E' il motivo per cui qualcuno legge te invece della scheda prodotto.
-
-
+draft: false
 ---
 
-Il video completo e' qui sopra. Se ti e' stato utile, iscriverti al canale e'
-il modo piu' diretto per sostenere le prossime prove.
+Aggiornamento su tutto quello che sta per arrivare in laboratorio e sul canale.
+
+## Cosa sta arrivando
+
+**Makera Z1 Pro &mdash; spedita.** La CNC e' finalmente partita. Da li' si apre tutta la linea di
+contenuti sulla fresatura: setup, PCB fatti in casa, lavorazioni in alluminio.
+
+**Anycubic ACE Pro 2** in arrivo, insieme al nuovo essiccatore. Il tema dell'umidita' del filamento e'
+piu' importante di quanto si creda, e avere il sistema completo permette di fare prove serie.
+
+**Progetto Muletto** in fase di ultimazione: il carrello elevatore radiocomandato della serie
+CyberBrick e' gia' stampato e presto in azione.
+
+**Robot AI.** Riprendo un progetto fermo da tempo, aggiungendoci controllo domotico autonomo. E' la
+direzione che mi interessa di piu': non l'AI come argomento di moda, ma come pezzo che fa funzionare
+qualcosa in casa.
+
+**AI e modellazione 3D.** Test di nuovi software che generano modelli. La domanda da verificare e' se
+producano qualcosa di stampabile davvero o solo mesh che sembrano buone a schermo.
+
+## Temi aperti nel mondo stampa 3D
+
+**Il caso INDX e gli ugelli temprati.** Una questione tecnica con risvolti pratici per chi usa
+materiali abrasivi: i caricati con fibra consumano gli ugelli normali in fretta, e la scelta del
+materiale dell'ugello smette di essere un dettaglio.
+
+**Creality KliTek.** Da valutare se meriti un contenuto dedicato.
+
+## Mi serve un consiglio: quale laser
+
+Sto pensando di aggiungere un **laser** al laboratorio, per completare il trittico stampa 3D + CNC +
+incisione. E' l'unica delle tre tecnologie su cui non ho esperienza diretta, quindi la domanda e'
+sincera: **quale modello comprereste al mio posto?**
+
+I criteri che sto guardando sono potenza utile sui materiali che mi interessano, sicurezza (un laser
+in un laboratorio domestico e' la macchina che richiede piu' attenzione) e qualita' del software.
+
+Scrivetemelo nei commenti sotto il video: i consigli di chi ce l'ha gia' valgono piu' di qualsiasi
+scheda tecnica.

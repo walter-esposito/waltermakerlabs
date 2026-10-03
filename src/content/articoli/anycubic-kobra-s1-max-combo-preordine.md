@@ -11,35 +11,71 @@ videoDurata: PT14M51S
 tags:
   - "anycubic"
   - "stampa 3d"
-draft: true
+draft: false
 ---
-## Il punto della situazione
 
-> **[DA COMPLETARE]** Due o tre paragrafi di inquadramento: cos'e' la macchina, quanto costa, perche' interessa. Non riassumere il video, aggiungi il contesto che nel video non c'era.
+La Anycubic Kobra S1 Max Combo e' stata presentata ufficialmente, e le specifiche confermano
+l'impostazione: una macchina da **volume grande, camera chiusa e multicolore spinto**, posizionata
+sopra la Kobra S1.
 
+## Specifiche ufficiali
 
-## Cosa cambia davvero
+| Caratteristica | Valore |
+|---|---|
+| Volume di stampa | 350 &times; 350 &times; 350 mm |
+| Cinematica | CoreXY, telaio chiuso |
+| Temperatura hotend | fino a 350 &deg;C |
+| Temperatura piano | fino a 120 &deg;C |
+| Temperatura camera | fino a 65 &deg;C |
+| Sistema multicolore | ACE 2 Pro, fino a 16 colori |
+| Livellamento | 7 &times; 7 punti |
+| Fotocamera | 720p integrata |
+| Connettivita' | Wi-Fi 5 GHz |
+| Filtrazione | carbone attivo + HEPA (opzionali) |
 
-> **[DA COMPLETARE]** La sostanza della questione, spiegata per chi arriva da Google senza aver visto il video.
+Materiali dichiarati: PLA, PETG, TPU, PA-CF, PETG-CF, ASA, PVA.
 
+Completano il quadro il telaio rinforzato, le ventole aggiuntive e un cambio filamento descritto come
+ultra-rapido sul nuovo ACE 2 Pro.
 
-## I numeri
+## Cosa significano davvero questi numeri
 
-> **[DA COMPLETARE]** Tabella o elenco con i dati verificabili: prezzi, volumi, tempi, percentuali.
+**Camera a 65 &deg;C.** E' il dato che abilita i materiali tecnici. ABS, ASA e i caricati con fibra
+ritirano molto raffreddandosi: senza una camera calda si deformano e si delaminano. Non e' un
+accessorio di lusso, e' il requisito che separa una macchina da PLA da una che lavora materiali
+ingegneristici.
 
+**Hotend a 350 &deg;C e piano a 120 &deg;C.** Coerenti con la camera: servono per le temperature di
+estrusione e di adesione dei materiali di cui sopra.
 
-## Cosa farei io
+**CoreXY chiuso.** La cinematica CoreXY tiene masse in movimento piu' basse rispetto a una
+cartesiana, il che permette accelerazioni maggiori a parita' di qualita'. Chiuso, nel senso di
+telaio, e' quello che rende possibile la camera riscaldata.
 
-> **[DA COMPLETARE]** La tua posizione esplicita. E' il motivo per cui qualcuno legge te invece della scheda prodotto.
+**ACE 2 Pro fino a 16 colori.** Da leggere con attenzione: e' un sistema a filamento singolo con
+cambio automatico, quindi **ogni cambio comporta uno spurgo**. Sedici colori sono raggiungibili, ma il
+materiale di scarto cresce con il numero di cambi, non con il numero di colori.
 
+**Livellamento 7 &times; 7.** Quarantanove punti di misura invece dei canonici 16 o 25: su un piano da
+350 mm la differenza si vede, perche' piu' il piatto e' grande piu' le imperfezioni locali contano.
+
+## Prezzi di lancio
+
+| Fase | Prezzo |
+|---|---|
+| Founder Edition | 749 $ |
+| Super Early Bird | 799 $ |
+| Early Bird | 849 $ |
+
+## L'AMA su Reddit
+
+Anycubic ha risposto pubblicamente alle domande della community su Reddit. E' la fonte piu' utile
+disponibile prima delle recensioni indipendenti, per un motivo preciso: sono dichiarazioni ufficiali,
+scritte, su cui l'azienda si espone. Diverso da una scheda prodotto, dove si sceglie cosa mettere.
 
 <p class="avviso-affiliato">
-  <strong>Trasparenza:</strong> se in questo articolo ci sono link di acquisto, sono
-  affiliati e vanno marcati <code>rel="sponsored nofollow"</code>. Il prezzo per te non
-  cambia. <em>[DA COMPLETARE: inserire i link o rimuovere questo blocco.]</em>
+<strong>Trasparenza:</strong> il link qui sotto e' affiliato. Se lo usi, io ricevo una piccola
+commissione e tu non paghi di piu'.
+<a href="https://anycubic.it/?ref=waltermakerlabs" rel="sponsored nofollow">Anycubic Italia</a>
+&mdash; codice sconto: <code>EFFQJRRGXQ</code> (da inserire nel carrello).
 </p>
-
----
-
-Il video completo e' qui sopra. Se ti e' stato utile, iscriverti al canale e'
-il modo piu' diretto per sostenere le prossime prove.

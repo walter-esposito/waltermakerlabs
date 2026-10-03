@@ -11,35 +11,44 @@ videoDurata: PT6M29S
 tags:
   - "anycubic"
   - "stampa 3d"
-draft: true
+draft: false
 ---
-## Il punto della situazione
 
-> **[DA COMPLETARE]** Due o tre paragrafi di inquadramento: cos'e' la macchina, quanto costa, perche' interessa. Non riassumere il video, aggiungi il contesto che nel video non c'era.
+Anycubic ha lanciato la Kobra X, una macchina pensata per **multicolore e multimateriale in fascia
+accessibile**, e in settimana di lancio si e' creata una combinazione di sconti che la porta a
+**249 &euro;**.
 
+## Come si arriva a quella cifra
 
-## Cosa cambia davvero
+Gli sconti Anycubic si stratificano, e la confusione nasce da li':
 
-> **[DA COMPLETARE]** La sostanza della questione, spiegata per chi arriva da Google senza aver visto il video.
+- Un **coupon da 10 &euro;** acquistabile sul sito che ne sbloccava 30 di sconto. E' una meccanica a
+  tempo, in scadenza nel giro di ore.
+- Un **codice sconto da 20 &euro;** (`EFFQJRRGXQ`) che non ha scadenza e resta valido anche su altri
+  acquisti del catalogo.
 
+Chi non e' riuscito a prendere il coupon a tempo arriva comunque a 249 &euro; usando il codice da 20,
+grazie alla promozione di lancio attiva in quella settimana.
 
-## I numeri
+## Il consiglio che vale piu' dello sconto
 
-> **[DA COMPLETARE]** Tabella o elenco con i dati verificabili: prezzi, volumi, tempi, percentuali.
+Su questi lanci conviene **sempre verificare il carrello prima di confermare**. I codici Anycubic si
+inseriscono nel carrello, non alla cassa, e capita regolarmente che uno sconto non si applichi perche'
+inserito nel punto sbagliato o perche' non cumulabile con una promo gia' attiva sul prodotto.
 
+Se il totale non torna, il problema e' quasi sempre quello.
 
-## Cosa farei io
+## Una nota di trasparenza
 
-> **[DA COMPLETARE]** La tua posizione esplicita. E' il motivo per cui qualcuno legge te invece della scheda prodotto.
+Sono stato scelto da Anycubic come **beta tester** per questa stampante. Lo scrivo perche' cambia il
+modo in cui vanno lette le mie valutazioni successive sulla macchina: avro' accesso anticipato, e
+questo e' un vantaggio informativo ma anche una relazione con il produttore che e' giusto tu conosca.
 
+Quello che non cambia e' il metodo: i difetti li scrivo quando li trovo.
 
 <p class="avviso-affiliato">
-  <strong>Trasparenza:</strong> se in questo articolo ci sono link di acquisto, sono
-  affiliati e vanno marcati <code>rel="sponsored nofollow"</code>. Il prezzo per te non
-  cambia. <em>[DA COMPLETARE: inserire i link o rimuovere questo blocco.]</em>
+<strong>Trasparenza:</strong> il link qui sotto e' affiliato. Se lo usi, io ricevo una piccola
+commissione e tu non paghi di piu'.
+<a href="https://anycubic.it/?ref=waltermakerlabs" rel="sponsored nofollow">Anycubic Italia</a>
+&mdash; codice sconto: <code>EFFQJRRGXQ</code> (da inserire nel carrello).
 </p>
-
----
-
-Il video completo e' qui sopra. Se ti e' stato utile, iscriverti al canale e'
-il modo piu' diretto per sostenere le prossime prove.

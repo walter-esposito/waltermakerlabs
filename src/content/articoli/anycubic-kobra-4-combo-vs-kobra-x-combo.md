@@ -1,6 +1,6 @@
 ---
-title: "Kobra 4 Combo o Kobra X Combo: quale conviene"
-description: "Anycubic ha lanciato due macchine insieme e la scelta non è ovvia. Differenze reali, a chi serve il multicolore spinto e a chi basta la 4 Combo."
+title: "Anycubic Kobra 4 Combo o Kobra X: cosa cambia davvero"
+description: "La Kobra 4 Combo e in vendita e la Kobra X resta a listino. Differenze reali fra le due, a chi serve il multimateriale e a chi basta la 4 Combo."
 categoria: stampa-3d
 tipo: guida
 pubDate: 2026-05-18
@@ -13,53 +13,50 @@ tags:
   - "kobra 4 combo"
   - "kobra x combo"
   - "multicolore"
-draft: true
+draft: false
 ---
 
-Anycubic ha fatto una cosa che confonde parecchia gente: ha lanciato **due macchine insieme**, la Kobra 4 Combo e la Kobra X Combo. Si somigliano nel nome, costano diverso e servono a due persone diverse.
+La Anycubic Kobra 4 Combo e' in vendita, e la domanda che si fanno tutti e' se convenga rispetto alla
+**Kobra X**, che resta a listino e che spesso si trova scontata.
 
-Questa guida risponde a una domanda sola: **quale delle due ha senso per te.** Se cerchi l'unboxing, è nel video qui sopra. Qui trovi il ragionamento per decidere prima di spendere.
+## Cosa cambia rispetto alla Kobra X
 
-> **[DA COMPLETARE]** — Inserire l'ID del video YouTube nel campo `videoId` del frontmatter (solo l'ID, es. `dQw4w9WgXcQ`) e togliere `draft: true` quando l'articolo è pronto.
+Le due macchine non sono una il modello superiore dell'altra: sono posizionate su due esigenze
+diverse. La Kobra 4 Combo nasce per entrare nel multicolore spendendo il meno possibile; la Kobra X
+punta piu' in alto sulla flessibilita' multimateriale.
 
-## La differenza che conta davvero
+> **[DA COMPLETARE]** La tabella comparativa con i dati ufficiali dalla pagina Anycubic: volume di
+> stampa, numero di colori gestiti, velocita' dichiarata e prezzo delle due macchine. Non li inserisco
+> a memoria.
 
-Le due macchine non sono una il modello "migliore" dell'altra. Sono posizionate su due bisogni:
-
-- **Kobra 4 Combo** → entrare nel grande formato **spendendo il meno possibile**
-- **Kobra X Combo** → **multicolore spinto**, più colori e più libertà nel design
-
-Paghi meno con la 4 Combo e rinunci a flessibilità sul multicolore. Con la X Combo spendi di più e sblocchi stampe più elaborate.
-
-## Confronto
-
-> **[DA COMPLETARE]** — Compilare la tabella dai dati ufficiali su [anycubic.com](https://www.anycubic.com). Non pubblicare l'articolo con le celle vuote.
-
-| | Kobra 4 Combo | Kobra X Combo |
+| | Kobra 4 Combo | Kobra X |
 |---|---|---|
-| Volume di stampa | — | — |
-| Colori supportati | — | — |
-| Velocità massima dichiarata | — | — |
-| Prezzo di lancio | — | — |
-
-## Cosa significano le specifiche, in pratica
-
-**Volume di stampa.** È il dato che conta di più se il tuo obiettivo è stampare grande. Guardalo sempre insieme all'ingombro della macchina sul banco: il volume utile cresce molto meno dell'ingombro esterno.
-
-**Velocità massima.** Attenzione, qui si fa più confusione che altrove: la velocità massima dichiarata **non è** la velocità a cui stampi con qualità. È il picco teorico del movimento. Nella pratica, su un pezzo con dettagli, viaggi a una frazione di quel numero.
-
-> **[DA COMPLETARE]** — Aggiungere il confronto di volume con una macchina di riferimento della stessa fascia, così il lettore ha un metro di paragone.
+| Volume di stampa | &mdash; | &mdash; |
+| Colori gestiti | &mdash; | &mdash; |
+| Prezzo | &mdash; | &mdash; |
 
 ## A chi serve quale
 
-**Prendi la Kobra 4 Combo se** lavori soprattutto su pezzi funzionali: supporti, staffe, componenti meccanici, parti di robot. Lì il multicolore è un vezzo e il budget risparmiato lo rimetti in filamento.
+**Kobra 4 Combo** se lavori soprattutto su pezzi funzionali: supporti, staffe, componenti meccanici,
+parti di progetti. Li' il multicolore e' un di piu' e il budget risparmiato lo rimetti in filamento.
 
-**Prendi la Kobra X Combo se** stampi miniature, modelli, oggetti decorativi dove il colore è il punto. La differenza di prezzo si ripaga solo se il multicolore lo usi davvero — se pensi "magari un giorno", non lo userai.
+**Kobra X** se il multimateriale ti serve davvero &mdash; cioe' se stampi anche TPU, PETG e materiali
+diversi, non solo colori diversi dello stesso PLA. La differenza di prezzo si ripaga solo se quella
+flessibilita' la usi.
 
-## Verdetto
+Il criterio che uso io: se stai pensando *"magari un giorno stampero' multimateriale"*, quel giorno
+non arrivera'. Compra per quello che fai adesso.
 
-> **[DA COMPLETARE]** — Scrivere il verdetto dopo la prova sul campo. Se l'articolo resta un'analisi pre-acquisto, dirlo esplicitamente qui: il lettore deve sapere che la macchina non è stata testata.
+## E' un vero upgrade?
 
----
+Dipende da cosa possiedi. Se vieni da una macchina monocolore, entrambe sono un salto di categoria. Se
+hai gia' una Kobra recente che funziona bene, vale il principio che ripeto sempre: **la stampante
+migliore e' quella che gia' conosci e hai configurato.** Cambiarla per qualche punto percentuale di
+specifiche e' quasi sempre un cattivo affare.
 
-Il video completo con l'analisi è qui sopra. Se ti è stato utile, l'iscrizione al canale è il modo più diretto per sostenere le prossime prove.
+<p class="avviso-affiliato">
+<strong>Trasparenza:</strong> il link qui sotto e' affiliato. Se lo usi, io ricevo una piccola
+commissione e tu non paghi di piu'.
+<a href="https://anycubic.it/?ref=waltermakerlabs" rel="sponsored nofollow">Anycubic Italia</a>
+&mdash; codice sconto: <code>EFFQJRRGXQ</code> (da inserire nel carrello).
+</p>

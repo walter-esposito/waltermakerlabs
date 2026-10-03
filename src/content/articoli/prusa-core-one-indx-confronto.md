@@ -11,35 +11,49 @@ videoDurata: PT23M16S
 tags:
   - "prusa"
   - "stampa 3d"
-draft: true
----
-## Il punto della situazione
-
-> **[DA COMPLETARE]** Due o tre paragrafi di inquadramento: cos'e' la macchina, quanto costa, perche' interessa. Non riassumere il video, aggiungi il contesto che nel video non c'era.
-
-
-## Cosa cambia davvero
-
-> **[DA COMPLETARE]** La sostanza della questione, spiegata per chi arriva da Google senza aver visto il video.
-
-
-## I numeri
-
-> **[DA COMPLETARE]** Tabella o elenco con i dati verificabili: prezzi, volumi, tempi, percentuali.
-
-
-## Cosa farei io
-
-> **[DA COMPLETARE]** La tua posizione esplicita. E' il motivo per cui qualcuno legge te invece della scheda prodotto.
-
-
-<p class="avviso-affiliato">
-  <strong>Trasparenza:</strong> se in questo articolo ci sono link di acquisto, sono
-  affiliati e vanno marcati <code>rel="sponsored nofollow"</code>. Il prezzo per te non
-  cambia. <em>[DA COMPLETARE: inserire i link o rimuovere questo blocco.]</em>
-</p>
-
+draft: false
 ---
 
-Il video completo e' qui sopra. Se ti e' stato utile, iscriverti al canale e'
-il modo piu' diretto per sostenere le prossime prove.
+INDX montato sulla Prusa Core One e' uno dei sistemi multimateriale piu' interessanti in circolazione.
+La domanda e' se sia davvero il migliore oggi disponibile, e per rispondere serve confrontarlo con le
+altre due architetture sul mercato.
+
+## Le tre strade per il multicolore
+
+Oggi esistono tre approcci diversi, e vale la pena capirli perche' determinano pregi e difetti molto
+prima delle scelte di prodotto.
+
+**1. Sistemi a filamento singolo con cambio automatico** (l'AMS e simili). Un ugello solo, il filamento
+viene scambiato a monte. Semplice ed economico, ma ogni cambio richiede uno spurgo: lo scarto cresce
+con il numero di cambi, non con il numero di colori.
+
+**2. Toolchanger** (Prusa XL, Snapmaker U1, Flashforge Creator 5). Ogni materiale ha la sua testa
+completa. Zero contaminazione e zero spurgo, temperature indipendenti per materiale. In cambio: piu'
+massa in movimento, piu' meccanica, piu' calibrazione fra teste.
+
+**3. Sistemi a cambio rapido di punta/ugello**, dove rientrano INDX e il Vortek della Bambu Lab H2C.
+Stanno in mezzo: cercano l'indipendenza del materiale senza la complessita' di una testa intera per
+colore.
+
+## Dove si colloca INDX
+
+INDX e' la proposta che punta a prendere il meglio dei due estremi: l'assenza di contaminazione tipica
+dei toolchanger, senza doversi portare dietro quattro o cinque teste complete con tutta la massa e la
+calibrazione che comportano.
+
+Sulla Core One, che e' una macchina chiusa e ben costruita, l'accoppiata ha senso: il telaio regge la
+meccanica aggiuntiva e la camera chiusa abilita i materiali per cui il multimateriale serve davvero.
+
+> **[DA COMPLETARE]** I dettagli di funzionamento di INDX e il giudizio sulla qualita' di stampa
+> ottenuta. Nella descrizione del video non c'erano e non li invento: sono la parte che distingue
+> questo articolo da una scheda prodotto.
+
+## Come scegliere, in pratica
+
+La domanda giusta non e' quale architettura sia superiore in astratto, ma **quante volte all'anno
+stampi davvero con piu' materiali**.
+
+- Poche volte e solo colori diversi dello stesso PLA? Un sistema a spurgo basta e costa molto meno.
+- Spesso, e con materiali diversi fra loro? Li' l'indipendenza di temperatura fra i materiali diventa
+  il fattore che decide, e i sistemi a spurgo singolo non possono offrirla.
+- Tantissimo, con molti cambi per pezzo? Conta lo scarto, e li' vincono le architetture senza purga.

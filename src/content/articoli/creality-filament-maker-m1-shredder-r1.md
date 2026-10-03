@@ -11,35 +11,68 @@ videoDurata: PT13M48S
 tags:
   - "creality"
   - "stampa 3d"
-draft: true
+draft: false
 ---
-## Il punto della situazione
 
-> **[DA COMPLETARE]** Due o tre paragrafi di inquadramento: cos'e' la macchina, quanto costa, perche' interessa. Non riassumere il video, aggiungi il contesto che nel video non c'era.
+Creality ha presentato il **Filament Maker M1** e lo **Shredder R1**: un sistema per triturare gli
+scarti di stampa e riestruderli in filamento nuovo, direttamente a casa. L'idea entusiasma, e si capisce
+perche'. Io ho deciso di non parteciparvi, e qui spiego il ragionamento.
 
+> Non e' un attacco al prodotto. E' un'analisi onesta per aiutarti a scegliere consapevolmente.
 
-## Cosa cambia davvero
+## Come funziona
 
-> **[DA COMPLETARE]** La sostanza della questione, spiegata per chi arriva da Google senza aver visto il video.
+Due macchine in sequenza: lo shredder riduce scarti e stampe fallite in scaglie, l'estrusore le
+rilavora in filamento di diametro controllato, pronto per tornare in bobina.
 
+Il fascino e' evidente: ogni supporto, ogni spurgo, ogni pezzo venuto male smette di essere rifiuto e
+torna materia prima.
 
-## I numeri
+## I vantaggi, che sono reali
 
-> **[DA COMPLETARE]** Tabella o elenco con i dati verificabili: prezzi, volumi, tempi, percentuali.
+- **Riduzione dei rifiuti.** La stampa 3D produce molta plastica di scarto, soprattutto in multicolore.
+- **Risparmio potenziale** sul costo del filamento, se i volumi sono alti.
+- **Colori personalizzati**, mescolando materiali diversi.
 
+## Perche' resto fuori
 
-## Cosa farei io
+Il problema non e' se funziona: e' che **riestrudere filamento di qualita' costante e' un mestiere
+difficile**, e i punti critici sono tre.
 
-> **[DA COMPLETARE]** La tua posizione esplicita. E' il motivo per cui qualcuno legge te invece della scheda prodotto.
+**La tolleranza del diametro.** Il filamento commerciale sta tipicamente entro &plusmn;0,02 mm.
+Ottenere quella costanza in casa richiede controllo preciso di temperatura, velocita' di traino e
+raffreddamento. Se il diametro oscilla, l'estrusione diventa irregolare: sotto-estrusione in alcuni
+punti, sovra-estrusione in altri, con difetti che sembrano problemi della stampante.
 
+**La degradazione del materiale.** Ogni ciclo termico accorcia le catene polimeriche. Il filamento
+riciclato e' meccanicamente piu' debole dell'originale, e la cosa peggiora a ogni passaggio. Per pezzi
+decorativi e' irrilevante; per pezzi che devono reggere un carico, no.
+
+**La contaminazione.** Scaglie di materiali diversi, colori diversi o con residui producono filamento
+dal comportamento imprevedibile. Serve una disciplina di separazione degli scarti che in pratica quasi
+nessuno mantiene.
+
+A questi si aggiunge il tempo: triturare, estrudere e bobinare sono ore di presenza. Il risparmio
+sulla bobina va confrontato con quelle ore.
+
+## Per chi ha senso
+
+Ha senso per chi produce **volumi di scarto davvero alti** e stampa soprattutto pezzi non strutturali,
+ed e' disposto a trattare la riestrusione come un processo da imparare e mettere a punto &mdash; non
+come un elettrodomestico.
+
+Per chi e' agli inizi, e' complessita' che si somma a complessita': se stai ancora imparando a
+diagnosticare un difetto di stampa, aggiungere una variabile sul filamento rende tutto piu' difficile.
+
+## L'alternativa che preferisco
+
+Se il problema che vuoi risolvere e' **lo spreco**, la mia opinione e' che convenga investire sulla
+macchina che non lo produce, piuttosto che su un sistema per recuperare quello che hai gia' buttato.
+Un toolchanger elimina gli spurghi alla fonte, che e' da dove viene la maggior parte dello scarto in
+multicolore.
 
 <p class="avviso-affiliato">
-  <strong>Trasparenza:</strong> se in questo articolo ci sono link di acquisto, sono
-  affiliati e vanno marcati <code>rel="sponsored nofollow"</code>. Il prezzo per te non
-  cambia. <em>[DA COMPLETARE: inserire i link o rimuovere questo blocco.]</em>
+<strong>Trasparenza:</strong> i link sono affiliati, non cambiano il prezzo per te.
+<a href="https://snapmaker.sjv.io/4aPQGM" rel="sponsored nofollow">Snapmaker U1</a> &mdash; codice
+sconto 20&euro;: <code>waltermaker20</code> &middot; sconto 5%: <code>walter_esposito-1-1</code>.
 </p>
-
----
-
-Il video completo e' qui sopra. Se ti e' stato utile, iscriverti al canale e'
-il modo piu' diretto per sostenere le prossime prove.

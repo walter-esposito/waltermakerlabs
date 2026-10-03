@@ -13,33 +13,34 @@ tags:
   - "stampa 3d"
 draft: true
 ---
-## Il punto della situazione
 
-> **[DA COMPLETARE]** Due o tre paragrafi di inquadramento: cos'e' la macchina, quanto costa, perche' interessa. Non riassumere il video, aggiungi il contesto che nel video non c'era.
+Bambu Lab ha presentato la X2D. Questa e' un'analisi a caldo di quanto pubblicato sul sito ufficiale:
+caratteristiche, novita' rispetto ai modelli precedenti e prime impressioni.
 
+> **Cos'e' e cosa non e':** nessuno ha ancora stampato con questa macchina al momento in cui scrivo.
+> E' lettura critica di materiale ufficiale, non una prova.
 
-## Cosa cambia davvero
+## Il contesto in cui arriva
 
-> **[DA COMPLETARE]** La sostanza della questione, spiegata per chi arriva da Google senza aver visto il video.
+La X2D entra in un mercato molto diverso da quello in cui Bambu Lab si era imposta. Quando arrivo' la
+X1, il multicolore accessibile era praticamente solo suo. Oggi gli sfidanti sono su un'architettura
+diversa: i toolchanger &mdash; Snapmaker U1, Flashforge Creator 5, Sovol M1D &mdash; attaccano
+l'ecosistema AMS proprio sul suo punto debole, **lo spurgo del filamento a ogni cambio colore**.
 
+La domanda vera su qualsiasi nuova Bambu, quindi, e' se risponda a questo o se migliori altrove.
 
-## I numeri
+> **[DA COMPLETARE]** Le specifiche ufficiali della X2D dalla pagina Bambu Lab: volume di stampa,
+> velocita', gestione multicolore, prezzo. Nella descrizione del video non erano elencate e non le
+> scrivo a memoria.
 
-> **[DA COMPLETARE]** Tabella o elenco con i dati verificabili: prezzi, volumi, tempi, percentuali.
+## Le domande da porsi prima dell'upgrade
 
+Se hai gia' una Bambu che funziona, prima di guardare le specifiche nuove conviene rispondere a tre
+domande:
 
-## Cosa farei io
-
-> **[DA COMPLETARE]** La tua posizione esplicita. E' il motivo per cui qualcuno legge te invece della scheda prodotto.
-
-
-<p class="avviso-affiliato">
-  <strong>Trasparenza:</strong> se in questo articolo ci sono link di acquisto, sono
-  affiliati e vanno marcati <code>rel="sponsored nofollow"</code>. Il prezzo per te non
-  cambia. <em>[DA COMPLETARE: inserire i link o rimuovere questo blocco.]</em>
-</p>
-
----
-
-Il video completo e' qui sopra. Se ti e' stato utile, iscriverti al canale e'
-il modo piu' diretto per sostenere le prossime prove.
+1. **Quanto filamento butto oggi in spurghi?** Se e' tanto, la risposta non e' una Bambu piu' nuova,
+   e' un'altra architettura.
+2. **Cosa non riesco a stampare adesso?** Se la risposta e' "niente", l'upgrade e' un desiderio, non
+   un'esigenza.
+3. **Il mio profilo attuale funziona?** Una macchina conosciuta e configurata vale piu' di qualche
+   punto di specifica in piu'.

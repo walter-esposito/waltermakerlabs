@@ -11,35 +11,55 @@ videoDurata: PT16M9S
 tags:
   - "anycubic"
   - "stampa 3d"
-draft: true
+draft: false
 ---
-## Il punto della situazione
 
-> **[DA COMPLETARE]** Due o tre paragrafi di inquadramento: cos'e' la macchina, quanto costa, perche' interessa. Non riassumere il video, aggiungi il contesto che nel video non c'era.
+Anycubic ha aperto un'iniziativa di **trade-in** riservata a chi possiede un ACE Pro di prima serie,
+per passare all'ACE 2 Pro. La domanda e' se il salto generazionale giustifichi l'operazione.
 
+## L'evento in breve
+
+| | |
+|---|---|
+| Periodo | 27 febbraio &ndash; 27 marzo 2026 |
+| Disponibilita' | limitata a 5.000 unita' |
+| Requisiti | SN Code dell'ACE Pro + numero d'ordine |
+
+Il limite numerico e la finestra temporale stretta sono i due elementi che spingono alla decisione
+rapida: vale la pena esserne consapevoli, perche' la fretta e' il peggior consigliere su un acquisto
+che non e' indispensabile.
 
 ## Cosa cambia davvero
 
-> **[DA COMPLETARE]** La sostanza della questione, spiegata per chi arriva da Google senza aver visto il video.
+- **Quattro motori brushless indipendenti.** Il motivo tecnico per cui il resto funziona meglio: ogni
+  canale ha il suo motore, quindi i movimenti non sono piu' vincolati a un meccanismo condiviso.
+- **Velocita' di cambio filamento raddoppiata.** Su stampe con molti cambi colore, il tempo di cambio
+  e' tempo in cui la macchina non deposita materiale. Dimezzarlo si sente sui lavori lunghi.
+- **Essiccazione fino a 65 &deg;C, anche durante la stampa.** Questa e' la novita' piu' sostanziale.
+  Poter asciugare il filamento mentre stampi, invece che solo prima, cambia il risultato su PETG, TPU,
+  PA e in generale su tutto cio' che assorbe umidita'.
+- **Controllo attivo dell'umidita' e storage sigillato.** Il filamento umido produce estrusione
+  irregolare, superfici opache e fragilita'. Uno storage sigillato con controllo attivo e' di fatto
+  una dry box permanente.
+- **Rilevamento fine filamento e refill automatico.** Elimina la stampa persa perche' la bobina e'
+  finita alle tre di notte.
 
+Compatibilita' dichiarata: Kobra X, Kobra S1, Kobra 3 e serie Max.
 
-## I numeri
+## Conviene?
 
-> **[DA COMPLETARE]** Tabella o elenco con i dati verificabili: prezzi, volumi, tempi, percentuali.
+Il discriminante e' uno solo: **quanto ti da' fastidio l'umidita' del filamento.**
 
+Se stampi quasi sempre PLA in un ambiente asciutto, buona parte di quello che paghi non lo userai: il
+PLA perdona, e il cambio piu' veloce da solo non vale un upgrade.
 
-## Cosa farei io
-
-> **[DA COMPLETARE]** La tua posizione esplicita. E' il motivo per cui qualcuno legge te invece della scheda prodotto.
-
+Se invece lavori regolarmente con PETG, TPU, nylon o materiali caricati &mdash; o se vivi in una zona
+umida e hai gia' buttato stampe per quel motivo &mdash; l'essiccazione durante la stampa e lo storage
+sigillato risolvono un problema che hai davvero.
 
 <p class="avviso-affiliato">
-  <strong>Trasparenza:</strong> se in questo articolo ci sono link di acquisto, sono
-  affiliati e vanno marcati <code>rel="sponsored nofollow"</code>. Il prezzo per te non
-  cambia. <em>[DA COMPLETARE: inserire i link o rimuovere questo blocco.]</em>
+<strong>Trasparenza:</strong> il link qui sotto e' affiliato. Se lo usi, io ricevo una piccola
+commissione e tu non paghi di piu'.
+<a href="https://anycubic.it/?ref=waltermakerlabs" rel="sponsored nofollow">Anycubic Italia</a>
+&mdash; codice sconto: <code>EFFQJRRGXQ</code> (da inserire nel carrello).
 </p>
-
----
-
-Il video completo e' qui sopra. Se ti e' stato utile, iscriverti al canale e'
-il modo piu' diretto per sostenere le prossime prove.

@@ -11,45 +11,59 @@ videoDurata: PT25M19S
 tags:
   - "anycubic"
   - "stampa 3d"
-draft: true
+draft: false
 ---
-## Cosa e' e quanto costa
 
-> **[DA COMPLETARE]** Due o tre paragrafi di inquadramento: cos'e' la macchina, quanto costa, perche' interessa. Non riassumere il video, aggiungi il contesto che nel video non c'era.
+Anycubic ha tenuto un AMA su Reddit sulla Kobra X: domande aperte della community, risposte ufficiali
+dell'azienda. Le ho lette tutte, ordinate per argomento e tradotte in cosa significano nell'uso reale.
 
+## Perche' un AMA vale piu' di una scheda prodotto
 
-## Com'e' andata la prova
+Una scheda tecnica e' scritta dal marketing e contiene quello che conviene dire. Un AMA no: le domande
+le fanno gli utenti, spesso sono scomode, e le risposte restano pubbliche e citabili.
 
-> **[DA COMPLETARE]** Quanto tempo l'hai usata, cosa ci hai stampato o fresato, in quali condizioni. Numeri concreti.
+E' il motivo per cui prima di una recensione indipendente un AMA e' la fonte migliore che hai.
 
+## I temi affrontati
 
-## Cosa funziona
+- **Cosa e' stato migliorato davvero** rispetto alle Kobra precedenti, al di la' dei numeri di
+  targhetta
+- **Progettazione per stampe lunghe e grandi**, che e' una cosa diversa dall'avere un volume grande:
+  conta la stabilita' termica e meccanica sulle molte ore
+- **Il sistema multicolore ACE**: cosa aspettarsi concretamente
+- **Materiali realmente supportati**: TPU, PETG, PVA, PLA e gli altri
+- **Affidabilita', manutenzione e software**, cioe' le tre cose che determinano se dopo sei mesi la
+  macchina sta ancora stampando
 
-> **[DA COMPLETARE]** Elenco puntato dei punti di forza verificati di persona, non quelli del comunicato stampa.
+## La trasparenza necessaria
 
+Sono **beta tester ufficiale** per questa macchina, ma al momento di questo contenuto la stampante non
+era ancora nelle mie mani: l'arrivo era previsto non prima di marzo.
 
-## Cosa non funziona
+Questo significa, molto chiaramente: **non e' una recensione.** E' una raccolta ordinata di
+dichiarazioni ufficiali piu' la mia lettura da chi stampa ogni giorno. I difetti veri, i test e il
+giudizio definitivo arrivano quando la macchina c'e' e ci ho stampato.
 
-> **[DA COMPLETARE]** I difetti reali. E' la sezione che fa la differenza fra una recensione utile e un contenuto promozionale.
+La domanda a cui questo contenuto risponde non e' "comprala o no", e' **"ha senso tenerla d'occhio?"**.
 
+## Sul sistema ACE
 
-## A chi conviene (e a chi no)
+Vale la precisazione tecnica che spesso manca: ACE e' un sistema a **filamento singolo con cambio
+automatico**. Significa che l'ugello e' uno solo e a ogni cambio colore deve essere spurgato per non
+contaminare il colore successivo. Funziona bene, ma lo scarto cresce con il numero di cambi.
 
-> **[DA COMPLETARE]** Il profilo di chi ci guadagna a comprarla e, soprattutto, quello di chi farebbe meglio a stare alla larga.
-
-
-## Verdetto
-
-> **[DA COMPLETARE]** Conclusione netta in tre o quattro righe. Se e' da comprare, dillo; se non lo e', pure.
-
+E' un'architettura diversa da quella dei toolchanger, dove ogni materiale ha la sua testa e lo spurgo
+non serve. Nessuna delle due e' migliore in assoluto: dipende da quanto multicolore stampi davvero.
 
 <p class="avviso-affiliato">
-  <strong>Trasparenza:</strong> se in questo articolo ci sono link di acquisto, sono
-  affiliati e vanno marcati <code>rel="sponsored nofollow"</code>. Il prezzo per te non
-  cambia. <em>[DA COMPLETARE: inserire i link o rimuovere questo blocco.]</em>
+<strong>Trasparenza:</strong> il link qui sotto e' affiliato. Se lo usi, io ricevo una piccola
+commissione e tu non paghi di piu'.
+<a href="https://anycubic.it/?ref=waltermakerlabs" rel="sponsored nofollow">Anycubic Italia</a>
+&mdash; codice sconto: <code>EFFQJRRGXQ</code> (da inserire nel carrello).
 </p>
 
 ---
 
-Il video completo e' qui sopra. Se ti e' stato utile, iscriverti al canale e'
-il modo piu' diretto per sostenere le prossime prove.
+C'e' anche un
+<a href="https://www.facebook.com/groups/1179068207720660/" rel="nofollow">gruppo Facebook italiano
+dedicato alla Kobra X</a>, utile per i problemi pratici del primo periodo.

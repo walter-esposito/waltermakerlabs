@@ -11,35 +11,50 @@ videoDurata: PT6M29S
 tags:
   - "bambu"
   - "stampa 3d"
-draft: true
----
-## Il punto della situazione
-
-> **[DA COMPLETARE]** Due o tre paragrafi di inquadramento: cos'e' la macchina, quanto costa, perche' interessa. Non riassumere il video, aggiungi il contesto che nel video non c'era.
-
-
-## Cosa cambia davvero
-
-> **[DA COMPLETARE]** La sostanza della questione, spiegata per chi arriva da Google senza aver visto il video.
-
-
-## I numeri
-
-> **[DA COMPLETARE]** Tabella o elenco con i dati verificabili: prezzi, volumi, tempi, percentuali.
-
-
-## Cosa farei io
-
-> **[DA COMPLETARE]** La tua posizione esplicita. E' il motivo per cui qualcuno legge te invece della scheda prodotto.
-
-
-<p class="avviso-affiliato">
-  <strong>Trasparenza:</strong> se in questo articolo ci sono link di acquisto, sono
-  affiliati e vanno marcati <code>rel="sponsored nofollow"</code>. Il prezzo per te non
-  cambia. <em>[DA COMPLETARE: inserire i link o rimuovere questo blocco.]</em>
-</p>
-
+draft: false
 ---
 
-Il video completo e' qui sopra. Se ti e' stato utile, iscriverti al canale e'
-il modo piu' diretto per sostenere le prossime prove.
+Bambu Lab ha annunciato la A2L, in uscita il **1 giugno**. E' sostanzialmente una A1 potenziata, e le
+specifiche confermate chiariscono su cosa hanno lavorato.
+
+## Le specifiche annunciate
+
+| | |
+|---|---|
+| Area di stampa | 33 &times; 32 &times; 32,5 cm |
+| Modulo di taglio | intercambiabile |
+| Estrusore | PMSM con Smart Print Monitoring |
+| Anti-vibrazione | Compensazione Adattiva delle Vibrazioni |
+| Anti-ringing | Granular Damper |
+
+## Cosa significano nella pratica
+
+**Il volume.** Oltre 33 cm di lato e' parecchio per questa fascia, e sposta la macchina dalla
+categoria "pezzi piccoli" a quella in cui ci stampi caschi, pannelli e parti grandi senza doverle
+sezionare. Per molti progetti e' la differenza fra un pezzo unico e tre pezzi da incollare.
+
+**Estrusore PMSM con Smart Print Monitoring.** Un motore sincrono a magneti permanenti dentro
+l'estrusore permette un controllo piu' fine della coppia, e quindi di *accorgersi* di cosa sta
+succedendo al filamento: un inceppamento o una bobina finita si rilevano dalla corrente assorbita,
+senza bisogno di sensori aggiuntivi.
+
+**Compensazione adattiva delle vibrazioni e Granular Damper.** Sono due approcci diversi allo stesso
+problema, il **ringing**: quell'eco che compare sulle superfici verticali dopo uno spigolo, causata
+dalle oscillazioni meccaniche della macchina.
+
+La compensazione adattiva e' software: misura le risonanze e corregge i movimenti. Il damper e'
+hardware: smorza fisicamente le vibrazioni. Affrontarlo da entrambi i lati e' sensato, perche' il
+software da solo non puo' compensare una struttura che oscilla troppo.
+
+**Modulo di taglio intercambiabile.** Un pezzo di consumo che si sostituisce invece di comportare la
+sostituzione di un gruppo intero: banale, ma riduce il costo di manutenzione nel tempo.
+
+## Vale l'attesa?
+
+Se vieni da una A1 e il volume ti basta, le novita' sono raffinamenti: utili, non trasformativi. Se
+invece il limite che senti oggi e' **lo spazio di stampa**, qui il salto e' concreto.
+
+---
+
+Il prezzo e' stato confermato al lancio:
+[Bambu Lab A2L, grande volume a 489 euro](/stampa-3d/bambu-lab-a2l-prezzo-volume/).

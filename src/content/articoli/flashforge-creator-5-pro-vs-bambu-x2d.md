@@ -11,35 +11,60 @@ videoDurata: PT21M35S
 tags:
   - "flashforge"
   - "stampa 3d"
-draft: true
+draft: false
 ---
-## Il punto della situazione
 
-> **[DA COMPLETARE]** Due o tre paragrafi di inquadramento: cos'e' la macchina, quanto costa, perche' interessa. Non riassumere il video, aggiungi il contesto che nel video non c'era.
+Il multicolore FDM ha sempre avuto lo stesso problema: **il filamento sprecato**. Ogni cambio colore
+richiede una purga. Con l'AMS di Bambu, con qualsiasi sistema a switching del filo, e' sempre andata
+cosi'.
 
+Flashforge ha scelto un'altra strada con il Creator 5 Pro: **quattro testine indipendenti**, cambio
+fisico della testina, zero contaminazione. Niente spurgo perche' non c'e' niente da spurgare.
 
-## Cosa cambia davvero
+## Come funziona FlashSwap e perche' e' diverso dall'AMS
 
-> **[DA COMPLETARE]** La sostanza della questione, spiegata per chi arriva da Google senza aver visto il video.
+La differenza e' architetturale, non di messa a punto.
 
+In un sistema AMS il filamento e' uno solo alla volta dentro un unico ugello. Per cambiare colore devi
+spingere fuori tutto il materiale precedente, altrimenti il nuovo colore esce contaminato. Quel
+materiale espulso e' scarto puro, e si ripete a **ogni** cambio.
 
-## I numeri
+Con quattro testine fisiche ogni filamento ha il suo percorso dedicato dal principio alla fine. Il
+cambio e' meccanico: una testa si parcheggia, un'altra entra in posizione. Non c'e' mescolamento,
+quindi non c'e' niente da espellere.
 
-> **[DA COMPLETARE]** Tabella o elenco con i dati verificabili: prezzi, volumi, tempi, percentuali.
+E' lo stesso principio della Snapmaker U1, con un passo avanti sulla dotazione.
 
+## I numeri dichiarati
 
-## Cosa farei io
+- **84% in meno di filamento sprecato**
+- **5&times; piu' veloce** sul multicolore
 
-> **[DA COMPLETARE]** La tua posizione esplicita. E' il motivo per cui qualcuno legge te invece della scheda prodotto.
+Sono dati del produttore e vanno trattati come tali, ma l'ordine di grandezza e' coerente con quello
+che ci si aspetta passando da un sistema a purga a uno a cambio testa.
 
+## Cosa aggiunge la versione Pro
+
+- **Camera riscaldata attivamente fino a 65 &deg;C.** Non passivamente chiusa: riscaldata. E' il
+  requisito per ABS, ASA e materiali caricati, che senza camera calda si deformano e delaminano.
+- **Doppio filtro: HEPA H13 di grado medicale + carbone attivo.** Il carbone cattura i composti
+  organici volatili, l'HEPA le particelle ultrafini. Su una macchina chiusa che lavora ABS in una
+  stanza abitata, non e' un accessorio.
+
+## Il confronto che conta
+
+Il Creator 5 Pro si posiziona contro la Bambu Lab X2D con un prezzo di lancio aggressivo, e il
+confronto va fatto sul tipo di multicolore che stampi:
+
+- **Se stampi tanto multicolore**, l'architettura a testine indipendenti e' strutturalmente superiore
+  su scarto e tempo. Non e' una questione di ottimizzazione software.
+- **Se stampi quasi sempre in tinta unita**, tutto questo e' complessita' che paghi e non usi: quattro
+  teste sono quattro cose che possono disallinearsi.
+- **Se ti serve il multimateriale** (non solo multicolore), le testine indipendenti permettono
+  temperature diverse per materiale, cosa che un sistema a ugello singolo non puo' fare per
+  definizione.
 
 <p class="avviso-affiliato">
-  <strong>Trasparenza:</strong> se in questo articolo ci sono link di acquisto, sono
-  affiliati e vanno marcati <code>rel="sponsored nofollow"</code>. Il prezzo per te non
-  cambia. <em>[DA COMPLETARE: inserire i link o rimuovere questo blocco.]</em>
+<strong>Trasparenza:</strong> il link e' affiliato, non cambia il prezzo per te.
+<a href="https://flashforge.sjv.io/JkLRma" rel="sponsored nofollow">Pagina ufficiale Flashforge Creator 5 Pro</a>
 </p>
-
----
-
-Il video completo e' qui sopra. Se ti e' stato utile, iscriverti al canale e'
-il modo piu' diretto per sostenere le prossime prove.

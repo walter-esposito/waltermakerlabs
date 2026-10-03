@@ -36,7 +36,9 @@ const autore = {
 };
 
 const schemaArticolo = {
-  '@type': d.tipo === 'recensione' ? 'Review' : 'BlogPosting',
+  // Review richiede itemReviewed + reviewRating: senza i dati del prodotto sarebbe
+  // uno schema invalido, quindi resta BlogPosting finche' non vengono compilati.
+  '@type': d.tipo === 'recensione' && d.prodotto ? 'Review' : 'BlogPosting',
   '@id': `${urlPagina}#articolo`,
   headline: d.title,
   description: d.description,
