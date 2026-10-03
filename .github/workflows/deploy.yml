@@ -22,6 +22,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: withastro/action@v3
+        with:
+          # Astro 7 richiede Node >=22.12; l'action da sola userebbe la 20.
+          node-version: 22
 
   deploy:
     name: Deploy
