@@ -20,6 +20,8 @@ const ETICHETTE: Record<string, string> = {
 const etichettaCat = ETICHETTE[d.categoria];
 const urlPagina = new URL(Astro.url.pathname, Astro.site).href;
 const urlCover = new URL(d.cover.src, Astro.site).href;
+const urlHome = new URL('/', Astro.site).href;
+const urlCategoria = new URL(`/${d.categoria}/`, Astro.site).href;
 
 const fmt = (x: Date) =>
   new Intl.DateTimeFormat('it-IT', { day: 'numeric', month: 'long', year: 'numeric' }).format(x);
@@ -44,7 +46,7 @@ const schemaArticolo = {
   publisher: {
     '@type': 'Organization',
     name: 'Walter Maker Labs',
-    url: 'https://waltermakerlabs.it/',
+    url: urlHome,
   },
   mainEntityOfPage: { '@type': 'WebPage', '@id': urlPagina },
   inLanguage: 'it-IT',
@@ -92,12 +94,12 @@ const schemaVideo = d.videoId
 const schemaBriciole = {
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://waltermakerlabs.it/' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: urlHome },
     {
       '@type': 'ListItem',
       position: 2,
       name: etichettaCat,
-      item: `https://waltermakerlabs.it/${d.categoria}/`,
+      item: urlCategoria,
     },
     { '@type': 'ListItem', position: 3, name: d.title, item: urlPagina },
   ],
