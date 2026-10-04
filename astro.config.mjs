@@ -19,7 +19,10 @@ export default defineConfig({
   trailingSlash: 'always',
   integrations: [
     sitemap({
-      filter: (page) => !page.includes('/404'),
+      // /laser/ e /ai/ non hanno ancora articoli: sono pagine vuote, non vanno
+      // proposte a Google. Appena avranno un articolo, togliere dalla lista.
+      filter: (page) =>
+        !page.includes('/404') && !page.endsWith('/laser/') && !page.endsWith('/ai/'),
     }),
   ],
   build: {

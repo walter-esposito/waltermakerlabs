@@ -50,7 +50,12 @@ const articoli = (
 ).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
-<BaseLayout title={`${t.titolo} | Walter Maker Labs`} description={t.meta}>
+<BaseLayout
+  title={`${t.titolo} | Walter Maker Labs`}
+  description={t.meta}
+  {/* Una sezione ancora senza articoli e' contenuto sottile: fuori dall'indice. */}
+  noindex={articoli.length === 0}
+>
   <nav class="briciole" aria-label="Percorso">
     <ol>
       <li><a href={u("/")}>Home</a></li>

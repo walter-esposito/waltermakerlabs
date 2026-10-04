@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import { CATEGORIE } from '../content.config';
 import { u, ANTEPRIMA } from '../lib/url';
+import { getCollection } from 'astro:content';
 
 interface Props {
   title: string;
@@ -15,6 +16,11 @@ interface Props {
 
 const { title, description, ogImage = '/og-default.jpg', noindex = false, tipoOg = 'website' } =
   Astro.props;
+
+// Una sezione senza articoli e' una pagina vuota: fuori dal menu finche' non si riempie.
+const pubblicati = await getCollection('articoli', ({ data }) => !data.draft);
+const categoriePiene = new Set(pubblicati.map((a) => a.data.categoria));
+const tipiPieni = new Set(pubblicati.map((a) => a.data.tipo));
 
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const ogAssoluta = new URL(ogImage, Astro.site).href;
@@ -49,6 +55,8 @@ const ETICHETTE: Record<string, string> = {
     <meta name="twitter:card" content="summary_large_image" />
 
     <link rel="icon" href={u("/favicon.svg")} type="image/svg+xml" />
+    <link rel="icon" href={u("/favicon-32.png")} sizes="32x32" />
+    <link rel="apple-touch-icon" href={u("/apple-touch-icon.png")} />
     <link rel="sitemap" href={u("/sitemap-index.xml")} />
     <link rel="alternate" type="application/rss+xml" title="Walter Maker Labs" href={u("/rss.xml")} />
 
@@ -64,14 +72,14 @@ const ETICHETTE: Record<string, string> = {
         <a class="marchio" href={u("/")}>Walter <span>Maker Labs</span></a>
         <nav class="sito-nav" aria-label="Principale">
           {
-            CATEGORIE.map((c) => (
+            CATEGORIE.filter((c) => categoriePiene.has(c)).map((c) => (
               <a href={u(`/${c}/`)} aria-current={Astro.url.pathname.startsWith(`/${c}/`) ? 'page' : undefined}>
                 {ETICHETTE[c]}
               </a>
             ))
           }
-          <a href={u("/recensioni/")}>Recensioni</a>
-          <a href={u("/risoluzione-problemi/")}>Problemi</a>
+          {tipiPieni.has("recensione") && <a href={u("/recensioni/")}>Recensioni</a>}
+          {tipiPieni.has("risoluzione-problemi") && <a href={u("/risoluzione-problemi/")}>Problemi</a>}
           <a href="https://www.youtube.com/@waltermakerlabs" rel="me">YouTube</a>
         </nav>
       </div>
