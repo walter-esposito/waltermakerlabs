@@ -64,8 +64,9 @@ SITE_BASE=waltermakerlabs npm run build   # anteprima su GitHub Pages
 La build con `SITE_BASE` si marca anche `noindex`, per non far indicizzare
 l'anteprima e ritrovarsi contenuto duplicato quando il dominio sara' attivo.
 
-**Quando colleghi waltermakerlabs.it:** togli le righe `env: SITE_BASE` da
-`.github/workflows/deploy.yml` e aggiungi `public/CNAME` con dentro il dominio.
+Il dominio **waltermakerlabs.it e' attivo**: `public/CNAME` lo imposta a ogni
+deploy e il workflow costruisce senza `SITE_BASE`. La variabile resta utile per
+un'anteprima locale sotto sottopercorso.
 
 I link interni dentro gli articoli vanno scritti **relativi**
 (`../../stampa-3d/slug/`), non assoluti: cosi' funzionano con qualsiasi base.

@@ -25,13 +25,6 @@ jobs:
         with:
           # Astro 7 richiede Node >=22.12; l'action da sola userebbe la 20.
           node-version: 22
-        env:
-          # Finche' il sito sta su walter-esposito.github.io/waltermakerlabs/ serve
-          # il base path, altrimenti link e immagini vanno in 404. La build con
-          # SITE_BASE si marca anche noindex, per non farsi indicizzare e creare
-          # contenuto duplicato quando arrivera' il dominio vero.
-          # QUANDO SI COLLEGA waltermakerlabs.it: cancellare queste due righe.
-          SITE_BASE: waltermakerlabs
 
   deploy:
     name: Deploy
