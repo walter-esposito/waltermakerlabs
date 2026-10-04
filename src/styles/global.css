@@ -172,3 +172,24 @@ p, li { text-wrap: pretty; }
   border-radius: var(--raggio);
   border: 2px solid var(--accento);
 }
+
+/* ---------- serie di Short in fondo a un articolo ---------- */
+.episodi { margin-top: 3rem; }
+.episodi__lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 2.5rem 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+}
+.episodi__lista > li { margin: 0; }
+.episodi__lista h3 {
+  font-size: 1rem;
+  margin: 0.9rem 0 0.3rem;
+}
+.episodi__lista p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--testo-tenue);
+}

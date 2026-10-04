@@ -10,20 +10,30 @@ interface Props {
   titolo: string;
   /** La prima immagine della pagina non va lazy: passa false se e' above the fold. */
   lazy?: boolean;
+  /** Short: formato verticale 9:16 invece di 16:9. */
+  verticale?: boolean;
 }
 
-const { id, titolo, lazy = true } = Astro.props;
-const poster = `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`;
-const posterFallback = `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+const { id, titolo, lazy = true, verticale = false } = Astro.props;
+
+// Gli Short hanno la miniatura nel formato originale sotto "oardefault".
+const poster = verticale
+  ? `https://i.ytimg.com/vi/${id}/oardefault.jpg`
+  : `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`;
+const posterFallback = verticale
+  ? `https://i.ytimg.com/vi/${id}/frame0.jpg`
+  : `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+const w = verticale ? 1080 : 1280;
+const h = verticale ? 1920 : 720;
 ---
 
-<lite-yt data-id={id} data-titolo={titolo}>
+<lite-yt data-id={id} data-titolo={titolo} class={verticale ? "verticale" : undefined}>
   <button type="button" class="lite-yt__btn" aria-label={`Riproduci il video: ${titolo}`}>
     <img
       src={poster}
       alt=""
-      width="1280"
-      height="720"
+      width={w}
+      height={h}
       loading={lazy ? 'lazy' : 'eager'}
       decoding="async"
       onerror={`this.onerror=null;this.src='${posterFallback}'`}
@@ -44,6 +54,11 @@ const posterFallback = `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
     display: block;
     position: relative;
     aspect-ratio: 16 / 9;
+  }
+  lite-yt.verticale {
+    aspect-ratio: 9 / 16;
+    max-width: 320px;
+    margin-inline: auto;
     background: #000;
     border-radius: 10px;
     overflow: hidden;

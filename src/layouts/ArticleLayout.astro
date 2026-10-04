@@ -158,5 +158,22 @@ const { Content } = await render(articolo);
     }
 
     <Content />
+
+    {
+      d.shorts && d.shorts.length > 0 && (
+        <section class="episodi">
+          <h2>Gli episodi, in ordine</h2>
+          <ol class="episodi__lista">
+            {d.shorts.map((s) => (
+              <li>
+                <YouTubeEmbed id={s.id} titolo={s.titolo} verticale={true} />
+                <h3>{s.titolo}</h3>
+                {s.nota && <p>{s.nota}</p>}
+              </li>
+            ))}
+          </ol>
+        </section>
+      )
+    }
   </article>
 </BaseLayout>

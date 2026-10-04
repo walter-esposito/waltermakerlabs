@@ -35,6 +35,17 @@ const articoli = defineCollection({
         })
         .optional(),
 
+      /** Serie di Short da mostrare in fondo all'articolo, in ordine cronologico. */
+      shorts: z
+        .array(
+          z.object({
+            id: z.string(),
+            titolo: z.string(),
+            nota: z.string().optional(),
+          }),
+        )
+        .optional(),
+
       tags: z.array(z.string()).default([]),
       draft: z.boolean().default(false),
     }),
