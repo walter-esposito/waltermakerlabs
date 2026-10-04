@@ -72,17 +72,14 @@ const ETICHETTE: Record<string, string> = {
     <header class="sito-header">
       <div class="contenitore">
         <a class="marchio" href={u("/")} aria-label="Walter Maker Labs, vai alla home">
-          {/* Il logo e' chiaro su fondo scuro: due varianti, una per tema. */}
-          <picture>
-            <source srcset={u("/logo-chiaro.png")} media="(prefers-color-scheme: dark)" />
-            <img
-              src={u("/logo-scuro.png")}
-              alt="Walter Maker Labs"
-              width="577"
-              height="445"
-              decoding="async"
-            />
-          </picture>
+          {/* La barra e' sempre scura, quindi serve solo la variante crema. */}
+          <img
+            src={u("/logo-chiaro.png")}
+            alt="Walter Maker Labs"
+            width="577"
+            height="445"
+            decoding="async"
+          />
         </a>
         <nav class="sito-nav" aria-label="Principale">
           {
