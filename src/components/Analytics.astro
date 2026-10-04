@@ -1,0 +1,46 @@
+---
+/**
+ * Statistiche senza cookie: Cloudflare Web Analytics per il traffico e i Core
+ * Web Vitals, Umami per gli eventi. Nessuno dei due scrive cookie o usa
+ * identificatori persistenti, quindi non serve il banner di consenso.
+ *
+ * Se un identificativo non e' configurato, il relativo script non viene nemmeno
+ * emesso: il sito resta pulito finche' non si decide di attivarlo.
+ */
+import { CLOUDFLARE_TOKEN, UMAMI_WEBSITE_ID, UMAMI_SRC } from '../config/analytics';
+---
+
+{
+  CLOUDFLARE_TOKEN && (
+    <script
+      is:inline
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon={`{"token": "${CLOUDFLARE_TOKEN}"}`}
+    />
+  )
+}
+
+{
+  UMAMI_WEBSITE_ID && (
+    <script is:inline defer src={UMAMI_SRC} data-website-id={UMAMI_WEBSITE_ID} />
+  )
+}
+
+{
+  UMAMI_WEBSITE_ID && (
+    <script is:inline>
+      {`
+      // Registra i clic sui link affiliati: quali articoli portano davvero
+      // traffico ai negozi. Nessun dato personale, solo destinazione e pagina.
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest && e.target.closest('a[rel~="sponsored"]');
+        if (!a || !window.umami) return;
+        var host = '';
+        try { host = new URL(a.href).hostname.replace(/^www\./, ''); } catch (_) {}
+        window.umami.track('affiliato', { negozio: host, pagina: location.pathname });
+      }, { passive: true });
+      `}
+    </script>
+  )
+}

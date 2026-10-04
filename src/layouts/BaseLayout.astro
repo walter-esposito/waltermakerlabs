@@ -3,6 +3,7 @@ import '../styles/global.css';
 import { CATEGORIE } from '../content.config';
 import { u, ANTEPRIMA } from '../lib/url';
 import { getCollection } from 'astro:content';
+import Analytics from '../components/Analytics.astro';
 
 interface Props {
   title: string;
@@ -61,6 +62,7 @@ const ETICHETTE: Record<string, string> = {
     <link rel="alternate" type="application/rss+xml" title="Walter Maker Labs" href={u("/rss.xml")} />
 
     <meta name="generator" content={Astro.generator} />
+    <Analytics />
     <slot name="head" />
   </head>
 
@@ -99,7 +101,10 @@ const ETICHETTE: Record<string, string> = {
           Cerchi elettronica e Arduino? Sono su
           <a href="https://arduinoproject.it/">ArduinoProject.it</a>.
         </p>
-        <p>© {new Date().getFullYear()} Walter Esposito</p>
+        <p>
+          © {new Date().getFullYear()} Walter Esposito &middot;
+          <a href={u("/privacy/")}>Privacy e cookie</a>
+        </p>
       </div>
     </footer>
   </body>

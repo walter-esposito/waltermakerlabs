@@ -71,6 +71,22 @@ un'anteprima locale sotto sottopercorso.
 I link interni dentro gli articoli vanno scritti **relativi**
 (`../../stampa-3d/slug/`), non assoluti: cosi' funzionano con qualsiasi base.
 
+## Statistiche
+
+Due strumenti senza cookie, quindi senza banner di consenso. Si attivano
+mettendo gli identificativi in `src/config/analytics.ts`: se la stringa e'
+vuota, lo script non viene nemmeno emesso.
+
+- **Cloudflare Web Analytics** -> token del beacon. Traffico e Core Web Vitals reali.
+- **Umami Cloud** -> Website ID. Serve per gli eventi sui link affiliati.
+
+Il tracciamento affiliati e' automatico: ogni clic su un link con
+`rel="sponsored"` genera un evento Umami `affiliato` con il negozio di
+destinazione e la pagina di partenza. E' un altro motivo per cui quel `rel`
+va sempre messo.
+
+Gli identificativi non sono segreti: finiscono nell'HTML, e' normale.
+
 ## Struttura
 
 ```

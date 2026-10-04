@@ -1,0 +1,109 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { u } from '../../lib/url';
+
+const aggiornata = '4 ottobre 2026';
+---
+
+<BaseLayout
+  title="Privacy e cookie | Walter Maker Labs"
+  description="Come vengono trattati i dati su waltermakerlabs.it: statistiche anonime senza cookie, video incorporati e link di affiliazione."
+>
+  <nav class="briciole" aria-label="Percorso">
+    <ol>
+      <li><a href={u('/')}>Home</a></li>
+      <li aria-current="page">Privacy e cookie</li>
+    </ol>
+  </nav>
+
+  <article class="articolo">
+    <h1>Privacy e cookie</h1>
+    <p class="articolo__meta">Ultimo aggiornamento: {aggiornata}</p>
+
+    <p class="articolo__sommario">
+      In breve: questo sito <strong>non usa cookie di profilazione</strong> e non installa cookie
+      propri. Le statistiche sono anonime e aggregate. I video non caricano nulla finché non
+      decidi tu di guardarli.
+    </p>
+
+    <h2>Chi tratta i dati</h2>
+    <p>
+      Titolare del trattamento è Walter Esposito. Per qualsiasi richiesta:
+      <a href="mailto:waltermakerlab@gmail.com">waltermakerlab@gmail.com</a>.
+    </p>
+    <p class="avviso-affiliato">
+      <strong>[Da completare]</strong> Se il sito viene usato nell'ambito di un'attività con partita
+      IVA, qui vanno aggiunti ragione sociale, sede e partita IVA. Fai verificare questa pagina a chi
+      segue i tuoi adempimenti prima di considerarla definitiva.
+    </p>
+
+    <h2>Statistiche di visita</h2>
+    <p>
+      Per capire quali contenuti vengono letti uso due strumenti che <strong>non installano
+      cookie</strong> e non creano identificatori persistenti: non è possibile riconoscerti tra una
+      visita e l'altra né tra un sito e l'altro.
+    </p>
+    <ul>
+      <li>
+        <strong>Cloudflare Web Analytics</strong> — numero di visite, pagine viste, provenienza e
+        velocità di caricamento reale. Nessun cookie, nessuna profilazione.
+      </li>
+      <li>
+        <strong>Umami</strong> — stessi dati in forma aggregata, più il conteggio dei clic sui link
+        verso i negozi. Viene registrata solo la pagina di partenza e il sito di destinazione.
+      </li>
+    </ul>
+    <p>
+      Entrambi elaborano l'indirizzo IP in forma transitoria per ricavare il paese di provenienza e
+      per distinguere le visite, senza conservarlo in modo associabile a una persona. Poiché non
+      vengono installati cookie né usati identificatori univoci persistenti, non è richiesto un
+      banner di consenso preventivo.
+    </p>
+
+    <h2>Video incorporati</h2>
+    <p>
+      Gli articoli contengono video del canale YouTube. Il sito carica solo un'immagine di anteprima:
+      <strong>finché non premi play non viene contattato alcun server di Google</strong> e nessun
+      cookie viene installato.
+    </p>
+    <p>
+      Nel momento in cui avvii un video, il player viene caricato dal dominio
+      <code>youtube-nocookie.com</code> e da quel momento si applica la
+      <a href="https://policies.google.com/privacy" rel="nofollow noopener" target="_blank">privacy
+      policy di Google</a>, che può installare cookie tecnici e di misurazione. È una tua scelta
+      esplicita: finché non clicchi, non succede nulla.
+    </p>
+
+    <h2>Link di affiliazione</h2>
+    <p>
+      Alcuni link verso negozi (Amazon, Anycubic, Snapmaker, Flashforge, Makera e altri) sono
+      affiliati: se acquisti tramite quei link ricevo una piccola commissione, <strong>senza alcun
+      costo aggiuntivo per te</strong>. Sono sempre segnalati nell'articolo.
+    </p>
+    <p>
+      Cliccandoli vieni portato sul sito del negozio, che può installare cookie propri per
+      riconoscere la provenienza. Il trattamento da quel momento è regolato dalle informative di
+      quei siti, su cui non ho controllo.
+    </p>
+
+    <h2>Hosting</h2>
+    <p>
+      Il sito è ospitato su GitHub Pages (GitHub, Inc.). Per il funzionamento tecnico e la sicurezza
+      il fornitore registra i consueti log di accesso, che includono l'indirizzo IP.
+    </p>
+
+    <h2>I tuoi diritti</h2>
+    <p>
+      Puoi chiedere accesso, rettifica, cancellazione o limitazione dei dati che ti riguardano,
+      opporti al trattamento e proporre reclamo al
+      <a href="https://www.garanteprivacy.it" rel="nofollow noopener" target="_blank">Garante per la
+      protezione dei dati personali</a>. Scrivi a
+      <a href="mailto:waltermakerlab@gmail.com">waltermakerlab@gmail.com</a>.
+    </p>
+    <p>
+      Dato che le statistiche sono anonime e aggregate, nella pratica non dispongo di dati che
+      permettano di identificarti: non posso quindi estrarre o cancellare "le tue" visite, perché
+      non sono riconducibili a te.
+    </p>
+  </article>
+</BaseLayout>
