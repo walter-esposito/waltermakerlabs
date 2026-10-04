@@ -77,13 +77,19 @@ p, li { text-wrap: pretty; }
   min-height: 62px;
 }
 .marchio {
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
   text-decoration: none;
-  color: var(--testo);
-  font-size: 1.05rem;
+  flex: 0 0 auto;
 }
-.marchio span { color: var(--accento); }
+.marchio img {
+  height: 44px;
+  width: auto;
+  display: block;
+}
+@media (max-width: 30rem) {
+  .marchio img { height: 36px; }
+}
 .sito-nav {
   display: flex;
   gap: 1rem;
