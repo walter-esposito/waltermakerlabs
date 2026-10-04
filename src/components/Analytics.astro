@@ -14,7 +14,7 @@ import { CLOUDFLARE_TOKEN, UMAMI_WEBSITE_ID, UMAMI_SRC } from '../config/analyti
   CLOUDFLARE_TOKEN && (
     <script
       is:inline
-      defer
+      type="module"
       src="https://static.cloudflareinsights.com/beacon.min.js"
       data-cf-beacon={`{"token": "${CLOUDFLARE_TOKEN}"}`}
     />
