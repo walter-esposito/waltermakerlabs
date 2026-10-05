@@ -74,13 +74,13 @@ File STL: <a href="https://makerworld.com/it/models/1307980-otto-diy-biped-danci
 
 ## Perché proprio questi pezzi
 
-**L'ESP32-S3 invece di un Arduino classico.** Serviva qualcosa che gestisse audio e connettività senza schede aggiuntive. L'S3 ha Wi-Fi e Bluetooth integrati e abbastanza potenza per elaborare il suono: con un microcontrollore a 8 bit questo progetto non sarebbe partito.
+**L'ESP32-S3 invece di un Arduino classico.** Se non sai da dove si parte, ne ho scritto [qui](https://arduinoproject.it/2011/03/04/cose-arduino/) e il primo sketch e' [questo](https://arduinoproject.it/2011/03/22/primo-esperimento-blink/). Qui pero' serviva qualcosa che gestisse audio e connettività senza schede aggiuntive. L'S3 ha Wi-Fi e Bluetooth integrati e abbastanza potenza per elaborare il suono: con un microcontrollore a 8 bit questo progetto non sarebbe partito.
 
 **Il PCA9685 anche se l'ESP32 ha i suoi PWM.** Si potrebbero pilotare i servo direttamente, ma il PWM software è soggetto a jitter: il servo trema e il passo diventa irregolare. Il PCA9685 genera i segnali via hardware su un bus I²C a due fili, quindi i movimenti sono puliti e si risparmiano pin.
 
 **Microfono e amplificatore entrambi I²S.** È la scelta che semplifica tutto: l'audio resta digitale dal microfono fino all'amplificatore, senza passare da convertitori analogici. Meno rumore e meno componenti.
 
-**L'MPU6050 serve per camminare, non per decorazione.** Un bipede è instabile per natura. Senza sapere la propria inclinazione, un robot a due gambe può solo ripetere sequenze preregistrate e cadere appena il terreno non è perfetto. Giroscopio e accelerometro sono il prerequisito per qualsiasi camminata che si corregga da sola.
+**L'MPU6050 serve per camminare, non per decorazione.** (Se e' il tuo primo sensore, conviene partire da uno piu' semplice: ho spiegato la [fotoresistenza](https://arduinoproject.it/2011/06/27/fotoresistenza/) e il [sensore di temperatura LM35](https://arduinoproject.it/2011/07/19/lm35dz/) passo per passo.) Un bipede è instabile per natura. Senza sapere la propria inclinazione, un robot a due gambe può solo ripetere sequenze preregistrate e cadere appena il terreno non è perfetto. Giroscopio e accelerometro sono il prerequisito per qualsiasi camminata che si corregga da sola.
 
 ## Quanto costa la parte stampata
 

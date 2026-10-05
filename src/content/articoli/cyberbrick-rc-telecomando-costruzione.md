@@ -24,7 +24,7 @@ elettronica &mdash; radio, ricevitore, controlli &mdash; si compra, mentre tutta
 stampi tu.
 
 E' un'idea sensata perche' separa le due difficolta'. L'elettronica radiocomandata affidabile e'
-complicata da progettare da zero; i gusci e i meccanismi, invece, sono esattamente quello che una
+complicata da progettare da zero &mdash; se vuoi capire cosa c'e' dentro, le basi dei circuiti e di [Fritzing per disegnarli](https://arduinoproject.it/2011/04/27/circuiti-elettronici-con-fritzing/) stanno sull'altro sito; i gusci e i meccanismi, invece, sono esattamente quello che una
 stampante 3D fa bene. Comprando la prima e stampando i secondi, un progetto RC personalizzato
 diventa alla portata.
 
