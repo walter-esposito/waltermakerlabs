@@ -4,6 +4,7 @@ import { CATEGORIE } from '../content.config';
 import { u, ANTEPRIMA } from '../lib/url';
 import { getCollection } from 'astro:content';
 import Analytics from '../components/Analytics.astro';
+import { GOOGLE, BING } from '../config/verifiche';
 
 interface Props {
   title: string;
@@ -62,6 +63,9 @@ const ETICHETTE: Record<string, string> = {
     <link rel="alternate" type="application/rss+xml" title="Walter Maker Labs" href={u("/rss.xml")} />
 
     <meta name="generator" content={Astro.generator} />
+    {GOOGLE && <meta name="google-site-verification" content={GOOGLE} />}
+    {BING && <meta name="msvalidate.01" content={BING} />}
+
     <Analytics />
     <slot name="head" />
   </head>
