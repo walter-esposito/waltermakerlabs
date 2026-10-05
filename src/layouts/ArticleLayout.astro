@@ -162,11 +162,11 @@ const { Content } = await render(articolo);
     {
       d.shorts && d.shorts.length > 0 && (
         <section class="episodi">
-          <h2>Gli episodi, in ordine</h2>
+          <h2>{d.tipo === "risoluzione-problemi" ? "I video, in ordine" : "Gli episodi, in ordine"}</h2>
           <ol class="episodi__lista">
             {d.shorts.map((s) => (
               <li>
-                <YouTubeEmbed id={s.id} titolo={s.titolo} verticale={true} />
+                <YouTubeEmbed id={s.id} titolo={s.titolo} verticale={!s.orizzontale} />
                 <h3>{s.titolo}</h3>
                 {s.nota && <p>{s.nota}</p>}
               </li>

@@ -194,6 +194,11 @@ p, li { text-wrap: pretty; }
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
 }
 .episodi__lista > li { margin: 0; }
+/* un video 16:9 occupa due colonne, cosi' non viene schiacciato */
+.episodi__lista > li:has(lite-yt:not(.verticale)) { grid-column: span 2; }
+@media (max-width: 34rem) {
+  .episodi__lista > li:has(lite-yt:not(.verticale)) { grid-column: span 1; }
+}
 .episodi__lista h3 {
   font-size: 1rem;
   margin: 0.9rem 0 0.3rem;

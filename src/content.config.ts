@@ -35,13 +35,15 @@ const articoli = defineCollection({
         })
         .optional(),
 
-      /** Serie di Short da mostrare in fondo all'articolo, in ordine cronologico. */
+      /** Serie di video da mostrare in fondo all'articolo, in ordine cronologico. */
       shorts: z
         .array(
           z.object({
             id: z.string(),
             titolo: z.string(),
             nota: z.string().optional(),
+            /** true per i video normali 16:9; gli Short verticali sono il default. */
+            orizzontale: z.boolean().default(false),
           }),
         )
         .optional(),
