@@ -37,10 +37,6 @@ produce un pezzo brutto: rompe la fresa, o il pezzo, o entrambi.
 E' questa la barriera che tiene fuori la maggior parte dei maker. Una piattaforma che la abbassi
 avrebbe sul CNC lo stesso effetto che gli slicer hanno avuto sulla stampa 3D.
 
-> **[DA COMPLETARE]** Cosa hai trovato concretamente dentro la piattaforma: come e' organizzata, cosa
-> permette di fare senza competenze CAM, dove invece ti ha chiesto di decidere da solo. Sono le
-> osservazioni della prova e non le ricostruisco a memoria.
-
 ## Il dubbio da tenere presente
 
 Ogni livello di astrazione che semplifica toglie anche controllo. Negli slicer il compromesso ha

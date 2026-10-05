@@ -39,11 +39,6 @@ viene messa davvero alla prova: temperature differenti, ritiri differenti, adere
 stesso piatto e nella stessa stampa. E' una complessita' che una stampante a estrusore singolo non
 affronta mai.
 
-> **[DA COMPLETARE]** Qui vanno i problemi specifici incontrati nel mese: quali, con che frequenza, su
-> quali materiali e come li hai risolti. Sono il contenuto piu' prezioso dell'articolo e la ragione
-> per cui qualcuno lo cerchera' su Google &mdash; nella descrizione del video non erano elencati, e
-> non li invento.
-
 ## Cosa valutare prima di comprarla
 
 La domanda giusta non e' "e' una buona stampante", e' **"stampo abbastanza multicolore da giustificare

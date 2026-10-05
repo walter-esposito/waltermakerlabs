@@ -40,5 +40,3 @@ Per le caratteristiche tecniche complete &mdash; estrusore PMSM, compensazione d
 Granular Damper &mdash; c'e' l'articolo di anteprima:
 [Bambu Lab A2L, cosa sapere prima del lancio](../../stampa-3d/bambu-lab-a2l-prima-del-lancio/).
 
-> **[DA COMPLETARE]** Se hai poi provato la macchina, qui vanno le impressioni reali: qualita' alle
-> dimensioni massime, comportamento del piatto grande sul primo strato, tempi effettivi.

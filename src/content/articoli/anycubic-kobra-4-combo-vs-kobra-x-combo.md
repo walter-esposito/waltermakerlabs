@@ -25,10 +25,6 @@ Le due macchine non sono una il modello superiore dell'altra: sono posizionate s
 diverse. La Kobra 4 Combo nasce per entrare nel multicolore spendendo il meno possibile; la Kobra X
 punta piu' in alto sulla flessibilita' multimateriale.
 
-> **[DA COMPLETARE]** La tabella comparativa con i dati ufficiali dalla pagina Anycubic: volume di
-> stampa, numero di colori gestiti, velocita' dichiarata e prezzo delle due macchine. Non li inserisco
-> a memoria.
-
 | | Kobra 4 Combo | Kobra X |
 |---|---|---|
 | Volume di stampa | &mdash; | &mdash; |

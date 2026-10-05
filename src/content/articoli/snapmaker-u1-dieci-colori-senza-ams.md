@@ -56,10 +56,6 @@ E' una beta, e si comporta come tale. Vanno messi in conto tre vincoli:
 - **E' software beta.** Vale la regola di sempre: non usarlo per una stampa lunga che non puoi
   permetterti di perdere, finche' non hai preso le misure con qualcosa di piccolo.
 
-> **[DA COMPLETARE]** I passaggi esatti di configurazione in Orca Slicer e uno screenshot del punto in
-> cui si pianifica il cambio bobina. E' la parte che fara' arrivare traffico da Google: chi cerca
-> questa funzione cerca proprio il "come si fa".
-
 <p class="avviso-affiliato">
 <strong>Trasparenza:</strong> i link di acquisto qui sotto sono affiliati. Se li usi, io ricevo una
 piccola commissione e tu non paghi di piu'.

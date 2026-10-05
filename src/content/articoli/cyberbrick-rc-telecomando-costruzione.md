@@ -46,10 +46,6 @@ montaggio si scopre subito.
 - **Software e documentazione:** la
   <a href="https://makerworld.com/it/cyberbrick" rel="nofollow">pagina ufficiale CyberBrick</a>
 
-> **[DA COMPLETARE]** I passaggi numerati del montaggio con le foto dei punti critici, in modo che chi
-> legge possa costruirlo senza guardare il video. Qui sta il valore SEO dell'articolo: chi cerca
-> "cyberbrick telecomando montaggio" vuole proprio questo.
-
 ## Consiglio pratico sulla stampa dei pezzi
 
 Per parti che si incastrano, l'orientamento di stampa conta piu' dei parametri. Gli strati sono il

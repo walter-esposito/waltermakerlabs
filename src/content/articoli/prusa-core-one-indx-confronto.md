@@ -44,10 +44,6 @@ calibrazione che comportano.
 Sulla Core One, che e' una macchina chiusa e ben costruita, l'accoppiata ha senso: il telaio regge la
 meccanica aggiuntiva e la camera chiusa abilita i materiali per cui il multimateriale serve davvero.
 
-> **[DA COMPLETARE]** I dettagli di funzionamento di INDX e il giudizio sulla qualita' di stampa
-> ottenuta. Nella descrizione del video non c'erano e non li invento: sono la parte che distingue
-> questo articolo da una scheda prodotto.
-
 ## Come scegliere, in pratica
 
 La domanda giusta non e' quale architettura sia superiore in astratto, ma **quante volte all'anno

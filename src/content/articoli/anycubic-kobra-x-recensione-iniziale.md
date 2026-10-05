@@ -51,10 +51,6 @@ PLA, PETG, TPU e ASA. E' una batteria sensata perche' copre quattro comportament
 facile, il PETG che richiede piu' attenzione all'adesione, il TPU flessibile che mette alla prova il
 percorso del filamento, l'ASA che ritira e vuole temperature stabili.
 
-> **[DA COMPLETARE]** I risultati specifici per ciascun materiale: quali parametri hai usato, cosa e'
-> venuto bene e cosa no. E' la sezione che intercetta chi cerca "kobra x profilo petg" o "kobra x tpu",
-> query molto concrete e con poca concorrenza in italiano.
-
 ## Ingombro
 
 Fra le misure riportate c'e' l'ingombro reale della macchina, dato che quasi nessuno pubblica e che

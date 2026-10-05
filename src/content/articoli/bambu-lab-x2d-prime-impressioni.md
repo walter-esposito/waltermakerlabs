@@ -29,10 +29,6 @@ l'ecosistema AMS proprio sul suo punto debole, **lo spurgo del filamento a ogni 
 
 La domanda vera su qualsiasi nuova Bambu, quindi, e' se risponda a questo o se migliori altrove.
 
-> **[DA COMPLETARE]** Le specifiche ufficiali della X2D dalla pagina Bambu Lab: volume di stampa,
-> velocita', gestione multicolore, prezzo. Nella descrizione del video non erano elencate e non le
-> scrivo a memoria.
-
 ## Le domande da porsi prima dell'upgrade
 
 Se hai gia' una Bambu che funziona, prima di guardare le specifiche nuove conviene rispondere a tre
