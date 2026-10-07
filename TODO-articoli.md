@@ -58,3 +58,11 @@ Quando ne completi una, cancella la riga.
 `src/content/articoli/snapmaker-u1-dopo-un-mese-problemi.md` &middot; https://waltermakerlabs.it/stampa-3d/snapmaker-u1-dopo-un-mese-problemi/
 
 - [ ] **[DA COMPLETARE]** Qui vanno i problemi specifici incontrati nel mese: quali, con che frequenza, su quali materiali e come li hai risolti. Sono il contenuto piu' prezioso dell'articolo e la ragione per cui qualcuno lo cerchera' su Google &mdash; nella descrizione del video non erano elencati, e non li invento.
+
+## InfiMech rinvia ancora: 7 upgrade gratis, ma uno non e' confermato *(in bozza, non pubblicato)*
+
+`src/content/articoli/infimech-rinvio-7-upgrade.md` &middot; https://waltermakerlabs.it/stampa-3d/infimech-rinvio-7-upgrade/
+
+- [ ] Inserire il `videoId` del video del 9 ottobre nel frontmatter, poi togliere `draft: true`
+- [ ] Sostituire la copertina: ora usa la miniatura dell'episodio precedente (`src/assets/infimech-rinvio-upgrade.jpg`)
+
