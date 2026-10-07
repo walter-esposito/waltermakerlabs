@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# appunti di lavoro: restano in locale, non sul repository pubblico
+appunti-video/
