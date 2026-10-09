@@ -44,8 +44,8 @@ aspettare l'annuncio invece di comprare oggi un'altra macchina, inutile per deci
 <p class="avviso-affiliato">
 <strong>Trasparenza:</strong> il link qui sotto e' affiliato. Se lo usi, io ricevo una piccola
 commissione e tu non paghi di piu'.
-<a href="https://anycubic.it/?ref=waltermakerlabs" rel="sponsored nofollow">Anycubic Italia</a>
-&mdash; codice sconto: <code>EFFQJRRGXQ</code> (da inserire nel carrello).
+<a href="https://it.anycubic3d.com/?ref=waltermakerlabs" rel="sponsored nofollow">Anycubic Italia</a>
+&mdash; codice sconto 15&euro;: <code>WALTERMAKERLABS</code> (da inserire nel carrello).
 </p>
 
 ---

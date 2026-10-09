@@ -24,11 +24,13 @@ Gli sconti Anycubic si stratificano, e la confusione nasce da li':
 
 - Un **coupon da 10 &euro;** acquistabile sul sito che ne sbloccava 30 di sconto. E' una meccanica a
   tempo, in scadenza nel giro di ore.
-- Un **codice sconto da 20 &euro;** (`EFFQJRRGXQ`) che non ha scadenza e resta valido anche su altri
-  acquisti del catalogo.
+- Un **codice sconto permanente**, valido anche su altri acquisti del catalogo. All'epoca valeva
+  20 &euro;; oggi il codice attivo e' `WALTERMAKERLABS` e vale 15 &euro;.
 
 Chi non e' riuscito a prendere il coupon a tempo arriva comunque a 249 &euro; usando il codice da 20,
 grazie alla promozione di lancio attiva in quella settimana.
+
+> **Nota:** i 249 &euro; erano la combinazione valida nella settimana di lancio, a gennaio 2026. Il codice sconto resta valido, ma la promozione a tempo no: verifica sempre il totale nel carrello.
 
 ## Il consiglio che vale piu' dello sconto
 
@@ -49,6 +51,6 @@ Quello che non cambia e' il metodo: i difetti li scrivo quando li trovo.
 <p class="avviso-affiliato">
 <strong>Trasparenza:</strong> il link qui sotto e' affiliato. Se lo usi, io ricevo una piccola
 commissione e tu non paghi di piu'.
-<a href="https://anycubic.it/?ref=waltermakerlabs" rel="sponsored nofollow">Anycubic Italia</a>
-&mdash; codice sconto: <code>EFFQJRRGXQ</code> (da inserire nel carrello).
+<a href="https://it.anycubic3d.com/?ref=waltermakerlabs" rel="sponsored nofollow">Anycubic Italia</a>
+&mdash; codice sconto 15&euro;: <code>WALTERMAKERLABS</code> (da inserire nel carrello).
 </p>

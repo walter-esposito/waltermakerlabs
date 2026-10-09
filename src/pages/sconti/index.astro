@@ -1,0 +1,238 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { u } from '../../lib/url';
+
+const aggiornata = '9 ottobre 2026';
+
+/**
+ * Codici e link raccolti in un posto solo. Ogni voce punta anche agli articoli
+ * in cui quella marca viene provata: lo sconto senza il contesto serve a poco.
+ */
+const marche = [
+  {
+    nome: 'Anycubic',
+    cosa: 'Stampanti 3D FDM e resina, fascia accessibile. Il sistema multicolore ACE.',
+    link: 'https://it.anycubic3d.com/?ref=waltermakerlabs',
+    etichetta: 'Store italiano Anycubic',
+    codici: [{ codice: 'WALTERMAKERLABS', valore: '15 €' }],
+    nota: 'Il codice si inserisce nel carrello, non alla cassa. Se il totale non cambia, è quasi sempre perché è stato messo nel punto sbagliato o perché non è cumulabile con una promozione già attiva sul prodotto.',
+    articoli: [
+      { t: 'Kobra X: unboxing, setup e prime stampe', u: '/stampa-3d/anycubic-kobra-x-recensione-iniziale/' },
+      { t: 'Kobra X: verità scomode', u: '/stampa-3d/anycubic-kobra-x-verita-scomode/' },
+      { t: 'ACE 2 Pro: conviene l’upgrade?', u: '/stampa-3d/anycubic-ace-2-pro-conviene-upgrade/' },
+      { t: 'Kobra 3: gli errori più frequenti', u: '/stampa-3d/anycubic-kobra-3-problemi/' },
+    ],
+  },
+  {
+    nome: 'Snapmaker',
+    cosa: 'La U1, stampante toolchange: ogni colore ha la sua testa, niente spurgo a ogni cambio.',
+    link: 'https://eu.snapmaker.com/?ref=waltermakerlabs',
+    etichetta: 'Store europeo Snapmaker',
+    codici: [
+      { codice: 'waltermaker20', valore: '20 €' },
+      { codice: 'walter_esposito-1-1', valore: '5%' },
+    ],
+    nota: 'Uso il link allo store europeo e non a quello americano: spedizione dalla UE, prezzi in euro, nessuna sorpresa in dogana.',
+    articoli: [
+      { t: 'U1: unboxing, montaggio e prima stampa', u: '/stampa-3d/snapmaker-u1-unboxing-montaggio-prima-stampa/' },
+      { t: 'Cosa scopri solo dopo un mese', u: '/stampa-3d/snapmaker-u1-dopo-un-mese-problemi/' },
+      { t: 'Errori frequenti e come risolverli', u: '/stampa-3d/snapmaker-u1-problemi/' },
+      { t: 'Oltre 10 colori senza AMS', u: '/stampa-3d/snapmaker-u1-dieci-colori-senza-ams/' },
+    ],
+  },
+  {
+    nome: 'Makera',
+    cosa: 'CNC da banco. La Z1, con cui ho iniziato con la fresatura.',
+    link: 'https://makerainc.sjv.io/YVBELO',
+    etichetta: 'Makera Z1',
+    codici: [],
+    nota: 'Il link porta allo store europeo in italiano.',
+    articoli: [
+      { t: 'Makera Z1: la mia prima CNC da banco', u: '/cnc/makera-z1-prima-cnc/' },
+      { t: 'Makerables in beta', u: '/cnc/makerables-beta-prova/' },
+    ],
+  },
+  {
+    nome: 'Flashforge',
+    cosa: 'Il Creator 5 Pro: quattro testine indipendenti, camera riscaldata, doppia filtrazione.',
+    link: 'https://flashforge.sjv.io/JkLRma',
+    etichetta: 'Flashforge',
+    codici: [],
+    nota: '',
+    articoli: [
+      { t: 'Creator 5 Pro: batte davvero la Bambu X2D?', u: '/stampa-3d/flashforge-creator-5-pro-vs-bambu-x2d/' },
+    ],
+  },
+  {
+    nome: 'R3D',
+    cosa: 'Filamenti, compresi i PEBA flessibili e i caricati che richiedono ugelli temprati.',
+    link: 'https://r3dprint.com/s/waltermakerlabs',
+    etichetta: 'R3D Filament',
+    codici: [],
+    nota: '',
+    articoli: [],
+  },
+];
+---
+
+<BaseLayout
+  title="Sconti e codici | Walter Maker Labs"
+  description="Tutti i codici sconto e i link alle marche che provo, divisi per marca: Anycubic, Snapmaker, Makera, Flashforge, R3D. Con i link agli articoli in cui le metto alla prova."
+>
+  <nav class="briciole" aria-label="Percorso">
+    <ol>
+      <li><a href={u('/')}>Home</a></li>
+      <li aria-current="page">Sconti</li>
+    </ol>
+  </nav>
+
+  <section style="padding-block: 1.5rem 1rem; max-width: 46rem;">
+    <h1>Sconti e codici</h1>
+    <p style="color: var(--testo-tenue); font-size: 1.1rem;">
+      I codici che uso e i link alle marche che provo, raccolti in un posto solo.
+      Aggiornati al {aggiornata}.
+    </p>
+  </section>
+
+  <p class="avviso-affiliato" style="max-width: 46rem;">
+    <strong>Trasparenza.</strong> I link in questa pagina sono affiliati: se acquisti passando da qui
+    ricevo una piccola commissione e <strong>tu non paghi di più</strong>. I codici sconto fanno
+    risparmiare te, la commissione la paga il negozio. Nessuna di queste marche decide cosa scrivo:
+    le macchine che recensisco le compro o le dichiaro quando mi vengono mandate.
+  </p>
+
+  <div class="sconti">
+    {
+      marche.map((m) => (
+        <section class="marca">
+          <h2>{m.nome}</h2>
+          <p class="marca__cosa">{m.cosa}</p>
+
+          <p>
+            <a class="marca__link" href={m.link} rel="sponsored nofollow" target="_blank">
+              {m.etichetta} &rarr;
+            </a>
+          </p>
+
+          {m.codici.length > 0 && (
+            <ul class="codici">
+              {m.codici.map((c) => (
+                <li>
+                  <code>{c.codice}</code>
+                  <span>{c.valore}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+
+          {m.nota && <p class="marca__nota">{m.nota}</p>}
+
+          {m.articoli.length > 0 && (
+            <>
+              <h3>Dove la metto alla prova</h3>
+              <ul class="marca__articoli">
+                {m.articoli.map((a) => (
+                  <li><a href={u(a.u)}>{a.t}</a></li>
+                ))}
+              </ul>
+            </>
+          )}
+        </section>
+      ))
+    }
+  </div>
+
+  <section style="max-width: 46rem; margin-top: 2.5rem;">
+    <h2>Due cose da sapere prima di usarli</h2>
+    <p>
+      <strong>Controlla sempre il totale nel carrello</strong> prima di confermare. I codici spesso
+      non sono cumulabili con le promozioni già attive sul prodotto, e il risparmio maggiore non è
+      sempre quello che sembra.
+    </p>
+    <p>
+      <strong>I codici scadono o cambiano senza preavviso.</strong> Questa pagina viene aggiornata
+      quando me ne accorgo, ma se uno non funziona scrivimelo nei commenti sotto un video: lo
+      sistemo e intanto te ne genero un altro.
+    </p>
+  </section>
+</BaseLayout>
+
+<style>
+  .sconti {
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+    margin-top: 1.5rem;
+  }
+  .marca {
+    background: var(--superficie);
+    border: 1px solid var(--bordo);
+    border-radius: var(--raggio);
+    padding: 1.1rem 1.25rem 1.35rem;
+  }
+  .marca h2 {
+    margin: 0 0 0.3rem;
+    font-size: 1.25rem;
+  }
+  .marca__cosa {
+    margin: 0 0 0.9rem;
+    color: var(--testo-tenue);
+    font-size: 0.93rem;
+  }
+  .marca__link {
+    display: inline-block;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid var(--accento);
+    border-radius: 6px;
+    padding: 0.4rem 0.8rem;
+  }
+  .marca__link:hover {
+    background: var(--accento-tenue);
+  }
+  .codici {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+    display: grid;
+    gap: 0.4rem;
+  }
+  .codici li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+  .codici code {
+    background: var(--accento-tenue);
+    border: 1px dashed var(--accento);
+    border-radius: 5px;
+    padding: 0.2rem 0.55rem;
+    font-size: 0.95rem;
+    user-select: all;
+  }
+  .codici span {
+    color: var(--testo-tenue);
+    font-size: 0.88rem;
+  }
+  .marca__nota {
+    margin: 1rem 0 0;
+    font-size: 0.87rem;
+    color: var(--testo-tenue);
+  }
+  .marca h3 {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accento);
+    margin: 1.2rem 0 0.5rem;
+  }
+  .marca__articoli {
+    margin: 0;
+    padding-left: 1.1rem;
+    font-size: 0.92rem;
+  }
+  .marca__articoli li {
+    margin-bottom: 0.25rem;
+  }
+</style>
