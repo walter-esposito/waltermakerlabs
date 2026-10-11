@@ -5,7 +5,7 @@ categoria: stampa-3d
 tipo: guida
 pubDate: 2026-10-11
 cover: ../../assets/infimech-rinvio-upgrade.jpg
-coverAlt: "Sei dei sette upgrade InfiMech sono confermati, uno solo e in valutazione"
+coverAlt: "La InfiMech MX Pro con i filamenti caricati e il bilancio dei sette upgrade: sei confermati, uno no"
 tags:
   - "infimech"
   - "kickstarter"
