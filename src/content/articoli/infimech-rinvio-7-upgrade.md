@@ -3,16 +3,14 @@ title: "InfiMech rinvia ancora: 7 upgrade gratis, ma uno non e' confermato"
 description: "Terzo slittamento del Kickstarter e sette modifiche gratuite per chi sostiene il progetto. Cosa cambia sulla macchina, e quale delle sette non e confermata."
 categoria: stampa-3d
 tipo: guida
-pubDate: 2026-10-09
+pubDate: 2026-10-11
 cover: ../../assets/infimech-rinvio-upgrade.jpg
-coverAlt: "Le teste di stampa della InfiMech MX, il toolchanger al centro del rinvio"
-videoId: DA_COMPLETARE
+coverAlt: "Sei dei sette upgrade InfiMech sono confermati, uno solo e in valutazione"
 tags:
   - "infimech"
   - "kickstarter"
   - "toolchanger"
   - "crowdfunding"
-draft: true
 ---
 
 Il **19 settembre** InfiMech ha rinviato il Kickstarter della serie MX. È la terza finestra annunciata e il terzo slittamento: ora si parla di **fine ottobre, inizio novembre**.
