@@ -6,6 +6,8 @@ tipo: guida
 pubDate: 2026-10-11
 cover: ../../assets/infimech-rinvio-upgrade.jpg
 coverAlt: "La InfiMech MX Pro con i filamenti caricati e il bilancio dei sette upgrade: sei confermati, uno no"
+videoId: xXoQJrKFLLY
+videoDurata: PT16M11S
 tags:
   - "infimech"
   - "kickstarter"
