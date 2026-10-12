@@ -150,26 +150,30 @@ export const MARCHE: Marca[] = [
     cosa: 'CNC da banco. La Z1, con cui ho iniziato con la fresatura.',
     link: 'https://makerainc.sjv.io/YVBELO',
     etichetta: 'Makera Z1',
-    codici: [],
-    nota: 'Il link porta allo store europeo in italiano.',
+    codici: [{ codice: 'WML100off', valore: '100 €' }],
+    nota: 'Il link porta allo store europeo in italiano, direttamente sulla scheda della Z1.',
     articoli: [
       { t: 'Makera Z1: la mia prima CNC da banco', u: '/cnc/makera-z1-prima-cnc/' },
       { t: 'Makerables in beta', u: '/cnc/makerables-beta-prova/' },
     ],
     pagina: {
-      titolo: 'Sconti Makera: come comprare la Z1 dall’Europa',
+      titolo: 'Codice sconto Makera: 100 € con WML100off',
       descrizione:
-        'Per Makera non esiste un codice sconto pubblico, e lo dico subito. Quello che conta è da dove compri: store europeo, prezzi in euro, niente dogana.',
-      h1: 'Sconti Makera: niente codice, ma c’è altro che ti fa risparmiare',
+        'Il codice sconto Makera da 100 € sulla Z1 e sulle Carvera. Perché conviene comprare dallo store europeo e non da quello americano, e la Z1 provata sul campo.',
+      h1: 'Codice sconto Makera: 100 € con WML100off',
       intro: [
-        'Comincio dalla parte onesta: **per Makera non ho un codice sconto**, e non ne esiste uno pubblico. Se trovi un sito che ne promette uno, nove volte su dieci è un coupon inventato per farti cliccare.',
-        'Quello che ti fa risparmiare davvero su una CNC da banco è **da dove la compri**. Il link qui sotto porta allo store europeo in italiano, direttamente sulla scheda della Z1: merce che parte dalla UE, prezzi in euro, nessun fermo in dogana e nessun conguaglio alla consegna. Sulla Z1 comprata dagli Stati Uniti la differenza può superare quella di qualsiasi coupon.',
+        'Il codice è **WML100off** e vale **100 €** sullo store Makera. Su una CNC da banco non è una cifra simbolica: è uno sconto fisso, quindi il risparmio è lo stesso sulla Z1 e su una Carvera.',
+        'C’è però una seconda cosa che ti fa risparmiare più del codice, ed è **da dove compri**. Il link qui sotto porta allo store europeo in italiano, direttamente sulla scheda della Z1: merce che parte dalla UE, prezzi in euro, nessun fermo in dogana e nessun conguaglio alla consegna. Su una macchina pesante comprata dagli Stati Uniti, spedizione, IVA all’importazione e dazi superano tranquillamente i 100 € del codice.',
       ],
       prodotti: ['Makera Z1', 'Carvera', 'Carvera Air'],
       faq: [
         {
-          d: 'Esiste un codice sconto Makera?',
-          r: 'Non pubblico, e io non ne ho uno. Le pagine che ne mostrano uno sono quasi sempre aggregatori che generano codici verosimili per raccogliere click: li provi, non funzionano, e intanto hanno guadagnato la visita. Se Makera ne aprisse uno, comparirebbe qui.',
+          d: 'Qual è il codice sconto Makera e quanto vale?',
+          r: 'WML100off, e vale 100 € di sconto. È uno sconto fisso, non percentuale: toglie la stessa cifra qualunque macchina tu prenda. Incollalo nel carrello e controlla che il totale scenda di 100 € prima di confermare l’ordine.',
+        },
+        {
+          d: 'Il codice si somma alle promozioni Makera già attive?',
+          r: 'Di solito no, come su quasi tutti gli store. Se la macchina è già in offerta il codice può non applicarsi: in quel caso confronta i due totali e tieni il più basso. Vale la pena provarlo comunque, perché una promozione di listino non sempre batte 100 € fissi.',
         },
         {
           d: 'Conviene comprare dallo store europeo?',
