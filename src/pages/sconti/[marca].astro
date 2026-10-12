@@ -1,0 +1,237 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { u } from '../../lib/url';
+import { MARCHE_CON_PAGINA, AGGIORNATA, type Marca } from '../../data/sconti';
+
+export function getStaticPaths() {
+  return MARCHE_CON_PAGINA.map((m) => ({ params: { marca: m.slug }, props: { m } }));
+}
+
+const { m } = Astro.props as { m: Marca };
+const p = m.pagina!;
+
+/** Nei testi uso **grassetto** stile markdown: qui diventa HTML. */
+const grassetto = (s: string) => s.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+
+const sito = Astro.site!.href.replace(/\/$/, '');
+const qui = `${sito}/sconti/${m.slug}/`;
+
+/**
+ * FAQPage e BreadcrumbList. Da agosto 2023 Google mostra i rich result FAQ solo
+ * a siti istituzionali e sanitari, quindi qui non produrra' la fisarmonica nei
+ * risultati: serve a far capire la struttura della pagina, non ad abbellirla.
+ */
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${sito}/` },
+        { '@type': 'ListItem', position: 2, name: 'Sconti', item: `${sito}/sconti/` },
+        { '@type': 'ListItem', position: 3, name: m.nome, item: qui },
+      ],
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: p.faq.map((f) => ({
+        '@type': 'Question',
+        name: f.d,
+        acceptedAnswer: { '@type': 'Answer', text: f.r },
+      })),
+    },
+  ],
+};
+---
+
+<BaseLayout title={`${p.titolo} | Walter Maker Labs`} description={p.descrizione}>
+  <script
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify(schema)}
+  />
+
+  <nav class="briciole" aria-label="Percorso">
+    <ol>
+      <li><a href={u('/')}>Home</a></li>
+      <li><a href={u('/sconti/')}>Sconti</a></li>
+      <li aria-current="page">{m.nome}</li>
+    </ol>
+  </nav>
+
+  <article class="marca-seo">
+    <h1>{p.h1}</h1>
+    <p class="aggiornato">Verificato e aggiornato il {AGGIORNATA}</p>
+
+    {p.intro.map((t) => <p class="intro" set:html={grassetto(t)} />)}
+
+    {
+      m.codici.length > 0 && (
+        <div class="codici-box">
+          <h2>{m.codici.length > 1 ? 'I codici' : 'Il codice'}</h2>
+          <ul class="codici">
+            {m.codici.map((c) => (
+              <li>
+                <code>{c.codice}</code>
+                <span>{c.valore}</span>
+              </li>
+            ))}
+          </ul>
+          <p class="suggerimento">Tocca il codice per selezionarlo tutto.</p>
+        </div>
+      )
+    }
+
+    <p>
+      <a class="bottone" href={m.link} rel="sponsored nofollow" target="_blank">
+        {m.etichetta} &rarr;
+      </a>
+    </p>
+
+    {m.nota && <p class="nota">{m.nota}</p>}
+
+    <p class="avviso-affiliato">
+      <strong>Trasparenza.</strong> Il link qui sopra è affiliato: se acquisti passando da qui
+      ricevo una piccola commissione e <strong>tu non paghi di più</strong>. Il codice sconto fa
+      risparmiare te, la commissione la paga il negozio. {m.nome} non decide cosa scrivo.
+    </p>
+
+    {
+      m.articoli.length > 0 && (
+        <section>
+          <h2>Dove metto alla prova le {m.nome}</h2>
+          <p>
+            È la parte che un sito di coupon non può avere: queste macchine le ho usate, e quello
+            che non va l'ho scritto.
+          </p>
+          <ul class="articoli">
+            {m.articoli.map((a) => (
+              <li>
+                <a href={u(a.u)}>{a.t}</a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+
+    <section>
+      <h2>Domande frequenti</h2>
+      {
+        p.faq.map((f) => (
+          <div class="faq">
+            <h3>{f.d}</h3>
+            <p>{f.r}</p>
+          </div>
+        ))
+      }
+    </section>
+
+    <section>
+      <h2>I modelli {m.nome} di cui parlo</h2>
+      <p class="prodotti">{p.prodotti.join(' · ')}</p>
+    </section>
+
+    <p class="ritorno">
+      <a href={u('/sconti/')}>&larr; Tutti i codici, marca per marca</a>
+    </p>
+  </article>
+</BaseLayout>
+
+<style>
+  .marca-seo {
+    max-width: 44rem;
+    padding-block: 1.5rem 3rem;
+  }
+  .aggiornato {
+    color: var(--testo-tenue);
+    font-size: 0.85rem;
+    margin-top: -0.5rem;
+  }
+  .intro {
+    font-size: 1.08rem;
+  }
+  .codici-box {
+    background: var(--superficie);
+    border: 1px solid var(--bordo);
+    border-radius: var(--raggio);
+    padding: 1.1rem 1.25rem 1.3rem;
+    margin: 1.75rem 0;
+  }
+  .codici-box h2 {
+    margin: 0 0 0.75rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accento);
+  }
+  .codici {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.6rem;
+  }
+  .codici li {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    flex-wrap: wrap;
+  }
+  .codici code {
+    background: var(--accento-tenue);
+    border: 1px dashed var(--accento);
+    border-radius: 5px;
+    padding: 0.35rem 0.8rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    user-select: all;
+  }
+  .codici span {
+    color: var(--testo-tenue);
+  }
+  .suggerimento {
+    margin: 0.8rem 0 0;
+    font-size: 0.82rem;
+    color: var(--testo-tenue);
+  }
+  .bottone {
+    display: inline-block;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid var(--accento);
+    border-radius: 6px;
+    padding: 0.55rem 1.1rem;
+  }
+  .bottone:hover {
+    background: var(--accento-tenue);
+  }
+  .nota {
+    font-size: 0.92rem;
+    color: var(--testo-tenue);
+  }
+  .articoli {
+    padding-left: 1.1rem;
+  }
+  .articoli li {
+    margin-bottom: 0.35rem;
+  }
+  .faq {
+    margin-bottom: 1.4rem;
+  }
+  .faq h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.35rem;
+  }
+  .faq p {
+    margin-top: 0;
+  }
+  .prodotti {
+    color: var(--testo-tenue);
+  }
+  .ritorno {
+    margin-top: 2.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--bordo);
+  }
+</style>

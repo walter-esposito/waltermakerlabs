@@ -1,92 +1,12 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { u } from '../../lib/url';
-
-const aggiornata = '12 ottobre 2026';
-
-/**
- * Codici e link raccolti in un posto solo. Ogni voce punta anche agli articoli
- * in cui quella marca viene provata: lo sconto senza il contesto serve a poco.
- */
-const marche = [
-  {
-    nome: 'Anycubic',
-    cosa: 'Stampanti 3D FDM e resina, fascia accessibile. Il sistema multicolore ACE.',
-    link: 'https://it.anycubic3d.com/?ref=waltermakerlabs',
-    etichetta: 'Store italiano Anycubic',
-    codici: [{ codice: 'WALTERMAKERLABS', valore: '15 €' }],
-    nota: 'Il codice si inserisce nel carrello, non alla cassa. Se il totale non cambia, è quasi sempre perché è stato messo nel punto sbagliato o perché non è cumulabile con una promozione già attiva sul prodotto.',
-    articoli: [
-      { t: 'Kobra X: unboxing, setup e prime stampe', u: '/stampa-3d/anycubic-kobra-x-recensione-iniziale/' },
-      { t: 'Kobra X: verità scomode', u: '/stampa-3d/anycubic-kobra-x-verita-scomode/' },
-      { t: 'ACE 2 Pro: conviene l’upgrade?', u: '/stampa-3d/anycubic-ace-2-pro-conviene-upgrade/' },
-      { t: 'Kobra 3: gli errori più frequenti', u: '/stampa-3d/anycubic-kobra-3-problemi/' },
-    ],
-  },
-  {
-    nome: 'Snapmaker',
-    cosa: 'La U1, stampante toolchange: ogni colore ha la sua testa, niente spurgo a ogni cambio.',
-    link: 'https://eu.snapmaker.com/?ref=waltermakerlabs',
-    etichetta: 'Store europeo Snapmaker',
-    codici: [
-      { codice: 'waltermaker20', valore: '20 €' },
-      { codice: 'walter_esposito-1-1', valore: '5%' },
-    ],
-    nota: 'Uso il link allo store europeo e non a quello americano: spedizione dalla UE, prezzi in euro, nessuna sorpresa in dogana.',
-    articoli: [
-      { t: 'U1: unboxing, montaggio e prima stampa', u: '/stampa-3d/snapmaker-u1-unboxing-montaggio-prima-stampa/' },
-      { t: 'Cosa scopri solo dopo un mese', u: '/stampa-3d/snapmaker-u1-dopo-un-mese-problemi/' },
-      { t: 'Errori frequenti e come risolverli', u: '/stampa-3d/snapmaker-u1-problemi/' },
-      { t: 'Oltre 10 colori senza AMS', u: '/stampa-3d/snapmaker-u1-dieci-colori-senza-ams/' },
-    ],
-  },
-  {
-    nome: 'Makera',
-    cosa: 'CNC da banco. La Z1, con cui ho iniziato con la fresatura.',
-    link: 'https://makerainc.sjv.io/YVBELO',
-    etichetta: 'Makera Z1',
-    codici: [],
-    nota: 'Il link porta allo store europeo in italiano.',
-    articoli: [
-      { t: 'Makera Z1: la mia prima CNC da banco', u: '/cnc/makera-z1-prima-cnc/' },
-      { t: 'Makerables in beta', u: '/cnc/makerables-beta-prova/' },
-    ],
-  },
-  {
-    nome: 'Flashforge',
-    cosa: 'Il Creator 5 Pro: quattro testine indipendenti, camera riscaldata, doppia filtrazione.',
-    link: 'https://flashforge.sjv.io/JkLRma',
-    etichetta: 'Flashforge',
-    codici: [],
-    nota: '',
-    articoli: [
-      { t: 'Creator 5 Pro: batte davvero la Bambu X2D?', u: '/stampa-3d/flashforge-creator-5-pro-vs-bambu-x2d/' },
-    ],
-  },
-  {
-    nome: 'Creality',
-    cosa: 'Stampanti FDM e resina di fascia economica, la marca piu diffusa in assoluto.',
-    link: 'https://crealityeu.sjv.io/5k3GZ9',
-    etichetta: 'Store europeo Creality',
-    codici: [],
-    nota: 'Qui devo essere onesto: non ho ancora provato una Creality, quindi non e una mia raccomandazione. Il link c\'e perche me lo chiedete spesso e tanto vale che la commissione resti a me invece che a un sito a caso. Quando ne proverò una, lo scrivo qui sopra.',
-    articoli: [],
-  },
-  {
-    nome: 'R3D',
-    cosa: 'Filamenti, compresi i PEBA flessibili e i caricati che richiedono ugelli temprati.',
-    link: 'https://r3dprint.com/s/waltermakerlabs',
-    etichetta: 'R3D Filament',
-    codici: [],
-    nota: '',
-    articoli: [],
-  },
-];
+import { MARCHE, AGGIORNATA } from '../../data/sconti';
 ---
 
 <BaseLayout
   title="Sconti e codici | Walter Maker Labs"
-  description="Tutti i codici sconto e i link alle marche che provo, divisi per marca: Anycubic, Snapmaker, Makera, Flashforge, R3D. Con i link agli articoli in cui le metto alla prova."
+  description="Tutti i codici sconto e i link alle marche che provo, divisi per marca: Anycubic, Snapmaker, Makera, Flashforge, Creality, R3D. Con i link agli articoli in cui le metto alla prova."
 >
   <nav class="briciole" aria-label="Percorso">
     <ol>
@@ -99,7 +19,7 @@ const marche = [
     <h1>Sconti e codici</h1>
     <p style="color: var(--testo-tenue); font-size: 1.1rem;">
       I codici che uso e i link alle marche che provo, raccolti in un posto solo.
-      Aggiornati al {aggiornata}.
+      Aggiornati al {AGGIORNATA}.
     </p>
   </section>
 
@@ -112,7 +32,7 @@ const marche = [
 
   <div class="sconti">
     {
-      marche.map((m) => (
+      MARCHE.map((m) => (
         <section class="marca">
           <h2>{m.nome}</h2>
           <p class="marca__cosa">{m.cosa}</p>
@@ -145,6 +65,12 @@ const marche = [
                 ))}
               </ul>
             </>
+          )}
+
+          {m.pagina && (
+            <p class="marca__dettaglio">
+              <a href={u(`/sconti/${m.slug}/`)}>Come funziona lo sconto {m.nome} &rarr;</a>
+            </p>
           )}
         </section>
       ))
@@ -243,5 +169,10 @@ const marche = [
   }
   .marca__articoli li {
     margin-bottom: 0.25rem;
+  }
+  .marca__dettaglio {
+    margin: 1.1rem 0 0;
+    font-size: 0.92rem;
+    font-weight: 600;
   }
 </style>
