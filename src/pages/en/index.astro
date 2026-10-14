@@ -1,0 +1,60 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SchedaArticolo from '../../components/SchedaArticolo.astro';
+import { u } from '../../lib/url';
+
+const articoli = (await getCollection('articoliEn', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<BaseLayout
+  title="Walter Maker Labs — 3D printing, CNC and laser, tested"
+  description="Hands-on reviews and guides on 3D printers, desktop CNC and laser machines. Machines I actually own and use, with the problems included, not just the specs."
+  lingua="en"
+  alternato="/"
+>
+  <section class="apertura">
+    <h1>Machines I actually use, problems included</h1>
+    <p>
+      I buy or borrow these machines, run them for weeks, and write down what goes wrong as well as
+      what works. A selection of the reviews from my Italian channel, translated into English.
+    </p>
+    <p class="nota-video">
+      The videos embedded below are on
+      <a href="https://www.youtube.com/@waltermakerlabs">my channel</a>. Most long-form ones carry an
+      English audio track and reviewed English subtitles — pick them from the YouTube settings menu.
+    </p>
+    <p class="nota-video">
+      Looking for the full archive? It lives in Italian at <a href={u('/')}>waltermakerlabs.it</a>.
+    </p>
+  </section>
+
+  {
+    articoli.length > 0 && (
+      <ul class="griglia">
+        {articoli.map((a) => (
+          <SchedaArticolo articolo={a} lingua="en" />
+        ))}
+      </ul>
+    )
+  }
+</BaseLayout>
+
+<style>
+  .apertura {
+    padding-block: 2rem 2.5rem;
+    max-width: 46rem;
+  }
+  .apertura h1 {
+    margin-bottom: 0.75rem;
+  }
+  .apertura p {
+    font-size: 1.1rem;
+    color: var(--testo-tenue);
+  }
+  .nota-video {
+    font-size: 0.95rem !important;
+  }
+</style>

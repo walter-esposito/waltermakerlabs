@@ -7,9 +7,11 @@ export const CATEGORIE = ['stampa-3d', 'cnc', 'laser', 'ai', 'canale'] as const;
 /** Il tipo e' trasversale ai silos: genera pagine di elenco, non URL di articolo. */
 export const TIPI = ['recensione', 'guida', 'tutorial', 'progetto', 'risoluzione-problemi'] as const;
 
-const articoli = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/articoli' }),
-  schema: ({ image }) =>
+/**
+ * Schema condiviso fra italiano e inglese: le due versioni devono rispettare gli
+ * stessi limiti, altrimenti la traduzione sfora in SERP dove l'originale no.
+ */
+const schemaArticolo = ({ image }: { image: () => any }) =>
     z.object({
       title: z.string().max(70, 'Oltre i 70 caratteri il title viene troncato in SERP'),
       description: z.string().min(70).max(165, 'La meta description va tenuta entro 165 caratteri'),
@@ -50,7 +52,27 @@ const articoli = defineCollection({
 
       tags: z.array(z.string()).default([]),
       draft: z.boolean().default(false),
+    });
+
+const articoli = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/articoli' }),
+  schema: schemaArticolo,
+});
+
+/**
+ * Traduzioni inglesi. Collezione separata e route separate sotto /en/: le pagine
+ * italiane gia' indicizzate non cambiano ne' URL ne' contenuto.
+ *
+ * `originale` tiene insieme le due versioni e serve a emettere gli hreflang nei
+ * due sensi. Senza, Google leggerebbe le due pagine come contenuto duplicato.
+ */
+const articoliEn = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/articoli-en' }),
+  schema: (ctx) =>
+    schemaArticolo(ctx).extend({
+      /** Slug dell'articolo italiano corrispondente, senza estensione. */
+      originale: z.string(),
     }),
 });
 
-export const collections = { articoli };
+export const collections = { articoli, articoliEn };

@@ -1,0 +1,88 @@
+---
+import { getCollection } from 'astro:content';
+import { CATEGORIE } from '../../../content.config';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SchedaArticolo from '../../../components/SchedaArticolo.astro';
+import { u } from '../../../lib/url';
+import { SLUG_CATEGORIA, T, percorsoCategoria, percorsoHome } from '../../../lib/i18n';
+
+export function getStaticPaths() {
+  return CATEGORIE.map((c) => ({
+    params: { categoria: SLUG_CATEGORIA.en[c] },
+    props: { chiave: c },
+  }));
+}
+
+const { chiave } = Astro.props;
+const t = T.en;
+
+const TESTI: Record<string, { titolo: string; intro: string; meta: string }> = {
+  'stampa-3d': {
+    titolo: '3D Printing',
+    intro:
+      'FDM and resin printers tested in the workshop: real print quality, profiles that actually work, and the problems press releases leave out.',
+    meta: 'Hands-on 3D printer reviews and guides: FDM and resin machines tested in the workshop, print profiles, materials and honest comparisons.',
+  },
+  cnc: {
+    titolo: 'CNC',
+    intro:
+      'Desktop CNC milling: machines, end mills, cutting parameters and real jobs on wood, aluminium and plastic.',
+    meta: 'Desktop CNC: machine reviews, cutting parameters, end mills and real projects on wood, aluminium and plastic.',
+  },
+  laser: {
+    titolo: 'Laser',
+    intro: 'Laser engraving and cutting: power, materials, settings and safety.',
+    meta: 'Laser engravers and cutters: hands-on tests, per-material settings, safety and projects.',
+  },
+  channel: {
+    titolo: 'The channel',
+    intro:
+      'Behind the scenes of Walter Maker Labs: how the channel works, what producing the videos really costs, and updates on projects in progress.',
+    meta: 'Behind the scenes of the Walter Maker Labs channel: real numbers, production costs, monetisation and project updates.',
+  },
+  ai: {
+    titolo: 'AI for makers',
+    intro:
+      'Artificial intelligence applied to making: model generation, workflow automation, and the tools that genuinely save time.',
+    meta: 'AI applied to making: tools to generate 3D models, automate the workflow and speed up design work.',
+  },
+};
+
+const testi = TESTI[SLUG_CATEGORIA.en[chiave]] ?? TESTI[chiave];
+
+const articoli = (
+  await getCollection('articoliEn', ({ data }) => !data.draft && data.categoria === chiave)
+).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout
+  title={`${testi.titolo} | Walter Maker Labs`}
+  description={testi.meta}
+  lingua="en"
+  {/* Una sezione ancora senza articoli e' contenuto sottile: fuori dall'indice. */}
+  noindex={articoli.length === 0}
+>
+  <nav class="briciole" aria-label={t.percorso}>
+    <ol>
+      <li><a href={u(percorsoHome('en'))}>{t.home}</a></li>
+      <li aria-current="page">{testi.titolo}</li>
+    </ol>
+  </nav>
+
+  <section style="padding-block: 1.5rem 2rem; max-width: 46rem;">
+    <h1>{testi.titolo}</h1>
+    <p style="color: var(--testo-tenue); font-size: 1.1rem;">{testi.intro}</p>
+  </section>
+
+  {
+    articoli.length === 0 ? (
+      <p style="color: var(--testo-tenue);">{t.nessunArticolo}</p>
+    ) : (
+      <ul class="griglia">
+        {articoli.map((a) => (
+          <SchedaArticolo articolo={a} lingua="en" />
+        ))}
+      </ul>
+    )
+  }
+</BaseLayout>

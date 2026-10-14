@@ -1,16 +1,18 @@
 ---
 import { getCollection } from 'astro:content';
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { mappaTraduzioni } from '../../lib/traduzioni';
 
 export async function getStaticPaths() {
   const articoli = await getCollection('articoli', ({ data }) => !data.draft);
+  const { versoInglese } = await mappaTraduzioni();
   return articoli.map((articolo) => ({
     params: { categoria: articolo.data.categoria, slug: articolo.id },
-    props: { articolo },
+    props: { articolo, alternato: versoInglese.get(articolo.id) },
   }));
 }
 
-const { articolo } = Astro.props;
+const { articolo, alternato } = Astro.props;
 ---
 
-<ArticleLayout articolo={articolo} />
+<ArticleLayout articolo={articolo} lingua="it" alternato={alternato} />

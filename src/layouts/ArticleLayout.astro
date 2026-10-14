@@ -4,29 +4,38 @@ import { Image } from 'astro:assets';
 import BaseLayout from './BaseLayout.astro';
 import YouTubeEmbed from '../components/YouTubeEmbed.astro';
 import { u } from '../lib/url';
+import {
+  type Lingua,
+  T,
+  ETICHETTA_CATEGORIA,
+  ETICHETTA_TIPO,
+  percorsoCategoria,
+  percorsoHome,
+} from '../lib/i18n';
 
 interface Props {
-  articolo: CollectionEntry<'articoli'>;
+  articolo: CollectionEntry<'articoli'> | CollectionEntry<'articoliEn'>;
+  lingua?: Lingua;
+  /** Percorso della stessa pagina nell'altra lingua, se la traduzione esiste. */
+  alternato?: string;
 }
 
-const { articolo } = Astro.props;
+const { articolo, lingua = 'it', alternato } = Astro.props;
 const d = articolo.data;
+const t = T[lingua];
 
-const ETICHETTE: Record<string, string> = {
-  'stampa-3d': 'Stampa 3D',
-  cnc: 'CNC',
-  laser: 'Laser',
-  ai: 'AI',
-  canale: 'Il canale',
-};
-const etichettaCat = ETICHETTE[d.categoria];
+const etichettaCat = ETICHETTA_CATEGORIA[lingua][d.categoria];
 const urlPagina = new URL(Astro.url.pathname, Astro.site).href;
 const urlCover = new URL(d.cover.src, Astro.site).href;
-const urlHome = new URL('/', Astro.site).href;
-const urlCategoria = new URL(`/${d.categoria}/`, Astro.site).href;
+const urlHome = new URL(u(percorsoHome(lingua)), Astro.site).href;
+const urlCategoria = new URL(u(percorsoCategoria(lingua, d.categoria)), Astro.site).href;
 
 const fmt = (x: Date) =>
-  new Intl.DateTimeFormat('it-IT', { day: 'numeric', month: 'long', year: 'numeric' }).format(x);
+  new Intl.DateTimeFormat(lingua === 'it' ? 'it-IT' : 'en-GB', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  }).format(x);
 
 /* ---- dati strutturati ---------------------------------------------------- */
 
@@ -98,7 +107,7 @@ const schemaVideo = d.videoId
 const schemaBriciole = {
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: urlHome },
+    { '@type': 'ListItem', position: 1, name: t.home, item: urlHome },
     {
       '@type': 'ListItem',
       position: 2,
@@ -122,6 +131,8 @@ const { Content } = await render(articolo);
   description={d.description}
   ogImage={d.cover.src}
   tipoOg="article"
+  lingua={lingua}
+  alternato={alternato}
 >
   <script
     slot="head"
@@ -130,21 +141,21 @@ const { Content } = await render(articolo);
     set:html={JSON.stringify(jsonLd)}
   />
 
-  <nav class="briciole" aria-label="Percorso">
+  <nav class="briciole" aria-label={t.percorso}>
     <ol>
-      <li><a href={u("/")}>Home</a></li>
-      <li><a href={u(`/${d.categoria}/`)}>{etichettaCat}</a></li>
+      <li><a href={u(percorsoHome(lingua))}>{t.home}</a></li>
+      <li><a href={u(percorsoCategoria(lingua, d.categoria))}>{etichettaCat}</a></li>
       <li aria-current="page">{d.title}</li>
     </ol>
   </nav>
 
   <article class="articolo">
-    <span class="etichetta">{d.tipo}</span>
+    <span class="etichetta">{ETICHETTA_TIPO[lingua][d.tipo]}</span>
     <h1>{d.title}</h1>
 
     <p class="articolo__meta">
       <time datetime={d.pubDate.toISOString()}>{fmt(d.pubDate)}</time>
-      {d.updatedDate && <> · aggiornato il <time datetime={d.updatedDate.toISOString()}>{fmt(d.updatedDate)}</time></>}
+      {d.updatedDate && <> · {t.aggiornatoIl} <time datetime={d.updatedDate.toISOString()}>{fmt(d.updatedDate)}</time></>}
     </p>
 
     <p class="articolo__sommario">{d.description}</p>
@@ -162,7 +173,7 @@ const { Content } = await render(articolo);
     {
       d.shorts && d.shorts.length > 0 && (
         <section class="episodi">
-          <h2>{d.tipo === "risoluzione-problemi" ? "I video, in ordine" : "Gli episodi, in ordine"}</h2>
+          <h2>{d.tipo === "risoluzione-problemi" ? t.videoInOrdine : t.episodiInOrdine}</h2>
           <ol class="episodi__lista">
             {d.shorts.map((s) => (
               <li>

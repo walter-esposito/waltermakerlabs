@@ -2,13 +2,15 @@
 import type { CollectionEntry } from 'astro:content';
 import { Image } from 'astro:assets';
 import { u } from '../lib/url';
+import { type Lingua, ETICHETTA_TIPO, percorsoArticolo } from '../lib/i18n';
 
 interface Props {
-  articolo: CollectionEntry<'articoli'>;
+  articolo: CollectionEntry<'articoli'> | CollectionEntry<'articoliEn'>;
+  lingua?: Lingua;
 }
-const { articolo } = Astro.props;
+const { articolo, lingua = 'it' } = Astro.props;
 const d = articolo.data;
-const href = u(`/${d.categoria}/${articolo.id}/`);
+const href = u(percorsoArticolo(lingua, d.categoria, articolo.id));
 ---
 
 <li class="scheda">
@@ -16,7 +18,7 @@ const href = u(`/${d.categoria}/${articolo.id}/`);
     <Image src={d.cover} alt="" widths={[320, 640]} sizes="(max-width: 48rem) 100vw, 17rem" loading="lazy" />
   </a>
   <div class="scheda__corpo">
-    <span class="etichetta">{d.tipo}</span>
+    <span class="etichetta">{ETICHETTA_TIPO[lingua][d.tipo]}</span>
     <h3><a href={href}>{d.title}</a></h3>
     <p>{d.description}</p>
   </div>

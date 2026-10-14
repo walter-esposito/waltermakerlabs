@@ -1,0 +1,22 @@
+---
+import { getCollection } from 'astro:content';
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+import { mappaTraduzioni } from '../../../lib/traduzioni';
+import { SLUG_CATEGORIA } from '../../../lib/i18n';
+
+export async function getStaticPaths() {
+  const articoli = await getCollection('articoliEn', ({ data }) => !data.draft);
+  const { versoItaliano } = await mappaTraduzioni();
+  return articoli.map((articolo) => ({
+    params: {
+      categoria: SLUG_CATEGORIA.en[articolo.data.categoria],
+      slug: articolo.id,
+    },
+    props: { articolo, alternato: versoItaliano.get(articolo.id) },
+  }));
+}
+
+const { articolo, alternato } = Astro.props;
+---
+
+<ArticleLayout articolo={articolo} lingua="en" alternato={alternato} />

@@ -21,7 +21,14 @@ export default defineConfig({
     sitemap({
       // /laser/ non ha ancora articoli: pagina vuota, non va proposta a Google.
       // Appena avra' un articolo, togliere la condizione.
-      filter: (page) => !page.includes('/404') && !page.endsWith('/laser/'),
+      // Fuori dalla sitemap le pagine che si marcano noindex perche' vuote:
+      // una sitemap che propone pagine noindex e' una segnalazione contraddittoria.
+      // Togli una voce da qui quando quella sezione si riempie.
+      filter: (page) =>
+        !page.includes('/404') &&
+        !page.endsWith('/laser/') &&
+        !page.endsWith('/en/ai/') &&
+        !page.endsWith('/en/channel/'),
     }),
   ],
   build: {
