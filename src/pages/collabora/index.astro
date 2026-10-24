@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PaginaCollabora from '../../components/PaginaCollabora.astro';
+import { T } from '../../data/collabora';
+---
+
+<BaseLayout
+  title={T.it.metaTitolo}
+  description={T.it.metaDescrizione}
+  lingua="it"
+  alternato="/en/work-with-me/"
+>
+  <PaginaCollabora lingua="it" />
+</BaseLayout>

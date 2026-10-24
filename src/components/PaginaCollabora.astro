@@ -1,0 +1,202 @@
+---
+import { u } from '../lib/url';
+import { type Lingua, T as TESTI, percorsoHome } from '../lib/i18n';
+import { NUMERI, EMAIL, MACCHINE, MARCHE_SEGUITE, T } from '../data/collabora';
+
+interface Props {
+  lingua: Lingua;
+}
+const { lingua } = Astro.props;
+const t = T[lingua];
+const ui = TESTI[lingua];
+
+/** Nei testi uso **grassetto** stile markdown: qui diventa HTML. */
+const grassetto = (s: string) => s.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+
+const cifre = [
+  { valore: NUMERI.iscritti, etichetta: t.etichetteNumeri.iscritti },
+  { valore: NUMERI.visualizzazioni, etichetta: t.etichetteNumeri.visualizzazioni },
+  { valore: NUMERI.oreVisione, etichetta: t.etichetteNumeri.oreVisione },
+  { valore: NUMERI.videoPubblicati, etichetta: t.etichetteNumeri.videoPubblicati },
+];
+---
+
+<nav class="briciole" aria-label={ui.percorso}>
+  <ol>
+    <li><a href={u(percorsoHome(lingua))}>{ui.home}</a></li>
+    <li aria-current="page">{t.titolo}</li>
+  </ol>
+</nav>
+
+<article class="collabora">
+  <h1>{t.h1}</h1>
+  {t.apertura.map((p) => <p class="apertura" set:html={grassetto(p)} />)}
+
+  <section>
+    <h2>{t.titoloNumeri}</h2>
+    <ul class="cifre">
+      {
+        cifre.map((c) => (
+          <li>
+            <span class="cifra">{c.valore}</span>
+            <span class="cifra__etichetta">{c.etichetta}</span>
+          </li>
+        ))
+      }
+    </ul>
+    <p class="nota">{t.notaNumeri(NUMERI.aggiornati, NUMERI.finestra)}</p>
+  </section>
+
+  <section>
+    <h2>{t.titoloProve}</h2>
+    <p>{t.testoProve}</p>
+    <ul class="pastiglie">
+      {MACCHINE.map((m) => <li>{m}</li>)}
+    </ul>
+  </section>
+
+  <section>
+    <h2>{t.titoloMarche}</h2>
+    <ul class="pastiglie pastiglie--tenui">
+      {MARCHE_SEGUITE.map((m) => <li>{m}</li>)}
+    </ul>
+  </section>
+
+  <section>
+    <h2>{t.titoloFormati}</h2>
+    <dl class="formati">
+      {
+        t.formati.map((f) => (
+          <div>
+            <dt>{f.titolo}</dt>
+            <dd>{f.testo}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </section>
+
+  <section>
+    <h2>{t.titoloComeLavoro}</h2>
+    <ul class="regole">
+      {t.comeLavoro.map((r) => <li set:html={grassetto(r)} />)}
+    </ul>
+  </section>
+
+  <section class="contatto">
+    <h2>{t.titoloContatto}</h2>
+    <p>{t.testoContatto}</p>
+    <p>
+      <a class="bottone" href={`mailto:${EMAIL}`}>{t.etichettaEmail} &rarr;</a>
+    </p>
+    <p class="altrove">
+      <a href="https://www.youtube.com/@waltermakerlabs">{t.altroCanale}</a>
+      &middot;
+      <a href={u(percorsoHome(lingua))}>{t.altroSito}</a>
+    </p>
+  </section>
+</article>
+
+<style>
+  .collabora {
+    max-width: 44rem;
+    padding-block: 1.5rem 3rem;
+  }
+  .apertura {
+    font-size: 1.12rem;
+  }
+  .collabora section {
+    margin-top: 2.5rem;
+  }
+  .cifre {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  }
+  .cifre li {
+    background: var(--superficie);
+    border: 1px solid var(--bordo);
+    border-radius: var(--raggio);
+    padding: 1rem 1.1rem;
+  }
+  .cifra {
+    display: block;
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: var(--accento);
+    line-height: 1.1;
+  }
+  .cifra__etichetta {
+    display: block;
+    margin-top: 0.2rem;
+    font-size: 0.86rem;
+    color: var(--testo-tenue);
+  }
+  .nota {
+    margin-top: 0.9rem;
+    font-size: 0.85rem;
+    color: var(--testo-tenue);
+  }
+  .pastiglie {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .pastiglie li {
+    border: 1px solid var(--accento);
+    border-radius: 999px;
+    padding: 0.3rem 0.85rem;
+    font-size: 0.92rem;
+  }
+  .pastiglie--tenui li {
+    border-color: var(--bordo);
+    color: var(--testo-tenue);
+  }
+  .formati {
+    margin: 1rem 0 0;
+  }
+  .formati > div {
+    padding: 0.9rem 0;
+    border-top: 1px solid var(--bordo);
+  }
+  .formati dt {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+  .formati dd {
+    margin: 0;
+    color: var(--testo-tenue);
+    font-size: 0.96rem;
+  }
+  .regole {
+    padding-left: 1.1rem;
+  }
+  .regole li {
+    margin-bottom: 0.85rem;
+  }
+  .contatto {
+    border-top: 1px solid var(--bordo);
+    padding-top: 1.75rem;
+  }
+  .bottone {
+    display: inline-block;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid var(--accento);
+    border-radius: 6px;
+    padding: 0.6rem 1.2rem;
+  }
+  .bottone:hover {
+    background: var(--accento-tenue);
+  }
+  .altrove {
+    font-size: 0.92rem;
+    color: var(--testo-tenue);
+  }
+</style>
