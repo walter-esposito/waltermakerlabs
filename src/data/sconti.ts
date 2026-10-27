@@ -25,6 +25,19 @@ export interface Faq {
   r: string;
 }
 
+/**
+ * Promozione a tempo mostrata in cima alla pagina dedicata. Sparisce da sola dopo
+ * `fino`: al build se la data è passata, e nel browser per le pagine compilate prima.
+ */
+export interface Promo {
+  titolo: string;
+  /** Ultimo giorno valido, formato AAAA-MM-GG. */
+  fino: string;
+  testo: string;
+  righe: string[];
+  link: string;
+}
+
 export interface Marca {
   slug: string;
   nome: string;
@@ -35,6 +48,7 @@ export interface Marca {
   codici: Codice[];
   nota: string;
   articoli: Articolo[];
+  promo?: Promo;
   /** Contenuto della pagina dedicata. Assente = niente pagina dedicata. */
   pagina?: {
     titolo: string;
@@ -56,13 +70,27 @@ export const MARCHE: Marca[] = [
     link: 'https://it.anycubic3d.com/?ref=waltermakerlabs',
     etichetta: 'Store italiano Anycubic',
     codici: [{ codice: 'WALTERMAKERLABS', valore: '15 €' }],
-    nota: 'Il codice si inserisce nel carrello, non alla cassa. Se il totale non cambia, è quasi sempre perché è stato messo nel punto sbagliato o perché non è cumulabile con una promozione già attiva sul prodotto.',
+    nota: 'Il codice si inserisce nel carrello, non alla cassa. Se il totale non cambia, è quasi sempre perché è stato messo nel punto sbagliato o perché quella promozione non è cumulabile: alcune lo sono, altre no.',
     articoli: [
       { t: 'Kobra X: unboxing, setup e prime stampe', u: '/stampa-3d/anycubic-kobra-x-recensione-iniziale/' },
       { t: 'Kobra X: verità scomode', u: '/stampa-3d/anycubic-kobra-x-verita-scomode/' },
       { t: 'ACE 2 Pro: conviene l’upgrade?', u: '/stampa-3d/anycubic-ace-2-pro-conviene-upgrade/' },
       { t: 'Kobra 3: gli errori più frequenti', u: '/stampa-3d/anycubic-kobra-3-problemi/' },
     ],
+    promo: {
+      titolo: 'Black Friday Anycubic: il codice si somma',
+      fino: '2026-12-07',
+      testo:
+        'Fino al 7 dicembre. L’ho provato nel carrello il 27 ottobre: la **Kobra X** in offerta a 279 € con WALTERMAKERLABS scende a **264 €**. Sugli altri modelli verifica il totale nel carrello prima di pagare.',
+      righe: [
+        'Kobra X da 279 € (Combo 7 colori 459 €)',
+        'Kobra S1 ACE 2 Pro Combo da 429 €',
+        'Kobra S1 Max Combo da 799 €',
+        'Kobra 4 Combo a 299 €',
+        'Accessori scontati del 20%',
+      ],
+      link: 'https://it.anycubic3d.com/pages/offerte-black-friday?ref=waltermakerlabs',
+    },
     pagina: {
       titolo: 'Codice sconto Anycubic: 15 € con WALTERMAKERLABS',
       descrizione:
@@ -80,7 +108,7 @@ export const MARCHE: Marca[] = [
         },
         {
           d: 'Il codice si somma alle promozioni già attive?',
-          r: 'Quasi mai. Se il prodotto è già in offerta, Anycubic di solito blocca il cumulo e il totale non cambia. Non è il codice a non funzionare: è il prodotto a essere già scontato. Vale la pena confrontare i due totali, perché a volte la promozione del sito sconta più dei 15 €.',
+          r: 'Dipende dalla promozione, e l’unico modo di saperlo è il carrello. Nel Black Friday 2026 sì: la Kobra X in offerta a 279 € con il codice scende a 264 € (provato il 27 ottobre). In altre promozioni Anycubic ha bloccato il cumulo e il totale non cambiava: in quel caso non è il codice a non funzionare, è il prodotto a essere già scontato. Si usa un solo codice per ordine, quindi non si somma ai codici pubblici del sito.',
         },
         {
           d: 'Quanto vale e su cosa funziona?',

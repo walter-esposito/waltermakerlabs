@@ -13,6 +13,10 @@ const p = m.pagina!;
 /** Nei testi uso **grassetto** stile markdown: qui diventa HTML. */
 const grassetto = (s: string) => s.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
 
+/** Confronto fra stringhe AAAA-MM-GG: l'ordine alfabetico è quello cronologico. */
+const oggi = new Date().toISOString().slice(0, 10);
+const promo = m.promo && m.promo.fino >= oggi ? m.promo : undefined;
+
 const sito = Astro.site!.href.replace(/\/$/, '');
 const qui = `${sito}/sconti/${m.slug}/`;
 
@@ -64,6 +68,23 @@ const schema = {
     <p class="aggiornato">Verificato e aggiornato il {AGGIORNATA}</p>
 
     {p.intro.map((t) => <p class="intro" set:html={grassetto(t)} />)}
+
+    {
+      promo && (
+        <aside class="promo" data-fino={promo.fino}>
+          <h2>{promo.titolo}</h2>
+          <p set:html={grassetto(promo.testo)} />
+          <ul>
+            {promo.righe.map((r) => (
+              <li>{r}</li>
+            ))}
+          </ul>
+          <a href={promo.link} rel="sponsored nofollow" target="_blank">
+            Le offerte Black Friday &rarr;
+          </a>
+        </aside>
+      )
+    }
 
     {
       m.codici.length > 0 && (
@@ -138,7 +159,32 @@ const schema = {
   </article>
 </BaseLayout>
 
+<script>
+  // Il sito è statico: se nessuno ricompila dopo la scadenza, la promo la nasconde il browser.
+  const oggi = new Date().toISOString().slice(0, 10);
+  document.querySelectorAll<HTMLElement>('.promo[data-fino]').forEach((el) => {
+    if (el.dataset.fino! < oggi) el.remove();
+  });
+</script>
+
 <style>
+  .promo {
+    border: 2px solid var(--accento);
+    border-radius: var(--raggio);
+    padding: 1.1rem 1.25rem 1.2rem;
+    margin: 1.75rem 0;
+  }
+  .promo h2 {
+    margin: 0 0 0.5rem;
+    font-size: 1.1rem;
+  }
+  .promo ul {
+    padding-left: 1.1rem;
+    margin: 0.6rem 0 0.9rem;
+  }
+  .promo a {
+    font-weight: 600;
+  }
   .marca-seo {
     max-width: 44rem;
     padding-block: 1.5rem 3rem;
