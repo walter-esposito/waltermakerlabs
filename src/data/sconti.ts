@@ -2,10 +2,10 @@
  * Marche, codici e link affiliati: sorgente unica per /sconti/ e per le pagine
  * dedicate /sconti/<marca>/.
  *
- * Una marca ottiene la sua pagina dedicata solo se ha almeno un codice o almeno
- * un articolo (vedi `haPaginaPropria`). Una pagina "sconti X" senza codici e
- * senza niente di provato sarebbe una pagina vuota, e le pagine vuote abbassano
- * la reputazione di tutte le altre.
+ * Una marca ottiene la sua pagina dedicata solo se ha un codice. Chi cerca "sconto X"
+ * vuole un codice: una pagina che risponde "non c'è" Google la scansiona e la scarta
+ * (successo a Flashforge, ottobre 2026), e le pagine scartate pesano su tutte le altre.
+ * Senza codice la marca resta nell'indice /sconti/, con link e articoli.
  */
 
 export const AGGIORNATA = '12 ottobre 2026';
@@ -225,27 +225,6 @@ export const MARCHE: Marca[] = [
     articoli: [
       { t: 'Creator 5 Pro: batte davvero la Bambu X2D?', u: '/stampa-3d/flashforge-creator-5-pro-vs-bambu-x2d/' },
     ],
-    pagina: {
-      titolo: 'Sconti Flashforge: cosa c’è e cosa no',
-      descrizione:
-        'Per Flashforge non ho un codice fisso: gli sconti passano dalle promozioni dello store. Cosa sapere prima di prendere il Creator 5 Pro.',
-      h1: 'Sconti Flashforge: cosa c’è davvero, e cosa no',
-      intro: [
-        '**Non ho un codice sconto Flashforge** e preferisco dirtelo subito invece di fartelo scoprire alla cassa. Gli sconti Flashforge passano dalle promozioni periodiche dello store, non da un coupon permanente.',
-        'Quello che posso darti è il link diretto e un parere sulla macchina che ho messo alla prova: il **Creator 5 Pro**, quattro testine indipendenti, camera riscaldata e doppia filtrazione.',
-      ],
-      prodotti: ['Creator 5 Pro', 'Adventurer 5M Pro', 'Guider 3'],
-      faq: [
-        {
-          d: 'Esiste un codice sconto Flashforge?',
-          r: 'Non uno permanente che io possa darti. Flashforge lavora soprattutto con promozioni a tempo sullo store: conviene controllare il prezzo nei periodi di saldo invece di cercare un coupon che non esiste.',
-        },
-        {
-          d: 'Il Creator 5 Pro conviene rispetto alla Bambu X2D?',
-          r: 'Sono macchine con filosofie diverse: quattro testine indipendenti contro un sistema a cambio filamento. Il Creator 5 Pro non spurga a ogni cambio colore, e su stampe multicolore lunghe è una differenza che si vede nello scarto. Ho messo i due approcci a confronto nell’articolo qui sotto.',
-        },
-      ],
-    },
   },
   {
     slug: 'creality',

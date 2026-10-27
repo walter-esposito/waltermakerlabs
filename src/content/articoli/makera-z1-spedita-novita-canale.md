@@ -54,3 +54,7 @@ in un laboratorio domestico e' la macchina che richiede piu' attenzione) e quali
 
 Scrivetemelo nei commenti sotto il video: i consigli di chi ce l'ha gia' valgono piu' di qualsiasi
 scheda tecnica.
+
+> **Aggiornamento, ottobre 2026:** i laser xTool ora hanno un distributore ufficiale in Italia,
+> insieme ad Anycubic e Creality. Ho scritto cosa cambia per chi compra in
+> [Anycubic, Creality e xTool in Italia con Nital](../../stampa-3d/nital-anycubic-creality-xtool-italia/).
