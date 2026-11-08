@@ -26,7 +26,8 @@ del terzo rinvio ho scritto in
 differenza è che stavolta non è una finestra, è un giorno preciso.
 
 > **Aggiornamento dell'8 novembre:** la pagina della campagna in pre-lancio ora mostra garanzia,
-> roadmap di consegna, addon e la collaborazione con eSUN. Li trovi nelle sezioni qui sotto. Ne parlo
+> roadmap di consegna, addon, la scheda tecnica completa delle due macchine e la collaborazione con
+> eSUN. Li trovi nelle sezioni qui sotto. Ne parlo
 > anche nel video, con i capitoli per saltare al punto che ti interessa.
 
 ## I prezzi, e cosa paghi davvero
@@ -126,15 +127,10 @@ dire che, prima o poi, una testa la smonti tu.
 Durante la campagna si potranno aggiungere al pledge: **testa di ricambio, piatto, modulo di
 alimentazione (feeder), filamento, modulo laser da 10 W, telecamera e ventola laterale**.
 
-I prezzi non sono ancora pubblicati, e la pagina non dice quali addon valgono per la MX e quali per
-la Pro. Ci sono due dettagli da chiarire:
+I prezzi non sono ancora pubblicati. La scheda tecnica qui sotto chiarisce però a chi servono:
 
-- la **telecamera** compare fra gli addon, ma ad agosto InfiMech la dava **di serie sulla MX Pro**;
-- la **ventola laterale** compare fra gli addon, ma la pagina la presenta anche fra le
-  caratteristiche del telaio.
-
-Probabilmente su un modello sono di serie e sull'altro si comprano a parte. Quando escono i prezzi lo
-verifico.
+- **telecamera** e **ventola laterale** sono **di serie sulla MX Pro** e **opzionali sulla MX**;
+- il **modulo laser** è **opzionale sulla MX Pro** e **non disponibile sulla MX**.
 
 ## eSUN e i giveaway
 
@@ -143,21 +139,59 @@ filamenti a doppio marchio InfiMech × eSUN. Durante la campagna promettono give
 **filamenti eSUN e coupon sconto eSUN**. Regole, calendario e modalità di partecipazione verranno
 pubblicate all'apertura.
 
-## Cosa dice la pagina sulle specifiche
+## Scheda tecnica completa: MX contro MX Pro
 
-- **Motori closed-loop con encoder e recupero dalle collisioni, solo sulla MX Pro.** Se la testa viene
-  urtata, la macchina se ne accorge e la riporta sulla traiettoria in pochi millisecondi, senza layer
-  shift. La pagina parla genericamente di "MX Series", ma i motori closed-loop sono **solo sulla Pro**:
-  la MX non li ha.
-- **Camera riscaldata attiva fino a 60-65 °C**, con filtro per particolato e carboni attivi per i
-  fumi di ABS e ASA.
+È la tabella pubblicata sulla pagina della campagna. InfiMech la dichiara **provvisoria e soggetta a
+modifiche** fino alla macchina spedita.
+
+| | MX Pro | MX |
+|---|---|---|
+| Dimensioni esterne | 453 × 488 × 563 mm | 361 × 401 × 402 mm |
+| Volume di stampa | 300 × 300 × 300 mm | 220 × 220 × 220 mm |
+| Peso | 26 kg | 13 kg |
+| Struttura | Acciaio, chiusa | Acciaio, aperta |
+| Teste | 8 | 6 |
+| Temperatura massima ugello | 350 °C | 310 °C |
+| Motori | **Closed-loop** | Open-loop |
+| Velocità massima | 800 mm/s | 600 mm/s |
+| Accelerazione massima | 20.000 mm/s² | 20.000 mm/s² |
+| Piatto | 110 °C, piatto testurizzato | 110 °C, piatto testurizzato |
+| Camera riscaldata | 60-65 °C | No |
+| Filtro aria | HEPA e carboni attivi | No |
+| Telecamera | 1080p 30 fps, di serie | Opzionale |
+| Monitoraggio AI | Sì | No |
+| Ventola laterale | Di serie | Opzionale |
+| Modulo laser | Opzionale | Non disponibile |
+| Potenza massima | 1.850 W a 220 V | 1.150 W a 220 V |
+
+**In comune:** ugelli in acciaio temprato HRC50+, riscaldamento a induzione, sensore di temperatura
+wireless, filamento da 1,75 mm, calibrazione adattiva, rilevamento di blob, fine filamento e filamento
+aggrovigliato, recupero da blackout, rilevamento del piatto, schermo da 5" (480 × 854), 8 GB di memoria
+più microSD, slicer OrcaSlicer o InfiMech Orca, temperatura ambiente di lavoro 10-30 °C.
+
+**Materiali.** La Pro stampa PLA, PETG, ABS, ASA, TPU, PET, PA e PC, più i caricati con fibra di
+carbonio o vetro (PLA, PETG, ABS, ASA, PA, PA6, PA12, PAHT, PPA, PET). La MX è indicata per PLA, PETG,
+TPU, PVA, PLA-CF e PETG-CF; per ABS, ASA, PA, PC e PET è **sconsigliata**.
+
+Cosa leggo in questa tabella:
+
+- **I 350 °C sulla Pro ci sono.** Era uno dei sette upgrade promessi a settembre, ed è entrato nella
+  scheda.
+- **Il closed-loop è solo sulla Pro.** Il recupero dalle collisioni, che la pagina presenta per tutta
+  la "MX Series", sulla MX quindi non c'è: lì i motori sono open-loop.
+- **Il software gira solo su Windows.** Per lo slicer la scheda indica come sistema operativo solo
+  Windows: chi usa Mac o Linux deve chiedere prima di fare il pledge.
+- **Rete: solo Wi-Fi a 2,4 GHz, niente Ethernet**, su entrambe.
+- **Fino a 1.850 W di picco** per la Pro: è il consumo della camera riscaldata. Su un contatore
+  domestico da 3 kW, con altri elettrodomestici accesi, è un numero da considerare.
+- **Le cinghie 1.5GT non compaiono** nella scheda.
 
 ## Cosa resta da verificare
 
 - **Le cinghie 1.5GT.** Erano l'unico dei sette upgrade "in valutazione" e la causa dell'ultimo rinvio.
-  Nella pagina in pre-lancio non se ne parla.
-- **Le specifiche finali.** InfiMech aveva promesso nessuna riduzione e nessun costo aggiuntivo per gli
-  upgrade. Il 10 novembre si vede se la scheda tecnica della campagna lo rispetta.
+  Nella pagina in pre-lancio e nella scheda tecnica non se ne parla.
+- **Le specifiche finali.** La scheda è dichiarata provvisoria: è quella da confrontare con la macchina
+  che arriverà.
 - **I prezzi degli addon**, compresa la testa di ricambio.
 - **La durata della campagna**, che decide se l'idea di aspettare Formnext funziona.
 

@@ -27,7 +27,7 @@ and I covered the third delay in
 difference is that this time it isn't a window, it's a specific day.
 
 > **Update, 8 November:** the campaign's pre-launch page now shows the warranty, the delivery
-> roadmap, the add-ons and the eSUN partnership. You'll find them in the sections below. The video
+> roadmap, the add-ons, the full spec sheet for both machines and the eSUN partnership. You'll find them in the sections below. The video
 > covers them too (in Italian, with chapters).
 
 ## The prices, and what you actually pay
@@ -125,13 +125,10 @@ yourself.
 During the campaign you'll be able to add to your pledge: **spare toolhead, build plate, feeder
 module, filament, 10 W laser module, camera and side-blower fan**.
 
-Prices aren't published yet, and the page doesn't say which add-ons apply to the MX and which to the
-Pro. Two details need clearing up:
+Prices aren't published yet. The spec sheet below does make clear who they're for:
 
-- the **camera** is listed as an add-on, but in August InfiMech said it was **standard on the MX Pro**;
-- the **side-blower fan** is listed as an add-on, but the page also presents it as a chassis feature.
-
-Most likely they're standard on one model and extra on the other. I'll check once prices are out.
+- the **camera** and the **side-blower fan** are **standard on the MX Pro** and **optional on the MX**;
+- the **laser module** is **optional on the MX Pro** and **not available on the MX**.
 
 ## eSUN and the giveaways
 
@@ -140,21 +137,59 @@ InfiMech × eSUN co-branded filaments. During the campaign they promise giveaway
 **eSUN filaments and eSUN discount coupons**. Rules, schedule and how to enter will be published at
 launch.
 
-## What the page says about the specs
+## Full spec sheet: MX vs MX Pro
 
-- **Closed-loop motors with encoders and collision recovery, MX Pro only.** If the toolhead gets
-  bumped, the machine detects it and drives it back onto its path within milliseconds, with no layer
-  shift. The page says "MX Series" in general, but the closed-loop motors are **on the Pro only**: the
-  MX doesn't have them.
-- **Active heated chamber up to 60–65 °C**, with a particulate filter and activated carbon for ABS and
-  ASA fumes.
+This is the table published on the campaign page. InfiMech calls it **provisional and subject to
+change** until the machine ships.
+
+| | MX Pro | MX |
+|---|---|---|
+| External dimensions | 453 × 488 × 563 mm | 361 × 401 × 402 mm |
+| Build volume | 300 × 300 × 300 mm | 220 × 220 × 220 mm |
+| Weight | 26 kg | 13 kg |
+| Frame | Steel, enclosed | Steel, open |
+| Toolheads | 8 | 6 |
+| Max nozzle temperature | 350 °C | 310 °C |
+| Motors | **Closed-loop** | Open-loop |
+| Max speed | 800 mm/s | 600 mm/s |
+| Max acceleration | 20,000 mm/s² | 20,000 mm/s² |
+| Bed | 110 °C, textured plate | 110 °C, textured plate |
+| Heated chamber | 60–65 °C | No |
+| Air filter | HEPA and activated carbon | No |
+| Camera | 1080p 30 fps, standard | Optional |
+| AI monitoring | Yes | No |
+| Side-blower fan | Standard | Optional |
+| Laser module | Optional | Not available |
+| Max power | 1,850 W at 220 V (1,300 W at 110 V) | 1,150 W at 220 V (700 W at 110 V) |
+
+**Shared:** HRC50+ hardened steel nozzles, induction heating, wireless thermistor, 1.75 mm filament,
+adaptive calibration, blob, run-out and tangle detection, power-loss recovery, plate detection, 5"
+screen (480 × 854), 8 GB storage plus microSD, OrcaSlicer or InfiMech Orca, operating temperature
+10–30 °C.
+
+**Materials.** The Pro prints PLA, PETG, ABS, ASA, TPU, PET, PA and PC, plus carbon- or glass-filled
+grades (PLA, PETG, ABS, ASA, PA, PA6, PA12, PAHT, PPA, PET). The MX is meant for PLA, PETG, TPU, PVA,
+PLA-CF and PETG-CF; ABS, ASA, PA, PC and PET are **not recommended**.
+
+What I take from the table:
+
+- **The Pro gets 350 °C.** It was one of the seven upgrades promised in September, and it's in the
+  sheet.
+- **Closed-loop is Pro only.** The collision recovery the page presents for the whole "MX Series"
+  isn't on the MX: its motors are open-loop.
+- **The software is Windows only.** The sheet lists Windows as the only supported operating system: if
+  you're on Mac or Linux, ask before you pledge.
+- **Network: 2.4 GHz Wi-Fi only, no Ethernet**, on both.
+- **Up to 1,850 W peak** for the Pro: that's the heated chamber. Worth keeping in mind on a domestic
+  supply with other appliances running.
+- **The 1.5GT belts aren't in the sheet.**
 
 ## What's still to be confirmed
 
 - **The 1.5GT belts.** They were the only one of the seven upgrades still "under evaluation", and the
-  reason for the last delay. The pre-launch page doesn't mention them.
-- **The final specs.** InfiMech promised no downgrades and no extra cost for the upgrades. On
-  10 November we'll see whether the campaign's spec sheet keeps that promise.
+  reason for the last delay. Neither the pre-launch page nor the spec sheet mentions them.
+- **The final specs.** The sheet is declared provisional: it's the one to compare against the machine
+  that arrives.
 - **Add-on prices**, including the spare toolhead.
 - **The campaign length**, which decides whether waiting for Formnext works.
 
