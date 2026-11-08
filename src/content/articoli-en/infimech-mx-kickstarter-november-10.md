@@ -4,6 +4,7 @@ description: "The InfiMech MX campaign opens on November 10, a week before Formn
 categoria: stampa-3d
 tipo: guida
 pubDate: 2026-11-05
+updatedDate: 2026-11-08
 cover: ../../assets/infimech-mx-kickstarter-10-novembre.jpg
 coverAlt: "Cover: InfiMech MX Kickstarter on 10 November, date confirmed, with the MX Pro on the right"
 videoId: K0m_uxwANMY
@@ -25,6 +26,10 @@ and I covered the third delay in
 [InfiMech delays again: 7 free upgrades](../../3d-printing/infimech-delay-seven-free-upgrades/). The
 difference is that this time it isn't a window, it's a specific day.
 
+> **Update, 8 November:** the campaign's pre-launch page now shows the warranty, the delivery
+> roadmap, the add-ons and the eSUN partnership. You'll find them in the sections below. The video
+> covers them too (in Italian, with chapters).
+
 ## The prices, and what you actually pay
 
 | | MX (6 toolheads) | MX Pro (8 toolheads) |
@@ -32,6 +37,9 @@ difference is that this time it isn't a window, it's a specific day.
 | Super Early Bird at launch | $299 | $549 |
 | With the $5 VIP deposit | $249 | $499 |
 | List price | $399 | $1,399 |
+
+The campaign page puts it this way: VIP "Pay $5 for VIP Access, Get $50 Cashback", Super Early Bird
+"No deposit required". So you can claim a Super Early Bird slot without a deposit.
 
 The $249 and $499 figures that have been around since August **aren't a price you see at checkout**.
 The $5 VIP deposit buys a **$50 credit**, paid back as cashback **after the campaign closes**. So on
@@ -45,8 +53,8 @@ been published yet.
 InfiMech doesn't publish prices in euros or pounds: exchange rate, shipping and VAT will only show up
 on the campaign page.
 
-**Launch time:** not published yet. VIP deposit holders get an alert shortly before launch, ahead of
-the public one.
+**Launch time:** InfiMech sends it by email to VIP deposit holders, shortly before launch and ahead of
+the public alert.
 
 ## The calendar problem: Formnext comes after
 
@@ -75,14 +83,80 @@ There's one condition: the campaign has to run **past 20 November**. You'll only
 10th, on the campaign page. Hardware campaigns usually stay open for weeks, but check: if it closed
 before Formnext, this plan no longer works.
 
+## The roadmap: deliveries from Q1 2027
+
+The campaign page lays out the project's history and the next milestones:
+
+| When | Milestone |
+|---|---|
+| July 2024 | Project kickoff (codename F04) |
+| November 2024 | First prototype, 10 units |
+| May 2025 | Pilot run V2.0, 20 units |
+| September 2025 | Official names: MX and MX Pro |
+| December 2025 | Public debut at the Dubai exhibition, 50 units in testing |
+| May 2026 | Global beta with creators |
+| September 2026 | Pilot production, 200 units |
+| **November 2026** | **Kickstarter** |
+| **December 2026** | **Mass production** |
+| **Q1 2027** | **First batch shipped to backers** |
+
+Two things to read carefully. Mass production is planned **one month after** the campaign opens:
+that's a tight schedule for a project that has already moved its launch three times. And "first
+batch" doesn't mean every backer: if you join later in the campaign, your machine may come later.
+
+## Warranty and support
+
+| Coverage | Length |
+|---|---|
+| Structural, mechanical and electronic components | 12 months, **2 years where legally required (EU and UK)** |
+| VIP reservation holders | 2-year full warranty on core components |
+| Wear parts (hotend assembly, extruder gear, PTFE tube) | 3 months |
+
+The page also lists a "6-month limited warranty" without saying what it covers: worth asking InfiMech
+during the campaign.
+
+What matters most is the **service method**: "Official replacement parts shipped directly to users",
+meaning **they send you the part and you fit it**. There's no repair centre to send the printer to.
+On a toolchanger with six or eight heads, that means sooner or later you'll be taking a head apart
+yourself.
+
+## The add-ons
+
+During the campaign you'll be able to add to your pledge: **spare toolhead, build plate, feeder
+module, filament, 10 W laser module, camera and side-blower fan**.
+
+Prices aren't published yet, and the page doesn't say which add-ons apply to the MX and which to the
+Pro. Two details need clearing up:
+
+- the **camera** is listed as an add-on, but in August InfiMech said it was **standard on the MX Pro**;
+- the **side-blower fan** is listed as an add-on, but the page also presents it as a chassis feature.
+
+Most likely they're standard on one model and extra on the other. I'll check once prices are out.
+
+## eSUN and the giveaways
+
+InfiMech has announced a partnership with **eSUN**, one of the most widespread filament brands, with
+InfiMech × eSUN co-branded filaments. During the campaign they promise giveaways and daily rewards:
+**eSUN filaments and eSUN discount coupons**. Rules, schedule and how to enter will be published at
+launch.
+
+## What the page says about the specs
+
+- **Closed-loop motors with encoders and collision recovery, MX Pro only.** If the toolhead gets
+  bumped, the machine detects it and drives it back onto its path within milliseconds, with no layer
+  shift. The page says "MX Series" in general, but the closed-loop motors are **on the Pro only**: the
+  MX doesn't have them.
+- **Active heated chamber up to 60–65 °C**, with a particulate filter and activated carbon for ABS and
+  ASA fumes.
+
 ## What's still to be confirmed
 
 - **The 1.5GT belts.** They were the only one of the seven upgrades still "under evaluation", and the
-  reason for the last delay. The campaign page will show whether they made it.
+  reason for the last delay. The pre-launch page doesn't mention them.
 - **The final specs.** InfiMech promised no downgrades and no extra cost for the upgrades. On
   10 November we'll see whether the campaign's spec sheet keeps that promise.
-- **Delivery dates.** The number a crowdfunding campaign changes most often.
-- **The price of extra toolheads**, never announced so far.
+- **Add-on prices**, including the spare toolhead.
+- **The campaign length**, which decides whether waiting for Formnext works.
 
 I'll update this article on 10 November with what's actually on the page.
 
