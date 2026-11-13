@@ -57,7 +57,7 @@ quello invece del piano della macchina. E' un consumabile, e averne due di scort
 
 ## Cosa arrivera' nei prossimi contenuti
 
-Unboxing e primo setup, PCB fatti in casa, lavorazioni in alluminio, test del laser e l'integrazione
+[Unboxing](../../cnc/makera-z1-pro-unboxing/) e primo setup, PCB fatti in casa, lavorazioni in alluminio, test del laser e l'integrazione
 fra CNC, stampa 3D e robotica &mdash; che e' poi il motivo per cui una macchina del genere entra in un
 laboratorio che ha gia' delle stampanti.
 

@@ -46,7 +46,7 @@ The spoil board deserves an explanation, because it means nothing to someone com
 
 ## What's coming next
 
-Unboxing and first setup, home-made PCBs, aluminium work, laser tests, and the integration between CNC, 3D printing and robotics — which is, after all, why a machine like this ends up in a workshop that already has printers.
+[Unboxing](../../cnc/makera-z1-pro-unboxing/) and first setup, home-made PCBs, aluminium work, laser tests, and the integration between CNC, 3D printing and robotics — which is, after all, why a machine like this ends up in a workshop that already has printers.
 
 <p class="avviso-affiliato">
 <strong>Disclosure:</strong> affiliate link, it doesn't change the price for you.
