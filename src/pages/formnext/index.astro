@@ -1,0 +1,289 @@
+---
+/**
+ * Pagina del QR sul biglietto da visita lasciato agli espositori di Formnext.
+ * In inglese: a Francoforte le marche sono quasi tutte internazionali.
+ * noindex: e' una pagina d'evento, non deve competere con /en/work-with-me/.
+ *
+ * La copertura per marca si genera dagli articoli inglesi pubblicati, quindi
+ * resta aggiornata da sola.
+ */
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { u } from '../../lib/url';
+import { percorsoArticolo } from '../../lib/i18n';
+import { NUMERI, EMAIL, MACCHINE, MARCHE_SEGUITE, T } from '../../data/collabora';
+
+const t = T.en;
+
+const articoli = (await getCollection('articoliEn', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+const copertura = MARCHE_SEGUITE.map((marca) => {
+  const chiave = marca.toLowerCase();
+  const trovati = articoli.filter(
+    (a) =>
+      a.data.title.toLowerCase().includes(chiave) ||
+      a.data.tags.some((tag) => tag.toLowerCase() === chiave),
+  );
+  return { marca, articoli: trovati.slice(0, 4), totale: trovati.length };
+}).filter((m) => m.totale > 0);
+
+/** I numeri in collabora.ts sono scritti all'italiana: qui diventano inglesi. */
+const en = (v: string) => v.replace(/\./g, ',');
+const MESI: Record<string, string> = {
+  gennaio: 'January', febbraio: 'February', marzo: 'March', aprile: 'April',
+  maggio: 'May', giugno: 'June', luglio: 'July', agosto: 'August',
+  settembre: 'September', ottobre: 'October', novembre: 'November', dicembre: 'December',
+};
+const [giorno, mese, anno] = NUMERI.aggiornati.split(' ');
+const dataEn = `${MESI[mese] ?? mese} ${giorno}, ${anno}`;
+
+const cifre = [
+  { valore: en(NUMERI.iscritti), etichetta: t.etichetteNumeri.iscritti },
+  { valore: en(NUMERI.visualizzazioni), etichetta: t.etichetteNumeri.visualizzazioni },
+  { valore: en(NUMERI.oreVisione), etichetta: t.etichetteNumeri.oreVisione },
+  { valore: en(NUMERI.videoPubblicati), etichetta: t.etichetteNumeri.videoPubblicati },
+];
+
+const oggetto = encodeURIComponent('Formnext 2026 — ');
+---
+
+<BaseLayout
+  title="Nice to meet you at Formnext | Walter Maker Labs"
+  description="Walter Maker Labs at Formnext 2026: hands-on reviews of 3D printers, desktop CNC and laser machines. Who I am, what I've covered, and how to reach me."
+  lingua="en"
+  noindex
+>
+  <article class="fiera">
+    <p class="occhiello">Formnext 2026 · Frankfurt</p>
+    <h1>Thanks for taking my card</h1>
+    <p class="apertura">
+      I’m <strong>Walter Esposito</strong>. On <strong>Walter Maker Labs</strong> I test 3D printers,
+      desktop CNC mills and laser machines for weeks, and report how they actually perform, including
+      when they don’t.
+    </p>
+    <p class="apertura">
+      The channel is in Italian, with an <strong>English audio track and subtitles</strong> on the
+      long-form videos, and the site has an <strong>English edition</strong>.
+    </p>
+
+    <p class="azioni">
+      <a class="bottone bottone--pieno" href={`mailto:${EMAIL}?subject=${oggetto}`}>Email me &rarr;</a>
+      <a class="bottone" href="https://www.youtube.com/@waltermakerlabs">See the channel</a>
+    </p>
+    <p class="email">{EMAIL}</p>
+
+    <section>
+      <h2>The numbers</h2>
+      <ul class="cifre">
+        {
+          cifre.map((c) => (
+            <li>
+              <span class="cifra">{c.valore}</span>
+              <span class="cifra__etichetta">{c.etichetta}</span>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="nota">Views, hours and videos refer to the last 28 days. Figures updated on {dataEn}.</p>
+    </section>
+
+    <section>
+      <h2>What I’ve already covered</h2>
+      <p>If your brand is here, this is what my audience has already read about you.</p>
+      {
+        copertura.map((m) => (
+          <div class="marca">
+            <h3>
+              {m.marca} <span class="conta">{m.totale} {m.totale === 1 ? 'article' : 'articles'}</span>
+            </h3>
+            <ul>
+              {m.articoli.map((a) => (
+                <li>
+                  <a href={u(percorsoArticolo('en', a.data.categoria, a.id))}>{a.data.title}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </section>
+
+    <section>
+      <h2>Machines in my workshop</h2>
+      <ul class="pastiglie">
+        {MACCHINE.map((m) => <li>{m}</li>)}
+      </ul>
+    </section>
+
+    <section>
+      <h2>What I can do</h2>
+      <dl class="formati">
+        {
+          t.formati.map((f) => (
+            <div>
+              <dt>{f.titolo}</dt>
+              <dd>{f.testo}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </section>
+
+    <section class="contatto">
+      <h2>One rule</h2>
+      <p>
+        I always disclose what I was sent, and I say what doesn’t work. That’s why people believe me
+        when something does. The full terms are on the
+        <a href={u('/en/work-with-me/')}>work with me</a> page.
+      </p>
+      <p>
+        <a class="bottone bottone--pieno" href={`mailto:${EMAIL}?subject=${oggetto}`}>Email me &rarr;</a>
+      </p>
+      <p class="nota">Azienda italiana? <a href={u('/collabora/')}>La pagina in italiano è qui</a>.</p>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .fiera {
+    max-width: 44rem;
+    padding-block: 2rem 3rem;
+  }
+  .occhiello {
+    color: var(--accento);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    margin: 0;
+  }
+  h1 {
+    margin-top: 0.3rem;
+  }
+  .apertura {
+    font-size: 1.12rem;
+  }
+  .fiera section {
+    margin-top: 2.5rem;
+  }
+  .azioni {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+  .email {
+    font-size: 0.92rem;
+    color: var(--testo-tenue);
+    margin-top: 0.4rem;
+  }
+  .bottone {
+    display: inline-block;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid var(--accento);
+    border-radius: 6px;
+    padding: 0.6rem 1.2rem;
+  }
+  .bottone:hover {
+    background: var(--accento-tenue);
+  }
+  .bottone--pieno {
+    background: var(--accento);
+    color: var(--sfondo, #111);
+  }
+  .bottone--pieno:hover {
+    background: var(--accento);
+    filter: brightness(1.08);
+  }
+  .cifre {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  }
+  .cifre li {
+    background: var(--superficie);
+    border: 1px solid var(--bordo);
+    border-radius: var(--raggio);
+    padding: 1rem 1.1rem;
+  }
+  .cifra {
+    display: block;
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: var(--accento);
+    line-height: 1.1;
+  }
+  .cifra__etichetta {
+    display: block;
+    margin-top: 0.2rem;
+    font-size: 0.86rem;
+    color: var(--testo-tenue);
+  }
+  .nota {
+    margin-top: 0.9rem;
+    font-size: 0.85rem;
+    color: var(--testo-tenue);
+  }
+  .marca {
+    border-top: 1px solid var(--bordo);
+    padding-top: 0.8rem;
+    margin-top: 1rem;
+  }
+  .marca h3 {
+    margin: 0 0 0.4rem;
+    font-size: 1.05rem;
+  }
+  .conta {
+    font-weight: 400;
+    font-size: 0.85rem;
+    color: var(--testo-tenue);
+    margin-left: 0.4rem;
+  }
+  .marca ul {
+    margin: 0;
+    padding-left: 1.1rem;
+  }
+  .marca li {
+    margin-bottom: 0.3rem;
+  }
+  .pastiglie {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .pastiglie li {
+    border: 1px solid var(--accento);
+    border-radius: 999px;
+    padding: 0.3rem 0.85rem;
+    font-size: 0.92rem;
+  }
+  .formati {
+    margin: 1rem 0 0;
+  }
+  .formati > div {
+    padding: 0.9rem 0;
+    border-top: 1px solid var(--bordo);
+  }
+  .formati dt {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+  .formati dd {
+    margin: 0;
+    color: var(--testo-tenue);
+    font-size: 0.96rem;
+  }
+  .contatto {
+    border-top: 1px solid var(--bordo);
+    padding-top: 1.75rem;
+  }
+</style>

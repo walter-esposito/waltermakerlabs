@@ -1,0 +1,246 @@
+---
+/**
+ * Pagina del QR sul portachiavi attaccato alla borsa: per chi non mi conosce.
+ * Non nomina nessuna fiera, cosi' il portachiavi resta valido anche dopo.
+ *
+ * Bilingue in una pagina sola, perche' un QR porta a un solo indirizzo: mostra
+ * l'italiano a chi ha il telefono in italiano e l'inglese a tutti gli altri.
+ * Senza JavaScript si vedono entrambe le lingue, una sotto l'altra.
+ */
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { u } from '../../lib/url';
+import { percorsoArticolo } from '../../lib/i18n';
+
+const YOUTUBE = 'https://www.youtube.com/@waltermakerlabs?sub_confirmation=1';
+
+const ultimi = async (lingua: 'it' | 'en') =>
+  (await getCollection(lingua === 'it' ? 'articoli' : 'articoliEn', ({ data }) => !data.draft && !!data.videoId))
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+    .slice(0, 3)
+    .map((a) => ({
+      titolo: a.data.title,
+      cover: a.data.cover,
+      alt: a.data.coverAlt,
+      href: u(percorsoArticolo(lingua, a.data.categoria, a.id)),
+    }));
+
+const testi = [
+  {
+    lingua: 'it' as const,
+    ciao: 'Ciao, sono Walter',
+    sotto: 'Stampa 3D, CNC e laser, provati per settimane. Racconto come vanno davvero, anche quando non vanno.',
+    iscriviti: 'Iscriviti al canale YouTube',
+    ultimi: 'Gli ultimi video',
+    altro: 'Altro',
+    link: [
+      { t: 'Tutti gli articoli', h: u('/') },
+      { t: 'Codici sconto', h: u('/sconti/') },
+      { t: 'Gruppo Telegram InfiMech Italia (non ufficiale)', h: 'https://t.me/infimechItalia' },
+      { t: 'Sei un’azienda? Collaboriamo', h: u('/collabora/') },
+    ],
+    articoli: await ultimi('it'),
+  },
+  {
+    lingua: 'en' as const,
+    ciao: 'Hi, I’m Walter',
+    sotto: '3D printers, desktop CNC and lasers, tested for weeks. I report how they really perform, including when they don’t. The channel is in Italian, with English audio and subtitles.',
+    iscriviti: 'Subscribe on YouTube',
+    ultimi: 'Latest videos',
+    altro: 'More',
+    link: [
+      { t: 'All articles in English', h: u('/en/') },
+      { t: 'Are you a brand? Work with me', h: u('/en/work-with-me/') },
+    ],
+    articoli: await ultimi('en'),
+  },
+];
+---
+
+<BaseLayout
+  title="Ciao! | Walter Maker Labs"
+  description="Walter Maker Labs: stampa 3D, CNC e laser provati sul campo. 3D printing, CNC and laser, tested for real."
+  noindex
+>
+  <div class="ciao">
+    <p class="scelta" aria-label="Lingua / Language">
+      <button type="button" data-scegli="it">Italiano</button>
+      <button type="button" data-scegli="en">English</button>
+    </p>
+
+    {
+      testi.map((t) => (
+        <section class="versione" data-lingua={t.lingua} lang={t.lingua}>
+          <img class="logo" src={u('/logo.png')} alt="Walter Maker Labs" width="96" height="96" />
+          <h1>{t.ciao}</h1>
+          <p class="sotto">{t.sotto}</p>
+
+          <a class="bottone-yt" href={YOUTUBE}>
+            ▶ {t.iscriviti}
+          </a>
+          <p class="handle">@waltermakerlabs</p>
+
+          <h2>{t.ultimi}</h2>
+          <ul class="video">
+            {t.articoli.map((a) => (
+              <li>
+                <a href={a.href}>
+                  <Image src={a.cover} alt={a.alt} width={480} />
+                  <span>{a.titolo}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          <h2>{t.altro}</h2>
+          <ul class="link">
+            {t.link.map((l) => (
+              <li>
+                <a href={l.h}>{l.t} &rarr;</a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))
+    }
+  </div>
+</BaseLayout>
+
+<script is:inline>
+  (function () {
+    var radice = document.querySelector('.ciao');
+    if (!radice) return;
+    function mostra(l) {
+      radice.setAttribute('data-mostra', l);
+    }
+    var lingua = (navigator.language || 'en').toLowerCase().indexOf('it') === 0 ? 'it' : 'en';
+    mostra(lingua);
+    radice.querySelectorAll('[data-scegli]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        mostra(b.getAttribute('data-scegli'));
+      });
+    });
+  })();
+</script>
+
+<style>
+  .ciao {
+    max-width: 32rem;
+    margin-inline: auto;
+    padding-block: 1.25rem 3rem;
+    text-align: center;
+  }
+  .scelta {
+    display: none;
+    justify-content: flex-end;
+    gap: 0.4rem;
+    margin: 0 0 0.5rem;
+  }
+  .ciao[data-mostra] .scelta {
+    display: flex;
+  }
+  .scelta button {
+    font: inherit;
+    font-size: 0.85rem;
+    background: none;
+    color: var(--testo-tenue);
+    border: 1px solid var(--bordo);
+    border-radius: 999px;
+    padding: 0.2rem 0.75rem;
+    cursor: pointer;
+  }
+  .ciao[data-mostra='it'] [data-scegli='it'],
+  .ciao[data-mostra='en'] [data-scegli='en'] {
+    color: var(--testo);
+    border-color: var(--accento);
+  }
+  .ciao[data-mostra='it'] .versione[data-lingua='en'],
+  .ciao[data-mostra='en'] .versione[data-lingua='it'] {
+    display: none;
+  }
+  .versione + .versione {
+    margin-top: 3rem;
+    border-top: 1px solid var(--bordo);
+    padding-top: 2rem;
+  }
+  .ciao[data-mostra] .versione + .versione {
+    margin-top: 0;
+    border-top: 0;
+    padding-top: 0;
+  }
+  .logo {
+    width: 96px;
+    height: 96px;
+    object-fit: contain;
+  }
+  h1 {
+    margin: 0.5rem 0 0.4rem;
+  }
+  .sotto {
+    color: var(--testo-tenue);
+    font-size: 1.05rem;
+  }
+  .bottone-yt {
+    display: block;
+    margin-top: 1.4rem;
+    background: #e62117;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-decoration: none;
+    border-radius: 10px;
+    padding: 0.95rem 1rem;
+  }
+  .bottone-yt:hover {
+    filter: brightness(1.08);
+  }
+  .handle {
+    margin-top: 0.4rem;
+    font-size: 0.9rem;
+    color: var(--testo-tenue);
+  }
+  h2 {
+    margin-top: 2.25rem;
+    font-size: 1.1rem;
+    text-align: left;
+  }
+  .video,
+  .link {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+  }
+  .video li + li {
+    margin-top: 1rem;
+  }
+  .video a {
+    display: block;
+    text-decoration: none;
+    color: var(--testo);
+    background: var(--superficie);
+    border: 1px solid var(--bordo);
+    border-radius: var(--raggio);
+    overflow: hidden;
+  }
+  .video img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .video span {
+    display: block;
+    padding: 0.6rem 0.8rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  .link li {
+    border-top: 1px solid var(--bordo);
+  }
+  .link a {
+    display: block;
+    padding: 0.8rem 0;
+    text-decoration: none;
+  }
+</style>
