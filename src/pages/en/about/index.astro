@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PaginaChiSono from '../../../components/PaginaChiSono.astro';
+
+const persona = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  mainEntity: {
+    '@type': 'Person',
+    '@id': 'https://waltermakerlabs.it/chi-sono/#walter',
+    name: 'Walter Esposito',
+    jobTitle: 'Software and firmware developer',
+    url: 'https://waltermakerlabs.it/chi-sono/',
+    sameAs: ['https://www.youtube.com/@waltermakerlabs', 'https://arduinoproject.it/'],
+    knowsAbout: ['3D printing', 'CNC milling', 'Laser engraving', 'Embedded firmware', 'Arduino'],
+  },
+};
+---
+
+<BaseLayout
+  title="About Walter Esposito | Walter Maker Labs"
+  description="Software and firmware developer, maker since building a RepRap in 2011. Who is behind Walter Maker Labs and how I review machines."
+  lingua="en"
+  alternato="/chi-sono/"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(persona)} />
+  <PaginaChiSono lingua="en" />
+</BaseLayout>

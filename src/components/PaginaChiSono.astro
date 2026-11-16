@@ -1,0 +1,213 @@
+---
+/**
+ * Pagina "Chi sono" / "About", in italiano e inglese.
+ *
+ * Serve a due cose: dare un volto all'autore delle recensioni (Google valuta chi
+ * scrive, e lo schema Person degli articoli punta qui) e far capire chi sono a
+ * chi arriva dal biglietto da visita.
+ *
+ * Regola: niente date promesse. L'app esce quando esce; la data si aggiunge dopo.
+ */
+import { u } from '../lib/url';
+import { type Lingua, T as TESTI, percorsoHome } from '../lib/i18n';
+import { EMAIL, MACCHINE } from '../data/collabora';
+
+interface Props {
+  lingua: Lingua;
+}
+const { lingua } = Astro.props;
+const ui = TESTI[lingua];
+
+const grassetto = (s: string) => s.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+
+const T = {
+  it: {
+    titolo: 'Chi sono',
+    sommario:
+      'Sono Walter Esposito: sviluppatore software e firmware, ingegnere informatico, e da quindici anni costruisco, stampo e riparo cose. Su Walter Maker Labs provo le macchine che uso davvero.',
+    storiaTitolo: 'La storia, in breve',
+    storia: [
+      { anno: '2011', testo: 'Studente di ingegneria informatica, uso **Arduino** in tanti progetti. Decido di costruirmi da solo una **stampante 3D in stile RepRap**.' },
+      { anno: '2011', testo: 'Mentre la costruisco seguo un corso a scelta di **disegno industriale**, dove imparo **Siemens NX**.' },
+      { anno: 'Tesi', testo: 'Per la tesi realizzo un **sistema domotico funzionante**: il contenitore lo disegno in NX e lo stampo in **ABS** sulla mia stampante autocostruita.' },
+      { anno: 'Dopo', testo: 'La stampante diventa uno strumento di casa: **pezzi rotti, piccole riparazioni**, oggetti che non si trovano in negozio.' },
+      { anno: '2018', testo: 'Compro la mia prima stampante "vera": una **Anycubic i3 Mega S**.' },
+      { anno: '2025', testo: 'Il mio canale YouTube diventa un **canale maker**, oggi **Walter Maker Labs**: recensioni di stampanti 3D, CNC e laser dopo settimane di uso reale.' },
+      { anno: '2026', testo: 'Arriva la prima CNC, una **Makera Z1 Pro**: la userò soprattutto per fresare i **PCB in casa**.' },
+    ],
+    arduino: 'I progetti Arduino di quegli anni sono ancora online su',
+    lavoroTitolo: 'Il mio lavoro',
+    lavoro:
+      'Di mestiere scrivo **firmware embedded** e collego l’hardware alle **applicazioni web**. Progetto anche **sistemi di intelligenza artificiale privati**, che girano in locale e non mandano i dati fuori. È il motivo per cui nelle recensioni guardo anche firmware, software e app, non solo la meccanica.',
+    laboratorioTitolo: 'Cosa c’è in laboratorio',
+    laboratorio: 'Stampanti 3D, una CNC e un laser. Le macchine che ho provato di persona:',
+    regoleTitolo: 'Come recensisco',
+    regole: [
+      '**Uso le macchine per settimane** prima di dare un giudizio.',
+      '**Dico cosa non funziona**, anche quando la macchina mi piace.',
+      '**Dichiaro sempre** cosa mi è stato mandato e quali link sono affiliati.',
+    ],
+    appTitolo: 'L’app in arrivo',
+    app: [
+      'Sto sviluppando un’**app gratuita e open source**, con licenza **GPL 3.0**.',
+      'Accompagna chi inizia con una **stampante 3D, una CNC o un laser**, passo dopo passo, con **calibrazioni guidate**.',
+      'In meno di cinque minuti, e **senza nessun CAD**, permette di fare foto 3D, litofanie, portachiavi e biglietti da visita.',
+      'È il mio piccolo regalo alla community. Quando esce, la trovi qui.',
+    ],
+    percheTitolo: 'Perché lo faccio',
+    perche:
+      'Per me la stampa 3D non è solo un hobby. È uno strumento per costruire in casa quello che mi serve, e per condividerlo con gli altri.',
+    contattiTitolo: 'Dove trovarmi',
+    canale: 'Il canale YouTube',
+    collabora: 'Sei un’azienda? Collaboriamo',
+    collaboraUrl: '/collabora/',
+    scrivimi: 'Scrivimi',
+  },
+  en: {
+    titolo: 'About me',
+    sommario:
+      'I’m Walter Esposito: a software and firmware developer and computer engineer, and for fifteen years I’ve been building, printing and fixing things. On Walter Maker Labs I review the machines I really use.',
+    storiaTitolo: 'My story, in short',
+    storia: [
+      { anno: '2011', testo: 'As a computer engineering student I use **Arduino** for many projects. I decide to build my own **RepRap-style 3D printer**.' },
+      { anno: '2011', testo: 'While building it I take an optional course in **industrial design**, where I learn **Siemens NX**.' },
+      { anno: 'Thesis', testo: 'For my thesis I build a **working home automation system**: I design the case in NX and print it in **ABS** on my own home-built printer.' },
+      { anno: 'After', testo: 'The printer becomes a tool for the house: **broken parts, small repairs**, things you can’t buy in a shop.' },
+      { anno: '2018', testo: 'I buy my first “real” printer: an **Anycubic i3 Mega S**.' },
+      { anno: '2025', testo: 'My YouTube channel becomes a **maker channel**, today **Walter Maker Labs**: reviews of 3D printers, CNC and lasers after weeks of real use.' },
+      { anno: '2026', testo: 'My first CNC arrives, a **Makera Z1 Pro**: I’ll mainly use it to mill **PCBs at home**.' },
+    ],
+    arduino: 'My Arduino projects from those years are still online, in Italian, on',
+    lavoroTitolo: 'My job',
+    lavoro:
+      'For a living I write **embedded firmware** and connect hardware to **web applications**. I also design **private AI systems** that run locally and keep data in-house. That’s why my reviews look at firmware, software and apps, not just the mechanics.',
+    laboratorioTitolo: 'What’s in my workshop',
+    laboratorio: '3D printers, a CNC and a laser. The machines I’ve tested hands-on:',
+    regoleTitolo: 'How I review',
+    regole: [
+      '**I use machines for weeks** before giving a verdict.',
+      '**I say what doesn’t work**, even when I like the machine.',
+      '**I always disclose** what I was sent and which links are affiliate links.',
+    ],
+    appTitolo: 'The app I’m building',
+    app: [
+      'I’m developing a **free, open-source app**, licensed under **GPL 3.0**.',
+      'It guides beginners through a **3D printer, a CNC or a laser**, step by step, with **guided calibrations**.',
+      'In less than five minutes, and **without any CAD**, you can make 3D photos, lithophanes, keychains and business cards.',
+      'It’s my small gift to the community. When it’s out, you’ll find it here.',
+    ],
+    percheTitolo: 'Why I do it',
+    perche:
+      'For me, 3D printing is not just a hobby. It’s a tool to make what I need at home, and to share with others.',
+    contattiTitolo: 'Where to find me',
+    canale: 'The YouTube channel',
+    collabora: 'Are you a brand? Work with me',
+    collaboraUrl: '/en/work-with-me/',
+    scrivimi: 'Email me',
+  },
+}[lingua];
+---
+
+<nav class="briciole" aria-label={ui.percorso}>
+  <ol>
+    <li><a href={u(percorsoHome(lingua))}>{ui.home}</a></li>
+    <li aria-current="page">{T.titolo}</li>
+  </ol>
+</nav>
+
+<article class="articolo chi-sono">
+  <h1>{T.titolo}</h1>
+  <p class="articolo__sommario">{T.sommario}</p>
+
+  <h2>{T.storiaTitolo}</h2>
+  <ol class="storia">
+    {
+      T.storia.map((s) => (
+        <li>
+          <span class="anno">{s.anno}</span>
+          <span set:html={grassetto(s.testo)} />
+        </li>
+      ))
+    }
+  </ol>
+  <p class="nota">
+    {T.arduino} <a href="https://arduinoproject.it/">ArduinoProject.it</a>.
+  </p>
+
+  <h2>{T.lavoroTitolo}</h2>
+  <p set:html={grassetto(T.lavoro)} />
+
+  <h2>{T.laboratorioTitolo}</h2>
+  <p>{T.laboratorio}</p>
+  <ul class="pastiglie">
+    {MACCHINE.map((m) => <li>{m}</li>)}
+  </ul>
+
+  <h2>{T.regoleTitolo}</h2>
+  <ul>
+    {T.regole.map((r) => <li set:html={grassetto(r)} />)}
+  </ul>
+
+  <h2>{T.appTitolo}</h2>
+  {T.app.map((p) => <p set:html={grassetto(p)} />)}
+
+  <h2>{T.percheTitolo}</h2>
+  <p>{T.perche}</p>
+
+  <h2>{T.contattiTitolo}</h2>
+  <ul class="contatti">
+    <li><a href="https://www.youtube.com/@waltermakerlabs">{T.canale} &rarr;</a> @waltermakerlabs</li>
+    <li><a href={u(T.collaboraUrl)}>{T.collabora} &rarr;</a></li>
+    <li><a href={`mailto:${EMAIL}`}>{T.scrivimi} &rarr;</a> {EMAIL}</li>
+  </ul>
+</article>
+
+<style>
+  .storia {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+  }
+  .storia li {
+    display: grid;
+    grid-template-columns: 4.5rem 1fr;
+    gap: 0.75rem;
+    padding: 0.7rem 0;
+    border-top: 1px solid var(--bordo);
+  }
+  .anno {
+    font-weight: 700;
+    color: var(--accento);
+  }
+  .nota {
+    font-size: 0.92rem;
+    color: var(--testo-tenue);
+  }
+  .pastiglie {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .pastiglie li {
+    border: 1px solid var(--accento);
+    border-radius: 999px;
+    padding: 0.3rem 0.85rem;
+    font-size: 0.92rem;
+  }
+  .contatti {
+    list-style: none;
+    padding: 0;
+  }
+  .contatti li {
+    padding: 0.6rem 0;
+    border-top: 1px solid var(--bordo);
+    color: var(--testo-tenue);
+  }
+  .contatti a {
+    font-weight: 600;
+    margin-right: 0.4rem;
+  }
+</style>

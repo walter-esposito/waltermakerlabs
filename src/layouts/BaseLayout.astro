@@ -156,6 +156,7 @@ const urlEn = lingua === 'en' ? canonical : urlAlternato;
         </p>
         <p>
           © {new Date().getFullYear()} Walter Esposito &middot;
+          <a href={u(lingua === 'it' ? '/chi-sono/' : '/en/about/')}>{t.footerChiSono}</a> &middot;
           <a href={u("/sconti/")}>{t.footerSconti}</a> &middot;
           <a href={u("/privacy/")}>{t.footerPrivacy}</a>
         </p>

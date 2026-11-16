@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PaginaChiSono from '../../components/PaginaChiSono.astro';
+
+const persona = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  mainEntity: {
+    '@type': 'Person',
+    '@id': 'https://waltermakerlabs.it/chi-sono/#walter',
+    name: 'Walter Esposito',
+    jobTitle: 'Sviluppatore software e firmware',
+    url: 'https://waltermakerlabs.it/chi-sono/',
+    sameAs: ['https://www.youtube.com/@waltermakerlabs', 'https://arduinoproject.it/'],
+    knowsAbout: ['3D printing', 'CNC milling', 'Laser engraving', 'Embedded firmware', 'Arduino'],
+  },
+};
+---
+
+<BaseLayout
+  title="Chi sono: Walter Esposito | Walter Maker Labs"
+  description="Sviluppatore software e firmware, maker dal 2011 con una RepRap autocostruita. Chi c'è dietro Walter Maker Labs e come recensisco le macchine."
+  lingua="it"
+  alternato="/en/about/"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(persona)} />
+  <PaginaChiSono lingua="it" />
+</BaseLayout>
