@@ -166,6 +166,7 @@ async function prezzi() {
         const soldi = offerta?.price?.money;
         const disponibile = offerta?.availability?.type;
         prezzi[it.asin] = {
+          titolo: it.itemInfo?.title?.displayValue ?? null,
           prezzo: soldi?.amount ?? null,
           valuta: soldi?.currency ?? null,
           disponibile: disponibile ?? null,

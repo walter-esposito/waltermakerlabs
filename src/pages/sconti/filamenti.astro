@@ -1,0 +1,345 @@
+---
+/**
+ * /sconti/filamenti/: i filamenti che uso davvero, presi dai link nelle descrizioni
+ * dei miei Short (src/data/filamenti.json), piu' i negozi di filamenti con codice.
+ *
+ * Prezzi Amazon: SOLO dalla Creators API (scripts/amazon.mjs prezzi), che scrive
+ * src/data/prezzi-amazon.json. Amazon vieta di mostrare un prezzo piu' vecchio di
+ * un'ora: la pagina lo nasconde nel browser quando scade. Se il file non c'e', la
+ * pagina funziona lo stesso, con il solo pulsante verso Amazon.
+ */
+import fs from 'node:fs';
+import path from 'node:path';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { u } from '../../lib/url';
+import { MARCHE } from '../../data/sconti';
+import filamenti from '../../data/filamenti.json';
+
+interface Prezzo {
+  prezzo: number | null;
+  valuta: string | null;
+  disponibile: string | null;
+  titolo?: string | null;
+}
+let prezzi: Record<string, Prezzo> = {};
+let aggiornati: string | null = null;
+try {
+  const f = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'src/data/prezzi-amazon.json'), 'utf8'));
+  prezzi = f.prezzi ?? {};
+  aggiornati = f.aggiornati ?? null;
+} catch {
+  /* nessun prezzo: l'API non e' attiva */
+}
+
+const negozi = MARCHE.filter((m) => ['r3d', 'filamentor'].includes(m.slug));
+
+const schede = filamenti.map((f) => {
+  const p = prezzi[f.asin];
+  const peso = (f as { pesoG?: number }).pesoG;
+  const euroKg = p?.prezzo && peso ? (p.prezzo / peso) * 1000 : null;
+  return {
+    ...f,
+    marcaVista: f.marca ?? 'Altre marche',
+    nome: [f.marca ?? 'Filamento', f.materiale].filter(Boolean).join(' '),
+    prezzo: p?.prezzo ?? null,
+    euroKg,
+  };
+});
+
+const marche = [...new Set(schede.map((s) => s.marcaVista))];
+const materiali = [...new Set(schede.map((s) => s.materiale).filter(Boolean))] as string[];
+const euro = (n: number) => n.toLocaleString('it-IT', { style: 'currency', currency: 'EUR' });
+---
+
+<BaseLayout
+  title="Filamenti per stampa 3D che uso davvero, con sconti | Walter Maker Labs"
+  description="I filamenti che uso nei miei video: AzureFilm, Anycubic, eSUN, Snapmaker e altri, con i link e i codici sconto R3D e Filamentor. Filtra per marca e materiale."
+>
+  <nav class="briciole" aria-label="Percorso">
+    <ol>
+      <li><a href={u('/')}>Home</a></li>
+      <li><a href={u('/sconti/')}>Sconti</a></li>
+      <li aria-current="page">Filamenti</li>
+    </ol>
+  </nav>
+
+  <section class="testa">
+    <h1>I filamenti che uso davvero</h1>
+    <p class="sotto">
+      Non è un catalogo: sono i filamenti che compaiono nei miei Short, presi dai link che metto
+      nelle descrizioni. Accanto a ognuno trovi in quanti video l’ho usato e l’ultimo in cui compare.
+    </p>
+  </section>
+
+  <p class="avviso-affiliato">
+    <strong>Trasparenza.</strong> I link di questa pagina sono affiliati: se compri passando da qui
+    ricevo una piccola commissione e tu non paghi di più. In qualità di Affiliato Amazon io ricevo un
+    guadagno dagli acquisti idonei.
+  </p>
+
+  <h2>Negozi di filamenti con codice</h2>
+  <div class="negozi">
+    {
+      negozi.map((m) => (
+        <section class="negozio">
+          <h3>{m.nome}</h3>
+          <p class="tenue">{m.cosa}</p>
+          {m.codici.map((c) => (
+            <p class="codice">
+              <code>{c.codice}</code> <span>{c.valore} di sconto</span>
+            </p>
+          ))}
+          <a class="bottone" href={m.link} rel="sponsored nofollow" target="_blank">
+            Vai su {m.nome} &rarr;
+          </a>
+        </section>
+      ))
+    }
+  </div>
+
+  <h2>Su Amazon</h2>
+  {
+    aggiornati ? (
+      <p class="tenue" id="nota-prezzi" data-ts={aggiornati}>
+        Prezzi letti da Amazon alle {new Date(aggiornati).toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Rome' })}.
+        Possono cambiare: quello valido è quello che vedi su Amazon al momento dell’acquisto.
+      </p>
+    ) : (
+      <p class="tenue">Prezzi e colori esatti li trovi su Amazon: il pulsante porta direttamente al prodotto.</p>
+    )
+  }
+
+  <div class="filtri" role="group" aria-label="Filtri">
+    <label>
+      Marca
+      <select data-filtro="marca">
+        <option value="">Tutte</option>
+        {marche.map((m) => <option value={m}>{m}</option>)}
+      </select>
+    </label>
+    <label>
+      Materiale
+      <select data-filtro="materiale">
+        <option value="">Tutti</option>
+        {materiali.map((m) => <option value={m}>{m}</option>)}
+      </select>
+    </label>
+    <label>
+      Ordina
+      <select data-ordina>
+        <option value="usati">Più usati nei video</option>
+        {aggiornati && <option value="kg">Prezzo al kg</option>}
+      </select>
+    </label>
+  </div>
+
+  <ul class="schede">
+    {
+      schede.map((s) => (
+        <li
+          class="scheda"
+          data-marca={s.marcaVista}
+          data-materiale={s.materiale ?? ''}
+          data-usati={s.usatoInShort}
+          data-kg={s.euroKg ?? ''}
+        >
+          <h3>{s.nome}</h3>
+          {s.coloriIndicati.length > 0 && <p class="tenue">Colore: {s.coloriIndicati.join(', ')}</p>}
+          {s.prezzo !== null && aggiornati && (
+            <p class="prezzo" data-ts={aggiornati}>
+              {euro(s.prezzo)}
+              {s.euroKg !== null && <span> · {euro(s.euroKg)}/kg</span>}
+            </p>
+          )}
+          <p class="usato">
+            Usato in {s.usatoInShort} Short ·{' '}
+            <a href={`https://www.youtube.com/shorts/${s.ultimoShort}`} target="_blank" rel="noopener">
+              l’ultimo
+            </a>
+          </p>
+          <a class="bottone" href={s.link} rel="sponsored nofollow" target="_blank">
+            Vedi su Amazon &rarr;
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  <p class="vuoto tenue" hidden>Nessun filamento con questi filtri.</p>
+
+  <section class="note">
+    <h2>Come confrontare i filamenti</h2>
+    <p>
+      <strong>Guarda il prezzo al chilo, non a bobina.</strong> Le bobine pesano 250 g, 500 g, 750 g
+      o 1 kg: due prezzi a bobina non sono confrontabili finché non li dividi per il peso netto.
+    </p>
+    <p>
+      <strong>Il materiale conta più della marca.</strong> Per iniziare va bene il PLA. Il PETG regge
+      meglio il caldo e gli urti, l’ABS e l’ASA servono per i pezzi da esterno o vicino a fonti di
+      calore, e chiedono una stampante chiusa.
+    </p>
+    <p><a href={u('/sconti/')}>Tutti i codici sconto &rarr;</a></p>
+  </section>
+</BaseLayout>
+
+<script is:inline>
+  (function () {
+    // Amazon: un prezzo piu' vecchio di un'ora non si puo' mostrare.
+    var UN_ORA = 60 * 60 * 1000;
+    document.querySelectorAll('.prezzo[data-ts], #nota-prezzi[data-ts]').forEach(function (el) {
+      if (Date.now() - new Date(el.getAttribute('data-ts')).getTime() > UN_ORA) el.remove();
+    });
+
+    var lista = document.querySelector('.schede');
+    var schede = Array.prototype.slice.call(lista.children);
+    var vuoto = document.querySelector('.vuoto');
+    var filtri = document.querySelectorAll('[data-filtro]');
+    var ordina = document.querySelector('[data-ordina]');
+
+    function aggiorna() {
+      var visibili = 0;
+      schede.forEach(function (s) {
+        var ok = true;
+        filtri.forEach(function (f) {
+          if (f.value && s.getAttribute('data-' + f.getAttribute('data-filtro')) !== f.value) ok = false;
+        });
+        s.hidden = !ok;
+        if (ok) visibili++;
+      });
+      vuoto.hidden = visibili > 0;
+      var per = ordina.value;
+      schede
+        .slice()
+        .sort(function (a, b) {
+          if (per === 'kg') {
+            var x = parseFloat(a.getAttribute('data-kg')) || Infinity;
+            var y = parseFloat(b.getAttribute('data-kg')) || Infinity;
+            return x - y;
+          }
+          return b.getAttribute('data-usati') - a.getAttribute('data-usati');
+        })
+        .forEach(function (s) {
+          lista.appendChild(s);
+        });
+    }
+    filtri.forEach(function (f) {
+      f.addEventListener('change', aggiorna);
+    });
+    ordina.addEventListener('change', aggiorna);
+    aggiorna();
+  })();
+</script>
+
+<style>
+  .testa {
+    padding-block: 1.5rem 0.5rem;
+    max-width: 46rem;
+  }
+  .sotto {
+    color: var(--testo-tenue);
+    font-size: 1.1rem;
+  }
+  .avviso-affiliato {
+    max-width: 46rem;
+  }
+  h2 {
+    margin-top: 2.2rem;
+  }
+  .tenue {
+    color: var(--testo-tenue);
+    font-size: 0.92rem;
+  }
+  .negozi,
+  .schede {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr));
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+  }
+  .negozio,
+  .scheda {
+    background: var(--superficie);
+    border: 1px solid var(--bordo);
+    border-radius: var(--raggio);
+    padding: 1rem 1.1rem 1.15rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .negozio h3,
+  .scheda h3 {
+    margin: 0;
+    font-size: 1.08rem;
+  }
+  .negozio p,
+  .scheda p {
+    margin: 0;
+  }
+  .codice code {
+    background: var(--accento-tenue);
+    border: 1px dashed var(--accento);
+    border-radius: 5px;
+    padding: 0.15rem 0.5rem;
+    user-select: all;
+  }
+  .codice span {
+    color: var(--testo-tenue);
+    font-size: 0.88rem;
+  }
+  .prezzo {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--accento);
+  }
+  .prezzo span {
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: var(--testo-tenue);
+  }
+  .usato {
+    font-size: 0.88rem;
+    color: var(--testo-tenue);
+  }
+  .bottone {
+    margin-top: auto;
+    align-self: flex-start;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid var(--accento);
+    border-radius: 6px;
+    padding: 0.4rem 0.8rem;
+  }
+  .bottone:hover {
+    background: var(--accento-tenue);
+  }
+  .filtri {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.25rem;
+    margin-top: 1rem;
+  }
+  .filtri label {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.85rem;
+    color: var(--testo-tenue);
+    gap: 0.25rem;
+  }
+  .filtri select {
+    font: inherit;
+    font-size: 0.95rem;
+    color: var(--testo);
+    background: var(--superficie);
+    border: 1px solid var(--bordo);
+    border-radius: 6px;
+    padding: 0.35rem 0.5rem;
+  }
+  .scheda[hidden] {
+    display: none;
+  }
+  .note {
+    max-width: 46rem;
+    margin-top: 2.5rem;
+  }
+</style>
