@@ -252,9 +252,38 @@ export const MARCHE: Marca[] = [
     cosa: 'Negozio online di filamenti per la stampa 3D.',
     link: 'https://filamentor.io/?ref=waltermakerlabs',
     etichetta: 'Filamentor',
-    codici: [],
-    nota: '',
+    codici: [{ codice: 'WALTERMAKER', valore: '8 %' }],
+    nota: 'Il link funziona su ogni pagina e su ogni sito nazionale di Filamentor. Onestamente: non ho ancora ordinato da loro, quindi non è una recensione. Quando lo farò, scrivo qui com’è andata.',
     articoli: [],
+    pagina: {
+      titolo: 'Codice sconto Filamentor: 8 % con WALTERMAKER',
+      descrizione:
+        'Il codice sconto Filamentor WALTERMAKER vale l’8 % sui filamenti per la stampa 3D. Dove inserirlo, quando non si applica e come calcolare il prezzo vero al chilo.',
+      h1: 'Codice sconto Filamentor: 8 % con WALTERMAKER',
+      intro: [
+        'Il codice è **WALTERMAKER** e vale **l’8 % di sconto** sui filamenti Filamentor. Si inserisce al momento dell’ordine, prima del pagamento.',
+        'Un consiglio che vale più del codice: **confronta i filamenti al chilo, non a bobina.** Le bobine hanno pesi diversi (250 g, 500 g, 1 kg, a volte 750 g) e il prezzo a bobina inganna. Dividi il prezzo per il peso netto, poi applica l’8 %.',
+      ],
+      prodotti: ['filamento PLA', 'filamento PETG', 'filamento TPU'],
+      faq: [
+        {
+          d: 'Qual è il codice sconto Filamentor e quanto vale?',
+          r: 'WALTERMAKER, e vale l’8 % di sconto. È percentuale: più spendi, più risparmi. Controlla che il totale scenda prima di confermare l’ordine.',
+        },
+        {
+          d: 'Il codice si somma ad altre promozioni?',
+          r: 'Dipende dalla promozione, come su quasi tutti i negozi. Se un prodotto è già scontato il codice può non applicarsi: in quel caso confronta i due totali e tieni il più basso.',
+        },
+        {
+          d: 'Funziona anche sui siti Filamentor degli altri paesi?',
+          r: 'Il link qui sotto funziona su ogni sito nazionale di Filamentor. Il codice inseriscilo comunque nel carrello e verifica che venga accettato prima di pagare.',
+        },
+        {
+          d: 'Hai provato i filamenti Filamentor?',
+          r: 'Non ancora, e preferisco dirlo. Il codice c’è perché è un risparmio reale per chi compra lì comunque. Quando ordinerò, aggiungerò qui com’è andata: imballo, tempi di consegna e qualità della bobina.',
+        },
+      ],
+    },
   },
 ];
 
