@@ -1,0 +1,27 @@
+name: Amazon - cerca filamenti
+
+# Lanciato a mano: cerca i filamenti delle marche su Amazon.it e stampa gli ASIN
+# con i colori nel log. Non pubblica niente e non modifica il repository.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  scopri:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Cerca
+        env:
+          AMAZON_ACCESS_KEY: ${{ secrets.AMAZON_ACCESS_KEY }}
+          AMAZON_SECRET_KEY: ${{ secrets.AMAZON_SECRET_KEY }}
+        run: node scripts/amazon.mjs scopri > filamenti-trovati.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: filamenti-trovati
+          path: filamenti-trovati.json
