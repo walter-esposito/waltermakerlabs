@@ -8,7 +8,7 @@
  * Senza codice la marca resta nell'indice /sconti/, con link e articoli.
  */
 
-export const AGGIORNATA = '12 ottobre 2026';
+export const AGGIORNATA = '22 novembre 2026';
 
 export interface Codice {
   codice: string;
@@ -242,6 +242,16 @@ export const MARCHE: Marca[] = [
     cosa: 'Filamenti, compresi i PEBA flessibili e i caricati che richiedono ugelli temprati.',
     link: 'https://r3dprint.com/s/waltermakerlabs',
     etichetta: 'R3D Filament',
+    codici: [],
+    nota: '',
+    articoli: [],
+  },
+  {
+    slug: 'filamentor',
+    nome: 'Filamentor',
+    cosa: 'Negozio online di filamenti per la stampa 3D.',
+    link: 'https://filamentor.io/?ref=waltermakerlabs',
+    etichetta: 'Filamentor',
     codici: [],
     nota: '',
     articoli: [],
