@@ -8,7 +8,7 @@
  * Senza codice la marca resta nell'indice /sconti/, con link e articoli.
  */
 
-export const AGGIORNATA = '22 novembre 2026';
+export const AGGIORNATA = '26 novembre 2026';
 
 export interface Codice {
   codice: string;
@@ -213,6 +213,21 @@ export const MARCHE: Marca[] = [
         },
       ],
     },
+  },
+  {
+    slug: 'infimech',
+    nome: 'InfiMech',
+    cosa: 'La campagna Kickstarter della serie MX: toolchanger da 6 teste (MX) e da 8 teste (MX Pro).',
+    link: 'https://infimech.kckb.me/waltermakerlabs',
+    etichetta: 'Campagna Kickstarter InfiMech MX',
+    codici: [],
+    nota: 'È un crowdfunding, non un negozio: finanzi un prodotto che deve ancora essere prodotto, e i tempi di consegna possono slittare. Prima di fare il pledge leggi i miei articoli sulla serie MX, dove riporto anche i rinvii e le domande ancora aperte.',
+    articoli: [
+      { t: 'InfiMech MX, Kickstarter il 10 novembre: cosa sapere prima', u: '/stampa-3d/infimech-mx-kickstarter-10-novembre/' },
+      { t: 'InfiMech rinvia ancora: 7 upgrade gratis', u: '/stampa-3d/infimech-rinvio-7-upgrade/' },
+      { t: 'InfiMech MX Pro: il numero vero sullo spreco', u: '/stampa-3d/infimech-mx-pro-spreco-filamento/' },
+      { t: 'InfiMech MX: il toolchanger più economico', u: '/stampa-3d/infimech-mx-toolchanger-economico/' },
+    ],
   },
   {
     slug: 'flashforge',
