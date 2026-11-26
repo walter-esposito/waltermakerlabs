@@ -302,10 +302,11 @@ Still open:
 - **the final specs**, to compare against the machine that arrives;
 - **final shipping prices**, confirmed in the post-campaign survey.
 
-One detail that inspires less confidence: the campaign's "Risks and challenges" section talks about
-**"APS"**, with 18 months of development and 5 prototypes. APS isn't the MX. It looks like text
-recycled from another campaign, and in the section meant to cover the risks of *this* project, that's
-a slip worth pointing out.
+One detail worth flagging: the campaign's "Risks and challenges" section never names the MX. It
+talks about **"APS"**: "18 months" of development and "5 prototypes" for "the APS product". APS appears
+nowhere else in the campaign, and I don't know what it refers to: it could be a typo, an internal name
+or text taken from another project. Worth knowing, because that's
+the very section meant to explain this campaign's risks.
 
 ## Where I stand
 

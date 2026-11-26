@@ -298,9 +298,11 @@ Restano aperti:
 - **le specifiche finali**, da confrontare con la macchina che arriverà;
 - **i prezzi definitivi** della spedizione, che si confermano nel questionario dopo la campagna.
 
-Un dettaglio che fa sorridere meno: la sezione "Rischi e sfide" della campagna parla di **"APS"**, con
-18 mesi di sviluppo e 5 prototipi. APS non è la MX. Sembra un testo riciclato da un'altra campagna, e
-in una sezione che dovrebbe parlare dei rischi di *questo* progetto è una svista da segnalare.
+Un dettaglio da segnalare: la sezione "Rischi e sfide" della campagna non nomina mai la MX. Parla di
+**"APS"**: "18 mesi" di sviluppo e "5 prototipi" per "il prodotto APS". Nel resto della campagna APS non
+compare, e non so a cosa si riferisca: può essere un refuso, un nome interno o un testo preso da un
+altro progetto. Vale la pena saperlo, perché è proprio la sezione che
+dovrebbe spiegare i rischi di questa campagna.
 
 ## La mia posizione
 
